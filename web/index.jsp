@@ -171,6 +171,13 @@
                             <li><i class="arr2"></i><img width="118" height="64" src="${gallery.picture}" alt="title" /></li>
                         </c:forEach>
                     -->
+                    <!--
+                            <li><i class="arr2"></i><img width="118" height="64" src="${gallery[0].picture}" alt="title" /></li></li>
+                            <li><i class="arr2"></i><img width="118" height="64" src="${gallery[1].picture}" alt="title" /></li></li>
+                            <li><i class="arr2"></i><img width="118" height="64" src="${gallery[2].picture}" alt="title" /></li></li>
+                               ...
+                               ...
+                    -->
                 </ul>
              </div>	
         </div>
