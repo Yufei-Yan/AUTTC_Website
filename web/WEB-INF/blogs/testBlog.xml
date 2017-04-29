@@ -8,7 +8,7 @@ and open the template in the editor.
 <blogs>
     <blog id="101">
         <title>Welcome to AUTTC</title>
-        <data>04/01/2017</date>
+        <date>04/01/2017</date>
         <body>This is the first blog of Auburn University Table Tennis Club!</body>
         <comments>
             <comment>
@@ -27,17 +27,17 @@ and open the template in the editor.
                 <cbody>Blahblahblah</cbody>
             </comment>
         </comments>
-    <blog>
+    </blog>
     <blog id="102">
         <title>Second Blog</title>
-        <data>04/03/2017</date>
+        <date>04/03/2017</date>
         <body>This is the second blog of Auburn University Table Tennis Club!</body>
         <comments>
         </comments>
-    <blog>
+    </blog>
     <blog id="103">
         <title>Third Blog</title>
-        <data>04/12/2017</date>
+        <date>04/12/2017</date>
         <body>This is the third blog of AUTTC</body>
         <comments>
             <comment>
@@ -51,5 +51,5 @@ and open the template in the editor.
                 <cbody>Very good article</cbody>
             </comment>
         </comments>
-    <blog>
+    </blog>
 </blogs>
