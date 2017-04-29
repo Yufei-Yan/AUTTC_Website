@@ -331,14 +331,16 @@
                     <p>introduction</p>
                     <a href=""></a>
                   </li>
-                    
+                  
+                  
+                    <!-- teammates informations-->
                     <!--
-                        <c:forEach items="${teammategallery}" var="picture">
+                        <c:forEach items="${teammate}" var="picture">
                             <li>
-                                <img src="${teamategallery.picture}" />
-                                <dd>name</dd>
-                                <p>introduction</p>
-                                <a href=""></a>
+                                <img src="${teammate.picture}" />
+                                <dd>${teammate.name}</dd>
+                                <p>${teammate.introduction}</p>
+                            </li>
                         </c:forEach>
                     -->
                 </ul>
