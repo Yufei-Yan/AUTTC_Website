@@ -5,27 +5,40 @@
  */
 package com.auttc.business;
 
+import java.util.List;
+
 /**
  *
  * @author yufeiyan
  */
 public class Blog {
+    private int id;
     private String title;
     private String date;
     private String body;
-    private Comment[] commentList;
+    private List<Comment> commentList;
     
     public Blog() {
+        this.id = 0;
         this.title = "";
         this.date = "";
         this.body = "";
     }
     
-    public Blog(String title, String date, String body, Comment[] commentList) {
+    public Blog(int id, String title, String date, String body, List<Comment> commentList) {
+        this.id = id;
         this.title = title;
         this.date = date;
         this.body = body;
         this.commentList = commentList;
+    }
+    
+    public int getID() {
+        return id;
+    }
+    
+    public void setID(int id) {
+        this.id = id;
     }
     
     public String getTitle() {
@@ -52,11 +65,11 @@ public class Blog {
         this.body = body;
     }
     
-    public Comment[] getComments() {
+    public List<Comment> getComments() {
         return commentList;
     }
     
-    public void setComments(Comment[] commentList) {
+    public void setComments(List<Comment> commentList) {
         this.commentList = commentList;
     }
 }
