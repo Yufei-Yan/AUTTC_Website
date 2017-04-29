@@ -335,11 +335,13 @@
                   
                     <!-- teammates informations-->
                     <!--
-                        <c:forEach items="${teammate}" var="picture">
+                        <c:forEach items="${members}" var="picture">
                             <li>
-                                <img src="${teammate.picture}" />
-                                <dd>${teammate.name}</dd>
-                                <p>${teammate.introduction}</p>
+                                <img src="${member.picture}" />   //not in proposal 
+                                <dd>${member.name}</dd>
+                                <p>${member.gender}</p>
+                                <p>${member.joindate}</p>
+                                <p>${member.infro}</p>                   
                             </li>
                         </c:forEach>
                     -->
