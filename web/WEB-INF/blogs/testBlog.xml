@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<blogs>
+    <blog id="101">
+        <title>Welcome to AUTTC</title>
+        <data>04/01/2017</date>
+        <body>This is the first blog of Auburn University Table Tennis Club!</body>
+        <comments>
+            <comment>
+                <username>Yufei</username>
+                <cdate type="">04/01/2017</cdate>
+                <cbody>Interesting</cbody>
+            </comment>
+            <comment>
+                <username>Chengyu</username>
+                <cdate type="">04/01/2017</cdate>
+                <cbody>Hello</cbody>
+            </comment>
+            <comment>
+                <username>Admin</username>
+                <cdate type="">04/02/2017</cdate>
+                <cbody>Blahblahblah</cbody>
+            </comment>
+        </comments>
+    <blog>
+    <blog id="102">
+        <title>Second Blog</title>
+        <data>04/03/2017</date>
+        <body>This is the second blog of Auburn University Table Tennis Club!</body>
+        <comments>
+        </comments>
+    <blog>
+    <blog id="103">
+        <title>Third Blog</title>
+        <data>04/12/2017</date>
+        <body>This is the third blog of AUTTC</body>
+        <comments>
+            <comment>
+                <username>Ziyan</username>
+                <cdate>04/13/2017</cdate>
+                <cbody>The ceiling</cbody>
+            </comment>
+            <comment>
+                <username>Yang</username>
+                <cdate>04/13/2017</cdate>
+                <cbody>Very good article</cbody>
+            </comment>
+        </comments>
+    <blog>
+</blogs>
