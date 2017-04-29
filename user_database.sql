@@ -1,6 +1,6 @@
-CREATE DATABASE `user_database`;
+CREATE DATABASE `auttc_users` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 
-USE `user_database`;
+USE `auttc_users`;
 
 
 CREATE TABLE IF NOT EXISTS `users` (
