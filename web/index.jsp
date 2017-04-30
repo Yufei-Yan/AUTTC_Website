@@ -33,8 +33,9 @@
         </div>
         
         <h1>Hello World!</h1>
-        <form action="" method="">
-          <input type="submit" value="Login" />
+        <form action="homeLoad" method="post">
+            <input type="hidden" name="action" value="login" /> 
+            <input type="submit" value="Login" /> 
         </form>
         
         <!-- 

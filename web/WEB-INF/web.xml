@@ -10,12 +10,15 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>HomeLoadServlet</servlet-name>
-        <url-pattern>/homeLoadServlet</url-pattern>
+        <url-pattern>/homeLoad</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AdminManageServlet</servlet-name>
-        <url-pattern>/adminManageServlet</url-pattern>
+        <url-pattern>/adminManage</url-pattern>
     </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>homeLoad</welcome-file>
+    </welcome-file-list>
     <session-config>
         <session-timeout>
             30
