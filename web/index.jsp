@@ -39,12 +39,12 @@
             <div class="header">
             <div class="header_resize">
             <div class="logo">
-            <h1><a href="index.jsp">AUTTC<span> Website</span></a><small>Auburn University Table Tennis Club</small></h1>
+            <h1><a href="homeLoad?action=homeLoad">AUTTC<span> Website</span></a><small>Auburn University Table Tennis Club</small></h1>
             </div>
             <div class="clr"></div>
             <div class="menu_nav">
                 <ul>
-                <li class="active"><a href="index.jsp">Home</a></li>
+                <li class="active"><a href="homeLoad?action=homeLoad">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="blog.html">Blog</a></li>
                 <li class="last"><a href="contact.html">Contact Us</a></li>
