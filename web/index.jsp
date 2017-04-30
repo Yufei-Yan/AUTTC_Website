@@ -21,11 +21,20 @@
                         $('#horiz_container_outer').horizontalScroll();
 
                 });
+                
+                function checkUser() {
+                    if ('${user}' === "") {
+                        document.getElementById("submitButton").value = "Login";
+                    } else {
+                        document.getElementById("submitButton").value = "Logout";
+                        document.getElementById("loginHidden").value = "logout";
+                    }
+                }
 
         </script>
         <title>JSP Page</title>
     </head>
-    <body>
+    <body onload="checkUser()">
         <div class="main">
             <div class="header">
             <div class="header_resize">
@@ -46,9 +55,10 @@
         </div>
         
         <h1>Hello World!</h1>
-        <form action="homeLoad" method="post">
-            <input type="hidden" name="action" value="login" /> 
-            <input type="submit" value="Login" /> 
+        <h2>${user}</h2>
+        <form action="homeLoad" method="post" id="loginButton" >
+            <input type="hidden" name="action" value="login" id="loginHidden"/> 
+            <input type="submit" value="Login" id="submitButton"/> 
         </form>
         
         <!-- 

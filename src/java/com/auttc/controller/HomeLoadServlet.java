@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -60,7 +61,18 @@ public class HomeLoadServlet extends HttpServlet {
             throws ServletException, IOException {
         //processRequest(request, response);
         String action = request.getParameter("action");
+        HttpSession session = request.getSession();
+        User sessionUser = (User)session.getAttribute("user");
         String url = "/index.jsp";
+        
+        if (null == action) {
+            action = "homeLoad";
+        }
+        
+        if (action.equals("homeLoad")) {
+            String message = "Hello, " + sessionUser.getUsername();
+            request.setAttribute("user", message);
+        }
         
         getServletContext().getRequestDispatcher(url).forward(request, response);
         
@@ -80,13 +92,17 @@ public class HomeLoadServlet extends HttpServlet {
         //processRequest(request, response);
               
         //need to check session later
-        //HttpSession session = request.getSession();
+        HttpSession session = request.getSession();
         
         String action = request.getParameter("action");
         String url = "/index.jsp";
         
         if (action.equals("login")) {
             url = "/login.jsp";
+            getServletContext().getRequestDispatcher(url).forward(request, response);
+        } else if (action.equals("logout")) {
+            session.invalidate();
+            url = "/index.jsp";
             getServletContext().getRequestDispatcher(url).forward(request, response);
         } else if (action.equals("userLogin")) {
             System.out.println("user is logging in");
@@ -100,9 +116,15 @@ public class HomeLoadServlet extends HttpServlet {
             
             
             if (User.UserType.ADMIN == u) {
-                url = "/administrator.jsp";   
+                url = "/administrator.jsp";
+                session.setAttribute("user", user);
+                String message = "Hello, administrator! " + user.getUsername();
+                request.setAttribute("user", message);
             } else if (User.UserType.USER == u) {
                 url = "/index.jsp";
+                session.setAttribute("user", user);
+                String message = "Hello, " + user.getUsername();
+                request.setAttribute("user", message);
             } else {
                 //username and password not mathch
                 url = "/login.jsp";
@@ -124,10 +146,12 @@ public class HomeLoadServlet extends HttpServlet {
             } else {
                 UserDB.inserUser(user);
                 //need to deal with session later
-                //HttpSession session = request.getSession();
+                session.setAttribute("user", user);
                 
                 System.out.println("new user created!");
                 url = "/index.jsp";
+                String message = "Hello, " + user.getUsername();
+                request.setAttribute("user", message);
             }
             
             getServletContext().getRequestDispatcher(url).forward(request, response);

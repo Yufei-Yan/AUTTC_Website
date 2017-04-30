@@ -24,7 +24,10 @@
                 
                 function checkUser() {
                     if ('${user}' === "") {
-                        document.getElementById("loginButton").style.display = "";
+                        document.getElementById("submitButton").value = "Login";
+                    } else {
+                        document.getElementById("submitButton").value = "Logout";
+                        document.getElementById("loginHidden").value = "logout";
                     }
                 }
 
@@ -52,10 +55,10 @@
         </div>
         
         <h1>Hello World!</h1>
-        <h4>${user}</h4>
-        <form action="homeLoad" method="post" id="loginButton" style="display:none">
-            <input type="hidden" name="action" value="login" /> 
-            <input type="submit" value="Login" /> 
+        <h2>${user}</h2>
+        <form action="homeLoad" method="post" id="loginButton" >
+            <input type="hidden" name="action" value="login" id="loginHidden"/> 
+            <input type="submit" value="Login" id="submitButton"/> 
         </form>
         
         <!-- 
