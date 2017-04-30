@@ -15,7 +15,7 @@ public class Member {
     public String gender;
     public String joinDate;
     public String intro;
-    
+
     public Member() {
         name = "";
         gender = "";
