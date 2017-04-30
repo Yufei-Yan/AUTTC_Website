@@ -11,4 +11,54 @@ package com.auttc.business;
  */
 public class Member {
     
+    public String name;
+    public String gender;
+    public String joinDate;
+    public String intro;
+    
+    public Member() {
+        name = "";
+        gender = "";
+        joinDate = "";
+        intro = "";
+    }
+    
+    public Member(String name, String gender, String joinDate, String intro) {
+        this.name = name;
+        this.gender = gender;
+        this.joinDate = joinDate;
+        this.intro = intro;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public String getGender() {
+        return gender;
+    }
+    
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+    
+    public String getJoinDate() {
+        return joinDate;
+    }
+    
+    public void setJoinDate(String joinDate) {
+        this.joinDate = joinDate;
+    }
+    
+    public String getIntro() {
+        return intro;
+    }
+    
+    public void setIntro(String intro) {
+        this.intro = intro;
+    }
 }
