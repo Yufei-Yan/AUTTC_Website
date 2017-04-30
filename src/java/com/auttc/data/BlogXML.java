@@ -25,7 +25,7 @@ public class BlogXML {
     public static List<Blog> xmlToBlogList (String fileName) {
         List<Blog> blogList = new ArrayList<Blog>();
         try {
-            File xmlFile = new File("testBlog.xml");
+            File xmlFile = new File(fileName);
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(xmlFile);
