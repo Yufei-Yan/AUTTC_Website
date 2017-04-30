@@ -1,5 +1,3 @@
-CREATE DATABASE `auttc_users` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-
 USE `auttc_users`;
 
 
@@ -19,3 +17,6 @@ VALUES
     ('yufei', 'yufei', 0),
     ('ziyan', 'ziyan', 0),
     ('yang', 'yang', 0);
+    
+ALTER TABLE auttc_users.users
+ADD COLUMN email VARCHAR(50) NOT NULL AFTER username;
