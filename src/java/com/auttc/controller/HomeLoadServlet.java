@@ -5,6 +5,8 @@
  */
 package com.auttc.controller;
 
+import com.auttc.business.User;
+import com.auttc.data.UserDB;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -56,7 +58,12 @@ public class HomeLoadServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+        String action = request.getParameter("action");
+        String url = "/index.jsp";
+        
+        getServletContext().getRequestDispatcher(url).forward(request, response);
+        
     }
 
     /**
@@ -70,7 +77,63 @@ public class HomeLoadServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+              
+        //need to check session later
+        //HttpSession session = request.getSession();
+        
+        String action = request.getParameter("action");
+        String url = "/index.jsp";
+        
+        if (action.equals("login")) {
+            url = "/login.jsp";
+            getServletContext().getRequestDispatcher(url).forward(request, response);
+        } else if (action.equals("userLogin")) {
+            System.out.println("user is logging in");
+            String username = request.getParameter("login");
+            String password = request.getParameter("password");
+            
+            System.out.println(username + password);
+            
+            User user = new User(username, null, password, 0);
+            User.UserType u = UserDB.isPasswordCorrect(user);
+            
+            
+            if (User.UserType.ADMIN == u) {
+                url = "/administrator.jsp";   
+            } else if (User.UserType.USER == u) {
+                url = "/index.jsp";
+            } else {
+                //username and password not mathch
+                url = "/login.jsp";
+            }
+            
+            getServletContext().getRequestDispatcher(url).forward(request, response);
+            
+        } else if (action.equals("userSignup")) {
+            System.out.println("user is signning up");
+            String username = request.getParameter("username");
+            String password = request.getParameter("password");
+            String email = request.getParameter("email");
+            
+            User user = new User(username, email, password, 0);
+            
+            if (UserDB.isEmailExist(user)) {
+                System.out.println("Email already resgistered!");
+                url = "/login.jsp";
+            } else {
+                UserDB.inserUser(user);
+                //need to deal with session later
+                //HttpSession session = request.getSession();
+                
+                System.out.println("new user created!");
+                url = "/index.jsp";
+            }
+            
+            getServletContext().getRequestDispatcher(url).forward(request, response);
+        }
+        
+        
     }
 
     /**

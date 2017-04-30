@@ -3,7 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/cheng/Documents/GitHub/AUTTC_Website/web/WEB-INF/blogs/testBlog.xml</file>
+            <file>file:/home/yufeiyan/NetBeansProjects/AUTTC_Website/src/java/com/auttc/business/User.java</file>
+            <file>file:/home/yufeiyan/NetBeansProjects/AUTTC_Website/web/administrator.jsp</file>
+            <file>file:/home/yufeiyan/NetBeansProjects/AUTTC_Website/web/WEB-INF/web.xml</file>
+            <file>file:/home/yufeiyan/NetBeansProjects/AUTTC_Website/src/java/com/auttc/data/UserDB.java</file>
+            <file>file:/home/yufeiyan/NetBeansProjects/AUTTC_Website/web/index.jsp</file>
+            <file>file:/home/yufeiyan/NetBeansProjects/AUTTC_Website/web/login.jsp</file>
+            <file>file:/home/yufeiyan/NetBeansProjects/AUTTC_Website/src/java/com/auttc/controller/HomeLoadServlet.java</file>
+            <file>file:/home/yufeiyan/NetBeansProjects/AUTTC_Website/web/META-INF/context.xml</file>
+            <file>file:/home/yufeiyan/NetBeansProjects/AUTTC_Website/src/java/com/auttc/data/DBUtil.java</file>
         </group>
     </open-files>
 </project-private>
