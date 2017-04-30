@@ -16,6 +16,11 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import com.auttc.business.Blog;
 import com.auttc.business.Comment;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import org.w3c.dom.Attr;
 
 /**
  *
@@ -30,7 +35,6 @@ public class BlogXML {
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(xmlFile);
             doc.getDocumentElement().normalize();
-    //            System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
             NodeList blogNodeList = doc.getElementsByTagName("blog");
             for (int i = 0; i < blogNodeList.getLength(); i++) { // for each blog
                 List<Comment> commentList = new ArrayList<Comment>();
@@ -39,25 +43,17 @@ public class BlogXML {
 
                 // get information about blog_id, title, date, and body
                 int blogID = Integer.parseInt(blogElement.getAttribute("id"));
-    //                System.out.println("blog id: " + blogID);
                 String blogTitle = blogElement.getElementsByTagName("title").item(0).getTextContent();
-    //                System.out.println("title: " + blogTitle);
                 String blogDate = blogElement.getElementsByTagName("date").item(0).getTextContent();
-    //                System.out.println("date: " + blogDate);
                 String blogBody = blogElement.getElementsByTagName("body").item(0).getTextContent();
-    //                System.out.println("Body: " + blogBody);
 
                 // get comments
                 NodeList commentNodeList = blogElement.getElementsByTagName("comment");
                 for (int j = 0; j < commentNodeList.getLength(); j++) { // for each comment
-    //                    System.out.println("Hello from inner loop");
                     Element commentElement = (Element) commentNodeList.item(j);
                     String username = commentElement.getElementsByTagName("username").item(0).getTextContent();
-    //                    System.out.println("User: " + username);
                     String commentDate = commentElement.getElementsByTagName("cdate").item(0).getTextContent();
-    //                    System.out.println("date: " + commentDate);
                     String commentBody = commentElement.getElementsByTagName("cbody").item(0).getTextContent();
-    //                    System.out.println("Comment body: " + commentBody);
                     Comment newComment = new Comment(username, commentDate, commentBody);
                     commentList.add(newComment);
                 }
@@ -70,5 +66,105 @@ public class BlogXML {
             e.printStackTrace();
         }
         return blogList;
+    }
+    
+    public static void addBlog (Blog inputBlog) {
+        try {
+            
+            File xmlFile = new File("testBlog.xml");
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            Document doc = dBuilder.parse(xmlFile);
+            Element rootBlogsElement = doc.getDocumentElement();
+            
+            // append <blog> tag to root element
+            Element blogElement = doc.createElement("blog");
+            rootBlogsElement.appendChild(blogElement);
+            
+            // add attribute "id" to blog tag
+            Attr blogID = doc.createAttribute("id");
+            blogID.setValue(Integer.toString(inputBlog.getID()));
+            blogElement.setAttributeNode(blogID);
+            
+            // add title to blog
+            Element titleElement = doc.createElement("title");
+            titleElement.appendChild(doc.createTextNode(inputBlog.getTitle()));
+            blogElement.appendChild(titleElement);
+            
+            // add date to blog
+            Element dateElement = doc.createElement("date");
+            dateElement.appendChild(doc.createTextNode(inputBlog.getDate()));
+            blogElement.appendChild(dateElement);
+            
+            // add body to blog
+            Element bodyElement = doc.createElement("body");
+            bodyElement.appendChild(doc.createTextNode(inputBlog.getBody()));
+            blogElement.appendChild(bodyElement);
+            
+            // add comments tag to blog
+            Element rootCommentsElement = doc.createElement("comments");
+            blogElement.appendChild(rootCommentsElement);
+            
+            List<Comment> commentList = inputBlog.getComments();
+            for (Comment comment: commentList) {
+                // add comment to <comments>
+                Element commentElement = doc.createElement("comment");
+                rootCommentsElement.appendChild(commentElement);
+                
+                Element usernameElement = doc.createElement("username");
+                usernameElement.appendChild(doc.createTextNode(comment.getUsername()));
+                commentElement.appendChild(usernameElement);
+                
+                Element cdateElement = doc.createElement("cdate");
+                cdateElement.appendChild(doc.createTextNode(comment.getCdate()));
+                commentElement.appendChild(cdateElement);
+                
+                Element cbodyElement = doc.createElement("cbody");
+                cbodyElement.appendChild(doc.createTextNode(comment.getCbody()));
+                commentElement.appendChild(cbodyElement);
+            }
+            
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            StreamResult result = new StreamResult("testBlog.xml");
+            DOMSource source = new DOMSource(doc);
+            transformer.transform(source, result);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public static void removeBlog(int delID) {
+        try {
+            File xmlFile = new File("testBlog.xml");
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            Document doc = dBuilder.parse(xmlFile);
+            Node rootNode = doc.getFirstChild();
+            NodeList blogNodeList = doc.getElementsByTagName("blog");
+            
+            for (int i = 0; i < blogNodeList.getLength(); i++) {
+                System.out.println(i);
+                System.out.println(blogNodeList.getLength());
+                Node blogNode = blogNodeList.item(i);
+                Element blogElement = (Element) blogNode;
+                int blogID = Integer.parseInt(blogElement.getAttribute("id"));
+                System.out.println(blogID);
+                if (blogID == delID) {
+                    blogNode.getParentNode().removeChild(blogNode);
+                    break;
+                }
+            }
+            
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            StreamResult result = new StreamResult("testBlog.xml");
+            DOMSource source = new DOMSource(doc);
+            transformer.transform(source, result);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
