@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<members>
+    <member>
+        <name>first player</name>
+        <gender>male</gender>
+        <joindate>01/01/2017</joindate>
+        <intro>This is the first player</intro>
+    </member>
+    <member>
+        <name>second player</name>
+        <gender>01/02/2016</gender>
+        <joindate>female</joindate>
+        <intro>This is the second plays</intro>
+    </member>
+    <member>
+        <name>third player</name>
+        <gender>03/25/2017</gender>
+        <joindate>male</joindate>
+        <intro>This is the third player</intro>
+    </member>
+</members>

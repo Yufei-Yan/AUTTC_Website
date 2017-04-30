@@ -28,7 +28,7 @@ import org.w3c.dom.Attr;
  */
 public class BlogXML {
     public static List<Blog> xmlToBlogList (String fileName) {
-        List<Blog> blogList = new ArrayList<Blog>();
+        List<Blog> blogList = new ArrayList<>();
         try {
             File xmlFile = new File(fileName);
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -37,7 +37,7 @@ public class BlogXML {
             doc.getDocumentElement().normalize();
             NodeList blogNodeList = doc.getElementsByTagName("blog");
             for (int i = 0; i < blogNodeList.getLength(); i++) { // for each blog
-                List<Comment> commentList = new ArrayList<Comment>();
+                List<Comment> commentList = new ArrayList<>();
                 Node blogNode = blogNodeList.item(i);
                 Element blogElement = (Element) blogNode;
 
@@ -141,16 +141,12 @@ public class BlogXML {
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(xmlFile);
-            Node rootNode = doc.getFirstChild();
             NodeList blogNodeList = doc.getElementsByTagName("blog");
             
             for (int i = 0; i < blogNodeList.getLength(); i++) {
-                System.out.println(i);
-                System.out.println(blogNodeList.getLength());
                 Node blogNode = blogNodeList.item(i);
                 Element blogElement = (Element) blogNode;
                 int blogID = Integer.parseInt(blogElement.getAttribute("id"));
-                System.out.println(blogID);
                 if (blogID == delID) {
                     blogNode.getParentNode().removeChild(blogNode);
                     break;
