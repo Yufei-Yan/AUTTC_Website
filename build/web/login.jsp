@@ -48,7 +48,7 @@
         <div class="signup_container">
             <div class="signup">
             <p>Sign up</p>
-            <form method="post" action="">
+            <form method="post" action="homeLoad">
                 <input type="hidden" name="action" value="userSignup" />
                 <p><input type="text" name="username" value="" placeholder="Username"></p>
                 <p><input type="email" name="email" value="" placeholder="Email"></p>
