@@ -8,6 +8,10 @@
         <servlet-name>AdminManageServlet</servlet-name>
         <servlet-class>com.auttc.controller.AdminManageServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ImgUploadServlet</servlet-name>
+        <servlet-class>com.auttc.controller.ImgUploadServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeLoadServlet</servlet-name>
         <url-pattern>/homeLoad</url-pattern>
@@ -19,6 +23,17 @@
     <welcome-file-list>
         <welcome-file>homeLoad</welcome-file>
     </welcome-file-list>
+    <context-param>
+        <description>Location to store uploaded file</description>
+        <param-name>imgUpload</param-name>
+        <param-value>
+            /home/yufeiyan/apache-tomcat-8.0.27/webapps/data/
+        </param-value>
+    </context-param>
+    <servlet-mapping>
+        <servlet-name>ImgUploadServlet</servlet-name>
+        <url-pattern>/imgUpload</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
