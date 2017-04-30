@@ -11,10 +11,10 @@ package com.auttc.business;
  */
 public class Member {
     
-    public String name;
-    public String gender;
-    public String joinDate;
-    public String intro;
+    private String name;
+    private String gender;
+    private String joinDate;
+    private String intro;
 
     public Member() {
         name = "";
