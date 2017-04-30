@@ -27,6 +27,7 @@ import org.w3c.dom.Attr;
  * @author yufeiyan
  */
 public class BlogXML {
+    
     public static List<Blog> xmlToBlogList (String fileName) {
         List<Blog> blogList = new ArrayList<>();
         try {
@@ -34,12 +35,10 @@ public class BlogXML {
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(xmlFile);
-            doc.getDocumentElement().normalize();
             NodeList blogNodeList = doc.getElementsByTagName("blog");
             for (int i = 0; i < blogNodeList.getLength(); i++) { // for each blog
                 List<Comment> commentList = new ArrayList<>();
-                Node blogNode = blogNodeList.item(i);
-                Element blogElement = (Element) blogNode;
+                Element blogElement = (Element) blogNodeList.item(i);
 
                 // get information about blog_id, title, date, and body
                 int blogID = Integer.parseInt(blogElement.getAttribute("id"));
@@ -68,10 +67,10 @@ public class BlogXML {
         return blogList;
     }
     
-    public static void addBlog (Blog inputBlog) {
+    public static void addBlog (Blog inputBlog, String fileName) {
         try {
             
-            File xmlFile = new File("testBlog.xml");
+            File xmlFile = new File(fileName);
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(xmlFile);
@@ -126,7 +125,7 @@ public class BlogXML {
             
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
-            StreamResult result = new StreamResult("testBlog.xml");
+            StreamResult result = new StreamResult(fileName);
             DOMSource source = new DOMSource(doc);
             transformer.transform(source, result);
             
@@ -135,9 +134,9 @@ public class BlogXML {
         }
     }
     
-    public static void removeBlog(int delID) {
+    public static void removeBlog(int delID, String fileName) {
         try {
-            File xmlFile = new File("testBlog.xml");
+            File xmlFile = new File(fileName);
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(xmlFile);
@@ -155,7 +154,7 @@ public class BlogXML {
             
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
-            StreamResult result = new StreamResult("testBlog.xml");
+            StreamResult result = new StreamResult(fileName);
             DOMSource source = new DOMSource(doc);
             transformer.transform(source, result);
             
