@@ -75,9 +75,11 @@ public class HomeLoadServlet extends HttpServlet {
             action = "homeLoad";
         }
         
-        String message;
         if (action.equals("homeLoad")) {
-            if (null == sessionUser) {
+
+            String message;
+            if (sessionUser == null) {
+
                 message = "";
             } else {
                 message = "Hello, " + sessionUser.getUsername();
