@@ -47,9 +47,9 @@
             <div class="menu_nav">
                 <ul>
                 <li class="active"><a href="homeLoad?action=homeLoad">Home</a></li>
-                <li><a onclick="hid2('gallery','members','about','blog')">Blog</a></li>
-                <li><a onclick="hid2('gallery','blog','about','members')">Members</a></li>
-                <li><a onclick="hid2('gallery','members','blog','about')">About</a></li>
+                <li><a onclick="hid2('all','members','about','blog')">Blog</a></li>
+                <li><a onclick="hid2('all','blog','about','members')">Members</a></li>
+                <li><a onclick="hid2('all','members','blog','about')">About</a></li>
 
                 </ul>
             </div>        
@@ -69,21 +69,125 @@
         gallery: 
         ${gallery}  an array of image url
         -->
+                <!-- Gallery -->
+    <style type="text/css">
+        *{ padding:0; margin:0; list-style:none; border:0;}
+        .all{ width: 600px; height: 370px; padding: 7px; border: 1px solid #2D2D2D; margin: 50px auto; position: relative; }
+        .screen{
+                width:600px;
+                height:370px;
+                 overflow:hidden; 
+                position:relative;
+        }
+        .screen li{ width:600px; height:370px; overflow:hidden; float:left;}
+        .screen ul{ position:absolute; left:0; top:0px; width:3000px;}
+        .all ol{ position:absolute; right:10px; bottom:10px; line-height:20px; text-align:center;}
+        .all ol li{ float: left; width: 15px; height: 15px; background: #fff;  margin-left: 5px; cursor: pointer; font-size: 10px; font-family: Verdana; line-height: 15px; border-radius: 15px; }
+        .all ol li.current{ background:yellow;}
+    </style>
+    
+    <script type="text/javascript">
+        window.onload= function() {
+            var box  = document.getElementById("all");  
+            var ul = box.children[0].children[0];  
+            var ulLis = ul.children; 
+            ul.appendChild(ulLis[0].cloneNode(true));  
+
+            var ol = box.children[1];
+            for(var i=0;i<ulLis.length-1;i++) {  
+                var li = document.createElement("li");
+                li.innerHTML = i + 1;  
+                ol.appendChild(li);
+            }
+            var olLis = ol.children; 
+            olLis[0].className = 'current';
+            for(var i=0;i<olLis.length;i++) {
+                olLis[i].index = i;  
+                olLis[i].onmouseover = function() {
+                    for(var j=0;j<olLis.length;j++) {
+                        olLis[j].className = "";
+                    }
+                    this.className = 'current';
+                    animate(ul,-this.index*ulLis[0].offsetWidth);
+                    key = square = this.index; 
+                }
+            }
+            var timer = null;
+            var key = 0;
+            var square = 0; 
+            timer = setInterval(autoplay,3000);  
+            function autoplay() {
+                key++;   
+                console.log(key); 
+                if(key > ulLis.length - 1)
+                {
+
+                    ul.style.left = 0;
+                    key = 1; 
+                }
+                animate(ul,-key*ulLis[0].offsetWidth);
+                square++;  
+                square = square>olLis.length-1 ? 0 : square;
+
+                for(var i=0;i<olLis.length;i++) {
+                    olLis[i].className = "";
+                }
+                olLis[square].className = "current";  
+
+            }
+
+            box.onmouseover = function() {
+                clearInterval(timer);
+            }
+
+            box.onmouseout = function() {
+                timer = setInterval(autoplay,3000); }
+
+            function animate(obj,target) {
+                clearInterval(obj.timer);  
+                var speed = obj.offsetLeft < target ? 15 : -15;
+                obj.timer = setInterval(function() {
+                    var result = target - obj.offsetLeft;
+                    obj.style.left = obj.offsetLeft + speed  + "px";
+                    if(Math.abs(result) <= 15) {
+                        obj.style.left = target + "px";  
+                        clearInterval(obj.timer);
+                    }
+                },10);
+            }
+
+        }
+    </script>
+
+    <div class="all" id='all' style="display:block; font-weight: bold">
+            <div class="screen">
+            <ul>
+                <c:forEach var="item" items='${gallery}'>
+                    <li>
+                       <img src="${item}" width="600px" height="370px" alt="Toy Story" />
+                       <p>${item}</p>
+                    </li>
+                </c:forEach> 
+            </ul>
+        </div>
+        <ol>
+        </ol>
+    </div>
+
         <!-- Gallery -->
-       <div id="gallery" style="display:block; font-weight: bold">
+       <!--<div id="gallery" style="display:block; font-weight: bold">
         <ul id="horiz_container_outer">
 		<li id="horiz_container_inner">
 			<ul id="horiz_container">
-                            <c:forEach var="item" items='${gallery}'>
+                          <%--  <c:forEach var="item" items='${gallery}'>
                                 <li>
                                    <img src="${item}" width="500px" height="300px" alt="Toy Story" />
                                    <p>${item}</p>
                                 </li>
-                            </c:forEach> 
+                            </c:forEach> --%>
 			</ul>
 		</li>		
 	</ul>			
-	
 						
 	<div id="scrollbar">
 		<a id="left_scroll" class="mouseover_left" href="#"></a>
@@ -92,6 +196,7 @@
 		</div>
 		<a id="right_scroll" class="mouseover_right" href="#"></a></div>
 	</div>
+       
         <!--
         blog: 
             for each blog: ${blog}
