@@ -1,4 +1,9 @@
 nbproject/private/private.properties
 nbproject/project.properties
+<<<<<<< HEAD
+nbproject/
+=======
 nvproject/
 /dist/
+/nbproject/private/
+>>>>>>> 64ae4efd5f5801c8c9692d1e9171deb8b76cac4b
