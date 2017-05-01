@@ -1,3 +1,5 @@
+/* global init_dw_Scroll */
+
 (function($){
  $.fn.horizontalScroll = function(options) {
 

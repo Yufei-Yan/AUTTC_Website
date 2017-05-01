@@ -31,7 +31,9 @@ public class MemberXML {
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(xmlFile);
-            NodeList memberNodeList = doc.getElementsByTagName("blog");
+            
+            NodeList memberNodeList = doc.getElementsByTagName("member");
+            
             for (int i = 0; i < memberNodeList.getLength(); i++) {
                 Element memberElement = (Element) memberNodeList.item(i);
                 String name = memberElement.getElementsByTagName("name").item(0).getTextContent();

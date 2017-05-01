@@ -28,14 +28,20 @@ public class ResourcePaths {
     }
     
     public String[] getImgUrls() {
+        System.out.println(imgPath);
         File[] files = new File(imgPath).listFiles();
-        String[] urls = new String[files.length];
-        System.out.println("imgPaht: " + imgPath);
-        for (int i = 0; i < files.length; ++i) {
-            if (files[i].isFile()) {
-                //System.out.println(filex.getAbsolutePath());
-                urls[i] = files[i].getAbsolutePath();
+        String[] urls;
+        if (null != files) {
+            urls = new String[files.length];
+            System.out.println("imgPaht: " + imgPath);
+            for (int i = 0; i < files.length; ++i) {
+                if (files[i].isFile()) {
+                    //System.out.println(filex.getAbsolutePath());
+                    urls[i] = files[i].getAbsolutePath();
+                }
             }
+        } else {
+            urls = null;
         }
         return urls;
     }

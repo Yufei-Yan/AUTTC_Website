@@ -7,10 +7,12 @@ package com.auttc.controller;
 
 import com.auttc.business.Blog;
 import com.auttc.business.Comment;
+import com.auttc.business.Member;
 import com.auttc.business.User;
 import com.auttc.data.ResourcePaths;
 import com.auttc.data.UserDB;
 import com.auttc.data.BlogXML;
+import com.auttc.data.MemberXML;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -93,9 +95,15 @@ public class HomeLoadServlet extends HttpServlet {
         }
         
         ServletContext sc = getServletContext();
-        String fileName = sc.getRealPath("/WEB-INF/blogs/testBlog.xml");
-        List<Blog> blogList = BlogXML.xmlToBlogList(fileName);
+        
+        String blogFileName = sc.getRealPath("/WEB-INF/blogs/testBlog.xml");
+        List<Blog> blogList = BlogXML.xmlToBlogList(blogFileName);
         request.setAttribute("blogList", blogList);
+        
+        String memberFileName = sc.getRealPath("/WEB-INF/members/members.xml");
+        List<Member> memberList = MemberXML.xmlToMemberList(memberFileName);
+        //memberList.add(new Member("testMember", "male", "04/12/2017", "blahblah"));
+        request.setAttribute("memberList", memberList);
         
         getServletContext().getRequestDispatcher(url).forward(request, response);
         

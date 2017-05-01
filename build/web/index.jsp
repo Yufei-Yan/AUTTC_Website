@@ -5,11 +5,12 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="style.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" type="text/css" href="style.css" />
         <link rel="stylesheet" type="text/css" href="jquery.horizontal.scroll.css" />
         <link rel="stylesheet" type="text/css" href="demo_style.css" />
         
@@ -32,6 +33,7 @@
                 }
 
         </script>
+        
         <title>JSP Page</title>
     </head>
     <body onload="checkUser()">
@@ -60,7 +62,6 @@
             <input type="hidden" name="action" value="login" id="loginHidden"/> 
             <input type="submit" value="Login" id="submitButton"/> 
         </form>
-
   <div class="clr"></div>        
   <div class="clr"></div>        
   <div class="clr"></div>        
@@ -70,64 +71,27 @@
         -->
         <!-- Gallery -->
        <div id="gallery" style="display:block; font-weight: bold">
-        <div class="gallery">
         <ul id="horiz_container_outer">
-                <li id="horiz_container_inner">
-                        <ul id="horiz_container">
-                            <li><img src="images/gallery/toystory.png" width="500px" height="300px" alt="Toy Story" /></li>
-                                <li><img src="images/gallery/up.png" width="500px" height="300px" alt="UP" /></li>
-                                <li><img src="images/gallery/ratatouille.png" width="500px" height="300px" alt="Ratatouille" /></li>
-                                <li><img src="images/gallery/findingnemo.png" width="500px" height="300px" alt="Finding Nemo" /></li>
-                                <li><img src="images/gallery/cars.png" width="500px" height="300px" alt="Cars" /></li>
-                                <li><img src="images/gallery/monstersinc.png" width="500px" height="300px" alt="Monsters Inc" /></li>
-                                <li><img src="images/gallery/bugslife.png" width="500px" height="300px" alt="A Bugs Life" /></li>
-                                <li><img src="images/gallery/incredibles.png" width="500px" height="300px" alt="The Incredibles" /></li>
-               <!--                 
-               <li>
-                   <img src="=pl.getUrl() %>" width="500px" height="300px" alt="Toy Story" />  
-                                <p>=pl.getTitle()%></p>                   
-               </li>
-               -->
-               <!--  EL 
-                           <li>
-                                <img src="=${item[0].picture}" width="500px" height="300px" alt="Toy Story" />  
-                                <p>=${item[0].title}</p>                   
-                           </li>
-                           <li>
-                                <img src="=${item[1].picture}" width="500px" height="300px" alt="Toy Story" />  
-                                <p>=${item[1].title}</p>                   
-                           </li>
-                           <li>
-                                <img src="=${item[2].picture}" width="500px" height="300px" alt="Toy Story" />  
-                                <p>=${item[2].title}</p>                   
-                           </li>
-                               ...
-                               ...
-                    -->
-                    <!--  JSTL
-                       <%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> --%>
-                            <c:foreach var="item" value='${gallery}'/>
+		<li id="horiz_container_inner">
+			<ul id="horiz_container">
+                            <c:forEach var="item" items='${gallery}'>
                                 <li>
-                                   <img src="=${item.picture}" width="500px" height="300px" alt="Toy Story" />  
-                                   <p>=${item.title}</p>                   
+                                   <img src="${item}" width="500px" height="300px" alt="Toy Story" />
+                                   <p>${item}</p>
                                 </li>
-                            </c:foreach >
-                    -->
-                          
-                        </ul>
-                </li>           
-        </ul>
-        
-                                                
-        <div id="scrollbar">
-                <a id="left_scroll" class="mouseover_left" href="#"></a>
-                <div id="track">
-                     <div id="dragBar"></div>
-                </div>
-                <a id="right_scroll" class="mouseover_right" href="#"></a>
-        </div>
-        </div>
-        </div>
+                            </c:forEach> 
+			</ul>
+		</li>		
+	</ul>			
+	
+						
+	<div id="scrollbar">
+		<a id="left_scroll" class="mouseover_left" href="#"></a>
+		<div id="track">
+		     <div id="dragBar"></div>
+		</div>
+		<a id="right_scroll" class="mouseover_right" href="#"></a></div>
+	</div>
         <!--
         blog: 
             for each blog: ${blog}
@@ -284,56 +248,16 @@
               <div class="flashBg">
                 <ul class="mobile">
                     
-                  <li>
-                    <img src="images/teammategallery/senke_xy00.jpg" />
-                    <dd>name</dd>
-                    <p>introduction</p>
-                    <a href=""></a>
-                  </li>
-                  <li>
-                    <img src="images/teammategallery/senke_xy01.jpg" />
-                    <dd>name</dd>
-                    <p>introduction</p>
-                    <a href=""></a>
-                  </li>
-                  <li>
-                    <img src="images/teammategallery/senke_xy02.jpg" />
-                    <dd>name</dd>
-                    <p>introduction<br/>introduction</p>
-                    <a href=""></a>
-                  </li>
-                  <li>
-                    <img src="images/teammategallery/senke_xy03.jpg" />
-                    <dd>name</dd>
-                    <p>introduction</p>
-                    <a href=""></a>
-                  </li>
-                  <li>
-                    <img src="images/teammategallery/senke_xy04.jpg" />
-                    <dd>name</dd>
-                    <p>introduction</p>
-                    <a href=""></a>
-                  </li>
-                  <li>
-                    <img src="images/teammategallery/senke_xy05.jpg" />
-                    <dd>name</dd>
-                    <p>introduction</p>
-                    <a href=""></a>
-                  </li>
-                  
-                  
-                    <!-- teammates informations-->
-                    <!--
-                        <c:forEach items="${members}" var="picture">
+                         <c:forEach items="${memberList}" var="item">
                             <li>
-                                <img src="${member.picture}" />   //not in proposal 
-                                <dd>${member.name}</dd>
-                                <p>${member.gender}</p>
-                                <p>${member.joindate}</p>
-                                <p>${member.infro}</p>                   
+                                <img src="" />   //not in proposal 
+                                <dd>${item.name}</dd>
+                                <p>${item.gender}</p>
+                                <p>${item.joinDate}</p>
+                                <p>${item.intro}</p>                   
                             </li>
                         </c:forEach>
-                    -->
+                  
                 </ul>
               </div>
             <div class="but_left"><img src="images/teammategallery/qianxleft.png" /></div>
