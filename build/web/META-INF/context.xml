@@ -29,7 +29,7 @@
   <Resource name="jdbc/auttc_users" auth="Container" 
         driverClassName="com.mysql.jdbc.Driver" 
         url="jdbc:mysql://localhost:3306/auttc_users" 
-        username="root" password="" 
+        username="root" password="415839792" 
         maxActive="100" maxIdle="30" maxWait="10000" 
         logAbandoned="true" removeAbandoned="true" 
         removeAbandonedTimeout="60" type="javax.sql.DataSource" />  

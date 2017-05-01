@@ -13,7 +13,11 @@ import com.auttc.data.ResourcePaths;
 import com.auttc.data.UserDB;
 import com.auttc.data.BlogXML;
 import com.auttc.data.MemberXML;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
@@ -90,6 +94,7 @@ public class HomeLoadServlet extends HttpServlet {
             
             String imgPath = getServletContext().getInitParameter("imgUpload");
             String[] imgUrls = new ResourcePaths(imgPath).getImgUrls();
+            System.out.println(imgUrls[0]);
             request.setAttribute("user", message);
             request.setAttribute("gallery", imgUrls);
         }
@@ -144,7 +149,6 @@ public class HomeLoadServlet extends HttpServlet {
             
             User user = new User(username, null, password, 0);
             User.UserType u = UserDB.isPasswordCorrect(user);
-            
             
             if (User.UserType.ADMIN == u) {
                 url = "/administrator.jsp";

@@ -30,14 +30,17 @@ public class ResourcePaths {
     public String[] getImgUrls() {
         System.out.println(imgPath);
         File[] files = new File(imgPath).listFiles();
+        String filename;
         String[] urls;
         if (null != files) {
             urls = new String[files.length];
             System.out.println("imgPaht: " + imgPath);
             for (int i = 0; i < files.length; ++i) {
-                if (files[i].isFile()) {
+                if (files[i].isFile() && files[i].getName() != null) {
                     //System.out.println(filex.getAbsolutePath());
-                    urls[i] = files[i].getAbsolutePath();
+                    filename = files[i].getName();
+                    //System.out.println(filename);
+                    urls[i] = "images/gallery/" + filename;
                 }
             }
         } else {
