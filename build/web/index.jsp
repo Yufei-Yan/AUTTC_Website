@@ -149,29 +149,29 @@
                     <div class="clr"></div>
                     <p>Posted on 18. Sep, 2015 by Admin</p>
                     <p>This is a free CSS website template by CoolWebTemplates. This work is distributed under the Creative Commons Attribution 3.0 License, which means that you are free to use it for any personal or commercial purpose provided you credit me in the form of a link back to.</p>  
-                    <div id="exmaple1" style="display:block; font-weight: bold"> <a href="#" onclick="show('exmaple1','exmaple2')">  read more </a> </div>         
+                    <div id="exmaple1" style="display:block; font-weight: bold"> <a href="javascript:void(0)" onclick="show('exmaple1','exmaple2')">  read more </a> </div>         
                     <div id="exmaple2" style="display:none;">Maecenas dignissim mauris in arcu congue tincidunt. Vestibulum elit  nunc, accumsan vitae faucibus vel, scelerisque a quam. Aenean at metus id elit bibendum faucibus. Curabitur ultrices ante nec neque consectetur a aliquet libero lobortis. Ut nibh sem, pellentesque in dictum eu, convallis blandit erat. Cras vehicula tellus nec purus sagittis id scelerisque risus congue. Quisque sed semper massa. Donec id lacus mauris, vitae pretium risus. Fusce sed tempor erat. 
-                        <div> <a href="#" onclick="show1('c1','h')"> <strong>Comments (3)</strong> </a>   <span>&nbsp;&bull;&nbsp;</span>  May 27, 2010  <span>&nbsp;&bull;&nbsp;</span>  <a href="#"><strong>Edit</strong></a></div>
+                        <div> <a href="javascript:void(0)" onclick="show1('c1','h')"> <strong>Comments (3)</strong> </a>   <span>&nbsp;&bull;&nbsp;</span>  May 27, 2010  <span>&nbsp;&bull;&nbsp;</span>  <a href="#"><strong>Edit</strong></a></div>
                     </div>
                     <div id="c1" style="display:none; font-weight: bold">
                         <div>
                             <h2><span>3</span> Responses</h2><div class="clr"></div>
                             <div class="comment">
-                            <p><a href="#">admin</a> Says:<br />April 20th, 2009 at 2:17 pm</p>
+                            <p><a href="javascript:void(0)">admin</a> Says:<br />April 20th, 2009 at 2:17 pm</p>
                             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum.</p>
                             </div>
                             <div class="comment">
-                            <p><a href="#">Owner</a> Says:<br />April 20th, 2009 at 3:21 pm</p>
+                            <p><a href="javascript:void(0)">Owner</a> Says:<br />April 20th, 2009 at 3:21 pm</p>
                             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. Cras id urna. Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu posuere nunc justo tempus leo.</p>
                             </div>
                             <div class="comment">
-                            <p><a href="#">admin</a> Says:<br />April 20th, 2009 at 2:17 pm</p>
+                            <p><a href="#=javascript:void(0)">admin</a> Says:<br />April 20th, 2009 at 2:17 pm</p>
                             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum.</p>
                             </div>
                         </div>                        
                         <div>
                         <h2><span>Leave a</span> Reply</h2><div class="clr"></div>
-                        <form action="#" method="post" id="leavereply">
+                        <form action="javascript:void(0)" method="post" id="leavereply">
                         <ol><li>
                         <label for="name">Name (required)</label>
                         <input id="name" name="name" class="text" />
@@ -200,29 +200,29 @@
                     <div class="clr"></div>
                     <p>Posted on 03. Apr, 2016 by Sara</p>
                     <p>In the portals of OUR-LIBRARY, c.p., c.p. coustemer discover their own talents, and get an opportunity to develop them to the fullest. The LIBRARY provides an invigorating and competitive atmosphere, created by excellent facilities and guidance provided by a highly qualified and dedicated faculty.</p>  
-                    <div id="exmaple11" style="display:block; font-weight: bold"> <a href="#" onclick="show('exmaple11','exmaple22')">  read more </a> </div>         
+                    <div id="exmaple11" style="display:block; font-weight: bold"> <a href="javascript:void(0)" onclick="show('exmaple11','exmaple22')">  read more </a> </div>         
                     <div id="exmaple22" style="display:none;"> Besides being committed to academic excellence and providing education for all round development, another special characteristic of DPS R.K. Puram is the appreciation of the worth of the each student. The LIBRARY is equally committed to the under-represented and less-privileged segments of the population, such as gifted applicants whose parents could not attend LIBRARY, and children with high potential facing difficult financial circumstances.
-                        <div> <a href="#" onclick="show1('c11','h1')"> <strong>Comments (10)</strong> </a>   <span>&nbsp;&bull;&nbsp;</span>  May 27, 2016  <span>&nbsp;&bull;&nbsp;</span>  <a href="#"><strong>Edit</strong></a></div>
+                        <div> <a href="javascript:void(0)" onclick="show1('c11','h1')"> <strong>Comments (10)</strong> </a>   <span>&nbsp;&bull;&nbsp;</span>  May 27, 2016  <span>&nbsp;&bull;&nbsp;</span>  <a href="#"><strong>Edit</strong></a></div>
                     </div>
                     <div id="c11" style="display:none; font-weight: bold">
                         <div>
                             <h2><span>3</span> Responses</h2><div class="clr"></div>
                             <div class="comment">
-                            <p><a href="#">admin</a> Says:<br />April 20th, 2009 at 2:17 pm</p>
+                            <p><a href="javascript:void(0)">admin</a> Says:<br />April 20th, 2009 at 2:17 pm</p>
                             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum.</p>
                             </div>
                             <div class="comment">
-                            <p><a href="#">Owner</a> Says:<br />April 20th, 2009 at 3:21 pm</p>
+                            <p><a href="javascript:void(0)">Owner</a> Says:<br />April 20th, 2009 at 3:21 pm</p>
                             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. Cras id urna. Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu posuere nunc justo tempus leo.</p>
                             </div>
                             <div class="comment">
-                            <p><a href="#">admin</a> Says:<br />April 20th, 2009 at 2:17 pm</p>
+                            <p><a href="javascript:void(0)">admin</a> Says:<br />April 20th, 2009 at 2:17 pm</p>
                             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum.</p>
                             </div>
                         </div>                        
                         <div>
                         <h2><span>Leave a</span> Reply</h2><div class="clr"></div>
-                        <form action="#" method="post" id="leavereply">
+                        <form action="javascript:void(0)" method="post" id="leavereply">
                         <ol><li>
                         <label for="name">Name (required)</label>
                         <input id="name" name="name" class="text" />
