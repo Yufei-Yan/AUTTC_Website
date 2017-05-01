@@ -11,23 +11,34 @@ package com.auttc.business;
  */
 public class Member {
     
+    private String url;
     private String name;
     private String gender;
     private String joinDate;
     private String intro;
 
     public Member() {
+        url = "";
         name = "";
         gender = "";
         joinDate = "";
         intro = "";
     }
     
-    public Member(String name, String gender, String joinDate, String intro) {
+    public Member(String url,String name, String gender, String joinDate, String intro) {
+        this.url = url;
         this.name = name;
         this.gender = gender;
         this.joinDate = joinDate;
         this.intro = intro;
+    }
+    
+    public String getUrl() {
+        return url;
+    }
+    
+    public void setUrl(String url) {
+        this.url = url;
     }
     
     public String getName() {

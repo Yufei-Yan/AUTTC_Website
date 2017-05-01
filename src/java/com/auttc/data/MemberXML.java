@@ -36,11 +36,12 @@ public class MemberXML {
             
             for (int i = 0; i < memberNodeList.getLength(); i++) {
                 Element memberElement = (Element) memberNodeList.item(i);
+                String url = memberElement.getElementsByTagName("url").item(0).getTextContent();
                 String name = memberElement.getElementsByTagName("name").item(0).getTextContent();
                 String gender = memberElement.getElementsByTagName("gender").item(0).getTextContent();
                 String joinDate = memberElement.getElementsByTagName("joindate").item(0).getTextContent();
                 String intro = memberElement.getElementsByTagName("intro").item(0).getTextContent();
-                memberList.add(new Member(name, gender, joinDate, intro));
+                memberList.add(new Member(url, name, gender, joinDate, intro));
             }
             
         } catch (Exception e) {
@@ -59,6 +60,10 @@ public class MemberXML {
             Element rootMembersElement = doc.getDocumentElement();
             Element memberElement = doc.createElement("member");
             rootMembersElement.appendChild(memberElement);
+            
+            Element urlElement = doc.createElement("url");
+            urlElement.appendChild(doc.createTextNode(inputMember.getName()));
+            memberElement.appendChild(urlElement);
             
             Element nameElement = doc.createElement("name");
             nameElement.appendChild(doc.createTextNode(inputMember.getName()));

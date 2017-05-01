@@ -248,13 +248,13 @@
               <div class="flashBg">
                 <ul class="mobile">
                     
-                         <c:forEach items="${memberList}" var="item">
+                         <c:forEach items="${memberList}" var="member">
                             <li>
-                                <img src="" />   //not in proposal 
-                                <dd>${item.name}</dd>
-                                <p>${item.gender}</p>
-                                <p>${item.joinDate}</p>
-                                <p>${item.intro}</p>                   
+                                <img src="${member.url}" /> 
+                                <dd>name: ${member.name}</dd>
+                                <p>gender: ${member.gender}</p>
+                                <p>joindate: ${member.joinDate}</p>
+                                <p>intro: ${member.intro}</p>                   
                             </li>
                         </c:forEach>
                   
