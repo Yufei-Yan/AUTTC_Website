@@ -5,26 +5,27 @@
  */
 package com.auttc.controller;
 
-import java.io.File;
+import com.auttc.business.Blog;
+import com.auttc.business.Comment;
+import com.auttc.business.User;
+import com.auttc.data.BlogXML;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Iterator;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.commons.fileupload.*;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author yufeiyan
+ * @author cheng
  */
-public class AdminManageServlet extends HttpServlet {
+public class AddCommentServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,10 +44,10 @@ public class AdminManageServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AdminManageServlet</title>");            
+            out.println("<title>Servlet addCommentServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AdminManageServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet addCommentServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -66,7 +67,7 @@ public class AdminManageServlet extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
- 
+
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -78,7 +79,34 @@ public class AdminManageServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
+        HttpSession session = request.getSession();
+        if (null != (session.getAttribute("user"))) {
+            User sessionUser = (User) session.getAttribute("user");
+            String username = sessionUser.getUsername();
+            String commentText = (String) session.getAttribute("message");
+            
+            ServletContext sc = getServletContext();
+            String blogFileName = sc.getRealPath("/WEB-INF/blogs/testBlog.xml");
+            List<Blog> blogList = BlogXML.xmlToBlogList(blogFileName);
+            int targetId = 0;
+            // get the blog where the new comment will be add
+            for (Blog blog: blogList) {
+                String buttonName = "commentBlog" + Integer.toString(blog.getId());
+                if (null != request.getParameter(buttonName)) {
+                    targetId = blog.getId();
+                    break;
+                }
+            }
+            
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("/MM/dd/yyyy");
+            LocalDate localDate = LocalDate.now();
+            String cDate = dtf.format(localDate);
+            Comment newComment = new Comment(username, cDate, commentText);
+            BlogXML.addComment(blogFileName, newComment, targetId);
+            
+        } else {
+            getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
+        }
     }
 
     /**

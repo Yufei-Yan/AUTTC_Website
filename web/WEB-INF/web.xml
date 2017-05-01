@@ -12,6 +12,10 @@
         <servlet-name>ImgUploadServlet</servlet-name>
         <servlet-class>com.auttc.controller.ImgUploadServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>addCommentServlet</servlet-name>
+        <servlet-class>com.auttc.controller.AddCommentServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeLoadServlet</servlet-name>
         <url-pattern>/homeLoad</url-pattern>
@@ -27,12 +31,16 @@
         <description>Location to store uploaded file</description>
         <param-name>imgUpload</param-name>
         <param-value>
-            /Users/tianziyan/Desktop/Final/AUTTC_Website/web/images/gallery
+            C:\Users\cheng\Documents\GitHub\AUTTC_Website\web\images\gallery
         </param-value>
     </context-param>
     <servlet-mapping>
         <servlet-name>ImgUploadServlet</servlet-name>
         <url-pattern>/imgUpload</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addCommentServlet</servlet-name>
+        <url-pattern>/addComment</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

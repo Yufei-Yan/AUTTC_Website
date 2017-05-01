@@ -245,16 +245,16 @@
                                 <h2><span>3</span> Responses</h2><div class="clr"></div>
                                 <c:forEach var="comment" items="${blog.commentList}">
                                     <div class="comment">
-                                    <p><a href="#">${comment.username}</a> Says:<br/>${comment.cdate}</p>
+                                    <p><a href="#">${comment.username}</a> ${comment.cdate}</p>
                                     <p>${comment.cbody}</p>
                                     </div>
                                 </c:forEach>
                             </div>                        
                             <div>
-                            <h2><span>Leave a</span> Reply</h2><div class="clr"></div>
-                            <form action="#" method="post" id="leavereply">
+                            <h2><span>Leave a</span> comment</h2><div class="clr"></div>
+                            <form action="addComment" method="post" id="leavereply">
                             <ol><li>
-                            <label for="name">Name (required)</label>
+<!--                            <label for="name">Name (required)</label>
                             <input id="name" name="name" class="text" />
                             </li><li>
                             <label for="email">Email Address (required)</label>
@@ -262,11 +262,11 @@
                             </li><li>
                             <label for="website">Website</label>
                             <input id="website" name="website" class="text" />
-                            </li><li>
-                            <label for="message">Your Message</label>
+                            </li><li>-->
+                            <label for="message">Your Message</label><br/>
                             <textarea id="message" name="message" rows="8" cols="50"></textarea>
                             </li><li>
-                            <input type="image" name="imageField" id="imageField" src="images/icon/submit.gif" class="send" />
+                            <input type="image" name="commentBlog${blog.id}" id="imageField" src="images/icon/submit.gif" class="send" />
                                 <div class="clr"></div>
                             </li></ol>
                             </form>

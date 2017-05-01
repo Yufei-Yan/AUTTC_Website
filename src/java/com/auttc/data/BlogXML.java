@@ -51,7 +51,7 @@ public class BlogXML {
                 Element blogElement = (Element) blogNodeList.item(i);
 
                 // get information about blog_id, title, date, and body
-                int blogID = Integer.parseInt(blogElement.getAttribute("id"));
+                int blogId = Integer.parseInt(blogElement.getAttribute("id"));
                 String blogTitle = blogElement.getElementsByTagName("title").item(0).getTextContent();
                 String blogDate = blogElement.getElementsByTagName("date").item(0).getTextContent();
                 String blogBody = blogElement.getElementsByTagName("body").item(0).getTextContent();
@@ -67,7 +67,7 @@ public class BlogXML {
                     commentList.add(newComment);
                 }
 
-                Blog newBlog = new Blog(blogID, blogTitle, blogDate, blogBody, commentList);
+                Blog newBlog = new Blog(blogId, blogTitle, blogDate, blogBody, commentList);
                 blogList.add(newBlog);
             }
             
@@ -94,9 +94,9 @@ public class BlogXML {
             rootBlogsElement.appendChild(blogElement);
             
             // add attribute "id" to blog tag
-            Attr blogID = doc.createAttribute("id");
-            blogID.setValue(Integer.toString(inputBlog.getID()));
-            blogElement.setAttributeNode(blogID);
+            Attr blogId = doc.createAttribute("id");
+            blogId.setValue(Integer.toString(inputBlog.getId()));
+            blogElement.setAttributeNode(blogId);
             
             // add title to blog
             Element titleElement = doc.createElement("title");
@@ -147,7 +147,7 @@ public class BlogXML {
         }
     }
     
-    public static void removeBlog(int delID, String fileName) {
+    public static void removeBlog(int delId, String fileName) {
         try {
             File xmlFile = new File(fileName);
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -158,8 +158,8 @@ public class BlogXML {
             for (int i = 0; i < blogNodeList.getLength(); i++) {
                 Node blogNode = blogNodeList.item(i);
                 Element blogElement = (Element) blogNode;
-                int blogID = Integer.parseInt(blogElement.getAttribute("id"));
-                if (blogID == delID) {
+                int blogId = Integer.parseInt(blogElement.getAttribute("id"));
+                if (blogId == delId) {
                     blogNode.getParentNode().removeChild(blogNode);
                     break;
                 }
@@ -176,7 +176,7 @@ public class BlogXML {
         }
     }
     
-    public static void addComment(String fileName, Comment newComment, int targetID) {
+    public static void addComment(String fileName, Comment newComment, int targetId) {
         try {
             File xmlFile = new File(fileName);
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -186,8 +186,8 @@ public class BlogXML {
             for (int i = 0; i < blogNodeList.getLength(); i++) {
                 
                 Element blogElement = (Element) blogNodeList.item(i);
-                int blogID = Integer.parseInt(blogElement.getAttribute("id"));
-                if (blogID == targetID) {
+                int blogId = Integer.parseInt(blogElement.getAttribute("id"));
+                if (blogId == targetId) {
                     
                     Element rootCommentsElement = (Element) blogElement.getElementsByTagName("comments").item(0);
                     Element newCommentElement = doc.createElement("comment");
