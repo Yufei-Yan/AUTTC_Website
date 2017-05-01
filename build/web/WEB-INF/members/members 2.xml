@@ -7,21 +7,18 @@ and open the template in the editor.
 
 <members>
     <member>
-        <url>images/teammategallery/senke_xy00.jpg</url>
         <name>first player</name>
         <gender>male</gender>
         <joindate>01/01/2017</joindate>
         <intro>This is the first player</intro>
     </member>
     <member>
-        <url>images/teammategallery/senke_xy01.jpg</url>
         <name>second player</name>
         <gender>01/02/2016</gender>
         <joindate>female</joindate>
         <intro>This is the second plays</intro>
     </member>
     <member>
-        <url>images/teammategallery/senke_xy02.jpg</url>
         <name>third player</name>
         <gender>03/25/2017</gender>
         <joindate>male</joindate>

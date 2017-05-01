@@ -27,7 +27,7 @@
         <description>Location to store uploaded file</description>
         <param-name>imgUpload</param-name>
         <param-value>
-            /home/yufeiyan/apache-tomcat-8.0.27/webapps/data/
+            C:\Users\cheng\Documents\GitHub\AUTTC_Website\web\images\gallery
         </param-value>
     </context-param>
     <servlet-mapping>

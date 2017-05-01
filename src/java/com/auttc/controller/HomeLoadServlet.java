@@ -7,10 +7,17 @@ package com.auttc.controller;
 
 import com.auttc.business.Blog;
 import com.auttc.business.Comment;
+import com.auttc.business.Member;
 import com.auttc.business.User;
+import com.auttc.data.ResourcePaths;
 import com.auttc.data.UserDB;
 import com.auttc.data.BlogXML;
+import com.auttc.data.MemberXML;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
@@ -86,16 +93,21 @@ public class HomeLoadServlet extends HttpServlet {
             }
             
             ServletContext sc = getServletContext();
-            String fileName = sc.getRealPath("WEB-INF/blogs/testBlog.xml");
-//        List<Comment> newCommentList = new ArrayList<>();
-//        Comment newComment = new Comment("Chengyu", "04/30/2017", "new test comment");
-//        newCommentList.add(newComment);
-//        Blog newBlog = new Blog(104, "This blog is from the servlet", "04/29/2017", "This is the body of the 4th blog.", newCommentList);
-            List<Blog> blogList = BlogXML.xmlToBlogList(fileName);
-//        blogList.add(newBlog);
         
+            String blogFileName = sc.getRealPath("/WEB-INF/blogs/testBlog.xml");
+            List<Blog> blogList = BlogXML.xmlToBlogList(blogFileName);
+
+            String memberFileName = sc.getRealPath("/WEB-INF/members/members.xml");
+            List<Member> memberList = MemberXML.xmlToMemberList(memberFileName);
+            
+            String imgPath = getServletContext().getInitParameter("imgUpload");
+            String[] imgUrls = new ResourcePaths(imgPath).getImgUrls();
+            System.out.println(imgUrls[0]);
+
             request.setAttribute("blogList", blogList);
+            request.setAttribute("memberList", memberList);
             request.setAttribute("user", message);
+            request.setAttribute("gallery", imgUrls);
         }
         
         getServletContext().getRequestDispatcher(url).forward(request, response);
@@ -133,11 +145,10 @@ public class HomeLoadServlet extends HttpServlet {
             String username = request.getParameter("login");
             String password = request.getParameter("password");
             
-            System.out.println(username + password);
+            System.out.println(username + " " + password);
             
             User user = new User(username, null, password, 0);
             User.UserType u = UserDB.isPasswordCorrect(user);
-            
             
             if (User.UserType.ADMIN == u) {
                 url = "/administrator.jsp";
