@@ -1,3 +1,5 @@
+CREATE DATABASE `auttc_users`;
+
 USE `auttc_users`;
 
 

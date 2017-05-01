@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class Blog {
     private int id;
-    private String title;
+    public String title;
     private String date;
     private String body;
     private List<Comment> commentList;

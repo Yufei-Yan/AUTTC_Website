@@ -5,15 +5,21 @@
  */
 package com.auttc.controller;
 
+import com.auttc.business.Blog;
+import com.auttc.business.Comment;
 import com.auttc.business.User;
 import com.auttc.data.UserDB;
+import com.auttc.data.BlogXML;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.ServletContext;
 
 /**
  *
@@ -69,10 +75,20 @@ public class HomeLoadServlet extends HttpServlet {
             action = "homeLoad";
         }
         
+        String message;
         if (action.equals("homeLoad")) {
-            String message = "Hello, " + sessionUser.getUsername();
+            if (null == sessionUser) {
+                message = "";
+            } else {
+                message = "Hello, " + sessionUser.getUsername();
+            }
             request.setAttribute("user", message);
         }
+        
+        ServletContext sc = getServletContext();
+        String fileName = sc.getRealPath("/WEB-INF/blogs/testBlog.xml");
+        List<Blog> blogList = BlogXML.xmlToBlogList(fileName);
+        request.setAttribute("blogList", blogList);
         
         getServletContext().getRequestDispatcher(url).forward(request, response);
         
