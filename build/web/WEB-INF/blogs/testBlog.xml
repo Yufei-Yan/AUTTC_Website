@@ -2,8 +2,7 @@
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
--->
-<blogs>
+--><blogs>
     <blog id="101">
         <title>Welcome to AUTTC</title>
         <date>04/01/2017</date>
@@ -50,12 +49,4 @@ and open the template in the editor.
             </comment>
         </comments>
     </blog>
-<<<<<<< HEAD
 </blogs>
-=======
-<<<<<<< HEAD
-</blogs>
-=======
-</blogs>
->>>>>>> 0fa59294e7ac4b3f91d612d2b66f7b6ecaef1541
->>>>>>> 64ae4efd5f5801c8c9692d1e9171deb8b76cac4b

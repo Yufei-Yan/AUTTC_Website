@@ -4,7 +4,8 @@
     Author     : yan
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri= "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -105,13 +106,12 @@
                                ...
                     -->
                     <!--  JSTL
-                       <%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> --%>
-                            <c:foreach var="item" value='${gallery}'/>
+                            <%--<c:forEach var="item" value='${gallery}'>
                                 <li>
                                    <img src="=${item.picture}" width="500px" height="300px" alt="Toy Story" />  
                                    <p>=${item.title}</p>                   
                                 </li>
-                            </c:foreach >
+                            </c:forEach > --%>
                     -->
                           
                         </ul>
@@ -139,142 +139,106 @@
                 <input type="submit" value="Comment" aciton="checkUser">${comment}
         -->
         
-<div id="blog" style="display:block; font-weight: bold">     
-<div class="blog">   
-    <div class="content">
-        <div class="content_resize">
-            <div class="mainbar">
-                <div class="article">
-                <h2><span>Template License</span></h2>
-                    <div class="clr"></div>
-                    <p>Posted on 18. Sep, 2015 by Admin</p>
-                    <p>This is a free CSS website template by CoolWebTemplates. This work is distributed under the Creative Commons Attribution 3.0 License, which means that you are free to use it for any personal or commercial purpose provided you credit me in the form of a link back to.</p>  
-                    <div id="exmaple1" style="display:block; font-weight: bold"> <a href="#" onclick="show('exmaple1','exmaple2')">  read more </a> </div>         
-                    <div id="exmaple2" style="display:none;">Maecenas dignissim mauris in arcu congue tincidunt. Vestibulum elit  nunc, accumsan vitae faucibus vel, scelerisque a quam. Aenean at metus id elit bibendum faucibus. Curabitur ultrices ante nec neque consectetur a aliquet libero lobortis. Ut nibh sem, pellentesque in dictum eu, convallis blandit erat. Cras vehicula tellus nec purus sagittis id scelerisque risus congue. Quisque sed semper massa. Donec id lacus mauris, vitae pretium risus. Fusce sed tempor erat. 
-                        <div> <a href="#" onclick="show1('c1','h')"> <strong>Comments (3)</strong> </a>   <span>&nbsp;&bull;&nbsp;</span>  May 27, 2010  <span>&nbsp;&bull;&nbsp;</span>  <a href="#"><strong>Edit</strong></a></div>
-                    </div>
-                    <div id="c1" style="display:none; font-weight: bold">
-                        <div>
-                            <h2><span>3</span> Responses</h2><div class="clr"></div>
-                            <div class="comment">
-                            <p><a href="#">admin</a> Says:<br />April 20th, 2009 at 2:17 pm</p>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum.</p>
-                            </div>
-                            <div class="comment">
-                            <p><a href="#">Owner</a> Says:<br />April 20th, 2009 at 3:21 pm</p>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. Cras id urna. Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu posuere nunc justo tempus leo.</p>
-                            </div>
-                            <div class="comment">
-                            <p><a href="#">admin</a> Says:<br />April 20th, 2009 at 2:17 pm</p>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum.</p>
-                            </div>
-                        </div>                        
-                        <div>
-                        <h2><span>Leave a</span> Reply</h2><div class="clr"></div>
-                        <form action="#" method="post" id="leavereply">
-                        <ol><li>
-                        <label for="name">Name (required)</label>
-                        <input id="name" name="name" class="text" />
-                        </li><li>
-                        <label for="email">Email Address (required)</label>
-                        <input id="email" name="email" class="text" />
-                        </li><li>
-                        <label for="website">Website</label>
-                        <input id="website" name="website" class="text" />
-                        </li><li>
-                        <label for="message">Your Message</label>
-                        <textarea id="message" name="message" rows="8" cols="50"></textarea>
-                        </li><li>
-                        <input type="image" name="imageField" id="imageField" src="images/icon/submit.gif" class="send" />
-                            <div class="clr"></div>
-                        </li></ol>
-                        </form>
-                            <div id="h" style="display:none; font-weight: bold"> <a href="#" onclick="hide('c1','exmaple2','exmaple1')">  hide </a> </div>        
+<div id="blog" style="display:block; font-weight: bold">
+
+    <div class="blog">   
+        <div class="content">
+            <div class="content_resize">
+                <div class="mainbar">
+                    <%
+                        int count = 1;
+                    %>
+                    <c:forEach var="blog" items="${blogList}">
+                        <%
+                            String readMoreDivID = "readMore" + Integer.toString(count);
+                            String fullBodyDivID = "fullBody" + Integer.toString(count);
+                            String responseDivID = "response" + Integer.toString(count);
+                            String hDivID = "h" + Integer.toString(count);
+                        %>
+                    <div class="article">
+                    <h2><span>${blog.title}</span></h2>
+
+                        <div class="clr"></div>
+                            <p>Posted on ${blog.date}</p>
+                            <p>${blog.body}</p>  
+                        <!--<div id="exmaple1" style="display:block; font-weight: bold"> <a href="#" onclick="show('exmaple1','exmaple2')">  read more </a></div>-->
+                        <div id="<%out.print(readMoreDivID);%>" style="display:block; font-weight: bold"> <a href="#" onclick="show('<%out.print(readMoreDivID);%>','<%out.print(fullBodyDivID);%>')">  read more </a></div>
+                        <!--<div id="exmaple2" style="display:none;">-->
+                        <div id="<%out.print(fullBodyDivID);%>" style="display:none;">
+                            Maecenas dignissim mauris in arcu congue tincidunt. Vestibulum elit  nunc, accumsan vitae faucibus vel, scelerisque a quam. Aenean at metus id elit bibendum faucibus. Curabitur ultrices ante nec neque consectetur a aliquet libero lobortis. Ut nibh sem, pellentesque in dictum eu, convallis blandit erat. Cras vehicula tellus nec purus sagittis id scelerisque risus congue. Quisque sed semper massa. Donec id lacus mauris, vitae pretium risus. Fusce sed tempor erat. 
+                            <!--<div><a href="#" onclick="show1('c1','h')"> <strong>Comments (3)</strong> </a>   <span>&nbsp;&bull;&nbsp;</span>  May 27, 2010  <span>&nbsp;&bull;&nbsp;</span>  <a href="#"><strong>Edit</strong></a></div>-->
+                            <div><a href="#" onclick="show1('<%out.print(responseDivID);%>','<%out.print(hDivID);%>')"> <strong>Comments (3)</strong> </a>   <span>&nbsp;&bull;&nbsp;</span>  May 27, 2010  <span>&nbsp;&bull;&nbsp;</span>  <a href="#"><strong>Edit</strong></a></div>
                         </div>
-                    </div>          
-                </div> 
-          
-                
-                <div class="article">
-                    <h2><span>Aliquam Risus</span> Justo</h2>
-                    <div class="clr"></div>
-                    <p>Posted on 03. Apr, 2016 by Sara</p>
-                    <p>In the portals of OUR-LIBRARY, c.p., c.p. coustemer discover their own talents, and get an opportunity to develop them to the fullest. The LIBRARY provides an invigorating and competitive atmosphere, created by excellent facilities and guidance provided by a highly qualified and dedicated faculty.</p>  
-                    <div id="exmaple11" style="display:block; font-weight: bold"> <a href="#" onclick="show('exmaple11','exmaple22')">  read more </a> </div>         
-                    <div id="exmaple22" style="display:none;"> Besides being committed to academic excellence and providing education for all round development, another special characteristic of DPS R.K. Puram is the appreciation of the worth of the each student. The LIBRARY is equally committed to the under-represented and less-privileged segments of the population, such as gifted applicants whose parents could not attend LIBRARY, and children with high potential facing difficult financial circumstances.
-                        <div> <a href="#" onclick="show1('c11','h1')"> <strong>Comments (10)</strong> </a>   <span>&nbsp;&bull;&nbsp;</span>  May 27, 2016  <span>&nbsp;&bull;&nbsp;</span>  <a href="#"><strong>Edit</strong></a></div>
-                    </div>
-                    <div id="c11" style="display:none; font-weight: bold">
-                        <div>
-                            <h2><span>3</span> Responses</h2><div class="clr"></div>
-                            <div class="comment">
-                            <p><a href="#">admin</a> Says:<br />April 20th, 2009 at 2:17 pm</p>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum.</p>
+
+                        <!--<div id="c1" style="display:none; font-weight: bold">-->
+                        <div id="<%out.print(responseDivID);%>" style="display:none; font-weight: bold">
+                            <div>
+                                <h2><span>3</span> Responses</h2><div class="clr"></div>
+                                <c:forEach var="comment" items="${blog.commentList}">
+                                    <div class="comment">
+                                    <p><a href="#">${comment.username}</a> Says:<br/>${comment.cdate}</p>
+                                    <p>${comment.cbody}</p>
+                                    </div>
+                                </c:forEach>
+                            </div>                        
+                            <div>
+                            <h2><span>Leave a</span> Reply</h2><div class="clr"></div>
+                            <form action="#" method="post" id="leavereply">
+                            <ol><li>
+                            <label for="name">Name (required)</label>
+                            <input id="name" name="name" class="text" />
+                            </li><li>
+                            <label for="email">Email Address (required)</label>
+                            <input id="email" name="email" class="text" />
+                            </li><li>
+                            <label for="website">Website</label>
+                            <input id="website" name="website" class="text" />
+                            </li><li>
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" rows="8" cols="50"></textarea>
+                            </li><li>
+                            <input type="image" name="imageField" id="imageField" src="images/icon/submit.gif" class="send" />
+                                <div class="clr"></div>
+                            </li></ol>
+                            </form>
+                                <!--<div id="h" style="display:none; font-weight: bold"> <a href="#" onclick="hide('c1','exmaple2','exmaple1')">  hide </a> </div>-->
+                                <div id="<%out.print(hDivID);%>" style="display:none; font-weight: bold"> <a href="#" onclick="hide('<%out.print(responseDivID);%>','<%out.print(fullBodyDivID);%>','<%out.print(readMoreDivID);%>')">  hide </a> </div>
                             </div>
-                            <div class="comment">
-                            <p><a href="#">Owner</a> Says:<br />April 20th, 2009 at 3:21 pm</p>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. Cras id urna. Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu posuere nunc justo tempus leo.</p>
-                            </div>
-                            <div class="comment">
-                            <p><a href="#">admin</a> Says:<br />April 20th, 2009 at 2:17 pm</p>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum.</p>
-                            </div>
-                        </div>                        
-                        <div>
-                        <h2><span>Leave a</span> Reply</h2><div class="clr"></div>
-                        <form action="#" method="post" id="leavereply">
-                        <ol><li>
-                        <label for="name">Name (required)</label>
-                        <input id="name" name="name" class="text" />
-                        </li><li>
-                        <label for="email">Email Address (required)</label>
-                        <input id="email" name="email" class="text" />
-                        </li><li>
-                        <label for="website">Website</label>
-                        <input id="website" name="website" class="text" />
-                        </li><li>
-                        <label for="message">Your Message</label>
-                        <textarea id="message" name="message" rows="8" cols="50"></textarea>
-                        </li><li>
-                        <input type="image" name="imageField" id="imageField" src="images/icon/submit.gif" class="send" />
-                            <div class="clr"></div>
-                        </li></ol>
-                        </form>
-                            <div id="h1" style="display:none; font-weight: bold"> <a href="#" onclick="hide('c11','exmaple22','exmaple11')">  hide </a> </div>        
-                        </div>
-                    </div>          
-                </div> 
+                        </div>          
+                    </div> 
+                        <%
+                            count = count + 1;
+                        %>
+                    </c:forEach>
             </div>
         </div>          
-
-
         
+            <script>
+             function show(ele1,ele2){ 
+                 document.getElementById(ele2).style.display = "block";
+                 document.getElementById(ele1).style.display = "none";
+            }
+            </script>
 
-<script>
- function show(ele1,ele2){ 
-     document.getElementById(ele2).style.display = "block";
-     document.getElementById(ele1).style.display = "none";
-}
-</script>
+            <script>
+             function show1(ele1,ele2){
+                 document.getElementById(ele1).style.display = 'block';   
+                 document.getElementById(ele2).style.display = 'block'; 
+            }
+            </script>
 
-<script>
- function show1(ele1,ele2){
-     document.getElementById(ele1).style.display = 'block';   
-     document.getElementById(ele2).style.display = 'block'; 
-}
-</script>
+            <script>
+             function hide(ele1,ele2,ele3){
+                 document.getElementById(ele1).style.display = 'none';
+                 document.getElementById(ele2).style.display = 'none';
+                 document.getElementById(ele3).style.display = 'block';
+            }
+            </script>
 
-<script>
- function hide(ele1,ele2,ele3){
-     document.getElementById(ele1).style.display = 'none';
-     document.getElementById(ele2).style.display = 'none';
-     document.getElementById(ele3).style.display = 'block';
-}
-</script>
-
-  </div>
-  </div>
-  </div>      
+        </div>
+    </div>
+</div>  
+        
   <div class="clr"></div>
         <!--MEMBERS-->
   <div id="members" style="display:block; font-weight: bold">

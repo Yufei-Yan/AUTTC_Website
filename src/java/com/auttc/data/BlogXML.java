@@ -37,7 +37,11 @@ public class BlogXML {
             File xmlFile = new File(fileName);
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            
             Document doc = dBuilder.parse(xmlFile);
+//            List<Comment> newCommentList = new ArrayList<>();
+//            Blog newBlog1 = new Blog(106, "This blog is from the function", "04/30/2017", "This is the body of the 11111th blog.", newCommentList);
+//            blogList.add(newBlog1);
             NodeList blogNodeList = doc.getElementsByTagName("blog");
             
             // loop along all the blogs
@@ -68,6 +72,9 @@ public class BlogXML {
             }
             
         } catch (Exception e) {
+            List<Comment> newCommentList = new ArrayList<>();
+            Blog newBlog1 = new Blog(105, "This blog is from exception", "04/30/2017", "This is the body of the 11111th blog.", newCommentList);
+            blogList.add(newBlog1);
             e.printStackTrace();
         }
         return blogList;
@@ -110,7 +117,7 @@ public class BlogXML {
             Element rootCommentsElement = doc.createElement("comments");
             blogElement.appendChild(rootCommentsElement);
             
-            List<Comment> commentList = inputBlog.getComments();
+            List<Comment> commentList = inputBlog.getCommentList();
             for (Comment comment: commentList) {
                 // add comment to <comments>
                 Element commentElement = doc.createElement("comment");

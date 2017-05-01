@@ -84,13 +84,19 @@ public class HomeLoadServlet extends HttpServlet {
             } else {
                 message = "Hello, " + sessionUser.getUsername();
             }
+            
+            ServletContext sc = getServletContext();
+            String fileName = sc.getRealPath("WEB-INF/blogs/testBlog.xml");
+//        List<Comment> newCommentList = new ArrayList<>();
+//        Comment newComment = new Comment("Chengyu", "04/30/2017", "new test comment");
+//        newCommentList.add(newComment);
+//        Blog newBlog = new Blog(104, "This blog is from the servlet", "04/29/2017", "This is the body of the 4th blog.", newCommentList);
+            List<Blog> blogList = BlogXML.xmlToBlogList(fileName);
+//        blogList.add(newBlog);
+        
+            request.setAttribute("blogList", blogList);
             request.setAttribute("user", message);
         }
-        
-        ServletContext sc = getServletContext();
-        String fileName = sc.getRealPath("/WEB-INF/blogs/testBlog.xml");
-        List<Blog> blogList = BlogXML.xmlToBlogList(fileName);
-        request.setAttribute("blogList", blogList);
         
         getServletContext().getRequestDispatcher(url).forward(request, response);
         

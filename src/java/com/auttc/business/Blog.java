@@ -5,15 +5,16 @@
  */
 package com.auttc.business;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  * @author yufeiyan
  */
-public class Blog {
+public class Blog implements Serializable {
     private int id;
-    public String title;
+    private String title;
     private String date;
     private String body;
     private List<Comment> commentList;
@@ -65,11 +66,11 @@ public class Blog {
         this.body = body;
     }
     
-    public List<Comment> getComments() {
+    public List<Comment> getCommentList() {
         return commentList;
     }
     
-    public void setComments(List<Comment> commentList) {
+    public void setCommentList(List<Comment> commentList) {
         this.commentList = commentList;
     }
 }
