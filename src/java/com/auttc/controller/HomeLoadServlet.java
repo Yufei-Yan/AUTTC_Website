@@ -75,14 +75,18 @@ public class HomeLoadServlet extends HttpServlet {
         //processRequest(request, response);
         String action = request.getParameter("action");
         HttpSession session = request.getSession();
+        System.out.println("session: " + session);
         User sessionUser = (User)session.getAttribute("user");
+        System.out.println("sessionUser: " + sessionUser);
         String url = "/index.jsp";
+        
+        System.out.println("aciton: " + action);
         
         if (null == action) {
             action = "homeLoad";
         }
         
-        if (action.equals("homeLoad")) {
+        if (action.equals("homeLoad") || action.equals("userLogin")) {
 
             String message;
             if (sessionUser == null) {
@@ -159,12 +163,15 @@ public class HomeLoadServlet extends HttpServlet {
                 url = "/index.jsp";
                 session.setAttribute("user", user);
                 String message = "Hello, " + user.getUsername();
+                //String message = "Hello, " + (User)session.getAttribute("user");
                 request.setAttribute("user", message);
+                System.out.println("before doGet");
+                this.doGet(request, response);
             } else {
                 //username and password not mathch
                 url = "/login.jsp";
             }
-            
+
             getServletContext().getRequestDispatcher(url).forward(request, response);
             
         } else if (action.equals("userSignup")) {

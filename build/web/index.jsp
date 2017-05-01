@@ -11,32 +11,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="style.css" />
-        <link rel="stylesheet" type="text/css" href="jquery.horizontal.scroll.css" />
-        <link rel="stylesheet" type="text/css" href="demo_style.css" />
-        
-        <script type="text/javascript" src="jquery.min.js"></script>
-        <script src="jquery.horizontal.scroll.js" type="text/javascript"></script>
-        <script type="text/javascript">
-
-                $(document).ready(function(){
-                        $('#horiz_container_outer').horizontalScroll();
-
-                });
-                
-                function checkUser() {
-                    if ('${user}' === "") {
-                        document.getElementById("submitButton").value = "Login";
-                    } else {
-                        document.getElementById("submitButton").value = "Logout";
-                        document.getElementById("loginHidden").value = "logout";
-                    }
-                }
-
-        </script>
         
         <title>JSP Page</title>
     </head>
-    <body onload="checkUser()">
+    <body>
         <div class="main">
             <div class="header">
             <div class="header_resize">
@@ -71,7 +49,7 @@
         -->
                 <!-- Gallery -->
     <style type="text/css">
-        *{ padding:0; margin:0; list-style:none; border:0;}
+        *{ padding:0; margin:0; list-style:none;}
         .all{ width: 600px; height: 370px; padding: 7px; border: 1px solid #2D2D2D; margin: 50px auto; position: relative; }
         .screen{
                 width:600px;
@@ -88,6 +66,15 @@
     
     <script type="text/javascript">
         window.onload= function() {
+            
+            //check if user is logged in.
+            if ('${user}' === "") {
+                document.getElementById("submitButton").value = "Login";
+            } else {
+                document.getElementById("submitButton").value = "Logout";
+                document.getElementById("loginHidden").value = "logout";
+            }
+            
             var box  = document.getElementById("all");  
             var ul = box.children[0].children[0];  
             var ulLis = ul.children; 
@@ -263,8 +250,8 @@
                             <label for="website">Website</label>
                             <input id="website" name="website" class="text" />
                             </li><li>-->
-                            <label for="message">Your Message</label><br/>
-                            <textarea id="message" name="message" rows="8" cols="50"></textarea>
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" rows="8" cols="50" border="1"></textarea>
                             </li><li>
                             <input type="image" name="commentBlog${blog.id}" id="imageField" src="images/icon/submit.gif" class="send" />
                                 <div class="clr"></div>
@@ -403,13 +390,15 @@
   </div>
   </div>
             
-<script>
- function hid2(ele1,ele2,ele3,ele4){ 
-     document.getElementById(ele1).style.display = "none";
-     document.getElementById(ele2).style.display = "none";
-     document.getElementById(ele3).style.display = "none";
-     document.getElementById(ele4).style.display = "block";
-}
-</script>   
+    <script>
+     function hid2(ele1,ele2,ele3,ele4){ 
+         document.getElementById(ele1).style.display = "none";
+         document.getElementById(ele2).style.display = "none";
+         document.getElementById(ele3).style.display = "none";
+         document.getElementById(ele4).style.display = "block";
+    }
+    </script>
+    
+
     </body>
 </html>
