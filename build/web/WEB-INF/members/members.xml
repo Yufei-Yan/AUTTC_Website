@@ -9,7 +9,7 @@ and open the template in the editor.
     <member>
         <url>images/teammategallery/senke_xy00.jpg</url>
         <name>first player</name>
-        <gender>male</gender>
+        <gender>Female</gender>
         <joindate>01/01/2017</joindate>
         <intro>This is the first player</intro>
     </member>
@@ -17,14 +17,36 @@ and open the template in the editor.
         <url>images/teammategallery/senke_xy01.jpg</url>
         <name>second player</name>
         <gender>01/02/2016</gender>
-        <joindate>female</joindate>
+        <joindate>Male</joindate>
         <intro>This is the second plays</intro>
     </member>
     <member>
         <url>images/teammategallery/senke_xy02.jpg</url>
         <name>third player</name>
         <gender>03/25/2017</gender>
-        <joindate>male</joindate>
+        <joindate>Female</joindate>
         <intro>This is the third player</intro>
     </member>
+    <member>
+        <url>images/teammategallery/senke_xy03.jpg</url>
+        <name>fourth player</name>
+        <gender>Male</gender>
+        <joindate>11/01/2016</joindate>
+        <intro>This is the fourth player</intro>
+    </member>
+    <member>
+        <url>images/teammategallery/senke_xy04.jpg</url>
+        <name>fifth player</name>
+        <gender>06/01/2016</gender>
+        <joindate>Female</joindate>
+        <intro>This is the fifth plays</intro>
+    </member>
+    <member>
+        <url>images/teammategallery/senke_xy05.jpg</url>
+        <name>sixth player</name>
+        <gender>03/25/2017</gender>
+        <joindate>Female</joindate>
+        <intro>This is the sixth player</intro>
+    </member>
+    
 </members>
