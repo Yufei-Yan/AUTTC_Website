@@ -5,6 +5,7 @@
  */
 package com.auttc.controller;
 
+import com.auttc.business.User;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -82,6 +84,8 @@ public class ImgUploadServlet extends HttpServlet {
         String action = request.getParameter("action");
         System.out.println(action);
         System.out.println("Uploading image");
+        HttpSession session = request.getSession();
+        User sessionUser = (User)session.getAttribute("user");
         boolean isMultipartContent = ServletFileUpload.isMultipartContent(request);
             
         FileItemFactory factory = new DiskFileItemFactory();
@@ -89,38 +93,44 @@ public class ImgUploadServlet extends HttpServlet {
             
         String imgPath = getServletContext().getInitParameter("imgUpload");
         System.out.println(imgPath);
-            
-        try {
-            List field = upload.parseRequest(request);
-            Iterator it = field.iterator();
-            while (it.hasNext()) {
-                FileItem fileItem = (FileItem) it.next();
-                if (!fileItem.isFormField()) {
-                    System.out.println(fileItem.getName());
-                    System.out.println(fileItem.getSize());
-                    System.out.println(fileItem.toString());
-                    System.out.println(fileItem.getContentType());
-                        
-                    File file;
-                        
-                    String fileName = fileItem.getName();
-                    if( fileName.lastIndexOf("\\") >= 0 ){
-                        file = new File( imgPath + 
-                        fileName.substring( fileName.lastIndexOf("\\"))) ;
-                    } else {
-                        file = new File( imgPath + 
-                        fileName.substring(fileName.lastIndexOf("\\")+1)) ;
+          
+        if (null != (session.getAttribute("user"))) {
+            try {
+                List field = upload.parseRequest(request);
+                Iterator it = field.iterator();
+                while (it.hasNext()) {
+                    FileItem fileItem = (FileItem) it.next();
+                    if (!fileItem.isFormField()) {
+                        System.out.println(fileItem.getName());
+                        System.out.println(fileItem.getSize());
+                        System.out.println(fileItem.toString());
+                        System.out.println(fileItem.getContentType());
+
+                        File file;
+
+                        String fileName = fileItem.getName();
+                        if (fileName.lastIndexOf("\\") >= 0) {
+                            file = new File(imgPath
+                                    + fileName.substring(fileName.lastIndexOf("\\")));
+                        } else {
+                            file = new File(imgPath
+                                    + fileName.substring(fileName.lastIndexOf("\\") + 1));
+                        }
+
+                        fileItem.write(file);
+                        System.out.println("Uploaded Filename: " + fileName);
                     }
-                    
-                    fileItem.write(file) ;
-                    System.out.println("Uploaded Filename: " + fileName);
                 }
+            } catch (Exception ex) {
+                System.out.println("Fail to upload: " + ex);
             }
-        } catch (Exception ex) {
-            System.out.println("Fail to upload: " + ex);
+            String message = "Hello, " + sessionUser.getUsername();
+            request.setAttribute("user", message);
+            getServletContext().getRequestDispatcher("/administrator.jsp").forward(request, response);
+        } else {
+            getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
         }
-            
-        getServletContext().getRequestDispatcher("/administrator.jsp").forward(request, response);
+        
     }
 
     /**

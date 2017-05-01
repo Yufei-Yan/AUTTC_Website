@@ -66,30 +66,18 @@
         ${gallery}  an array of image url
         -->
         <!-- Gallery -->
-        <ul id="horiz_container_outer">
+        <div class="gallery">
+	<ul id="horiz_container_outer">
 		<li id="horiz_container_inner">
 			<ul id="horiz_container">
-                                <li><img src="images/gallery/toystory.png" width="500px" height="300px" alt="Toy Story" /></li>
+                            <li><img src="images/gallery/toystory.png" width="500px" height="300px" alt="Toy Story" /></li>
 				<li><img src="images/gallery/up.png" width="500px" height="300px" alt="UP" /></li>
 				<li><img src="images/gallery/ratatouille.png" width="500px" height="300px" alt="Ratatouille" /></li>
 				<li><img src="images/gallery/findingnemo.png" width="500px" height="300px" alt="Finding Nemo" /></li>
 				<li><img src="images/gallery/cars.png" width="500px" height="300px" alt="Cars" /></li>
 				<li><img src="images/gallery/monstersinc.png" width="500px" height="300px" alt="Monsters Inc" /></li>
 				<li><img src="images/gallery/bugslife.png" width="500px" height="300px" alt="A Bugs Life" /></li>
-				<li><img src="images/gallery/incredibles.png" width="500px" height="300px" alt="The Incredibles" /></li>                     
-			</ul>
-		</li>		
-	</ul>			
-	
-						
-	<div id="scrollbar">
-		<a id="left_scroll" class="mouseover_left" href="#"></a>
-		<div id="track">
-		     <div id="dragBar"></div>
-		</div>
-		<a id="right_scroll" class="mouseover_right" href="#"></a></div>
-	</div>
-        
+				<li><img src="images/gallery/incredibles.png" width="500px" height="300px" alt="The Incredibles" /></li>
                <!--                 
                <li>
                    <img src="=pl.getUrl() %>" width="500px" height="300px" alt="Toy Story" />  
@@ -121,7 +109,20 @@
                                 </li>
                             </c:foreach >
                     -->
-
+                            
+			</ul>
+		</li>		
+	</ul>
+	
+						
+	<div id="scrollbar">
+		<a id="left_scroll" class="mouseover_left" href="#"></a>
+		<div id="track">
+		     <div id="dragBar"></div>
+		</div>
+                <a id="right_scroll" class="mouseover_right" href="#"></a>
+        </div>
+        </div>
         
         <!--
         blog: 

@@ -33,7 +33,7 @@
         </div>
         </div>
         <h1>Hello World!</h1>
-        <h4>${user}</h4>
+        <h2>${user}</h2>
         <form action="imgUpload" method="post" enctype="multipart/form-data">
             Choose a file to upload:
             <input type="file" name="file" />

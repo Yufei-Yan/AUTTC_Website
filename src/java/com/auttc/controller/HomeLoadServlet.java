@@ -6,6 +6,7 @@
 package com.auttc.controller;
 
 import com.auttc.business.User;
+import com.auttc.data.ResourcePaths;
 import com.auttc.data.UserDB;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -76,7 +77,11 @@ public class HomeLoadServlet extends HttpServlet {
             } else {
                 message = "Hello, " + sessionUser.getUsername();
             }
+            
+            String imgPath = getServletContext().getInitParameter("imgUpload");
+            String[] imgUrls = new ResourcePaths(imgPath).getImgUrls();
             request.setAttribute("user", message);
+            request.setAttribute("gallery", imgUrls);
         }
         
         getServletContext().getRequestDispatcher(url).forward(request, response);
@@ -114,7 +119,7 @@ public class HomeLoadServlet extends HttpServlet {
             String username = request.getParameter("login");
             String password = request.getParameter("password");
             
-            System.out.println(username + password);
+            System.out.println(username + " " + password);
             
             User user = new User(username, null, password, 0);
             User.UserType u = UserDB.isPasswordCorrect(user);
