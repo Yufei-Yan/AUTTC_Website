@@ -18,8 +18,9 @@ html, .main { padding:0; margin:0; background:#e7e9eb url(images/style/main_bg.g
 h1 { margin:0; padding:5px 0; width:400px; color:#1f7fbb; font:normal 46px/1.2em Arial, Helvetica, sans-serif; letter-spacing:-2px;}
 h1 a, h1 a:hover { color:#1f7fbb; text-decoration:none;}
 h1 span { color:#fff;}
-h1 small { text-align:left; float:right; width:200px;  color:#fff; displaysplay:block; padding:0px 0 0 10px; font:normal 12px/1.2em Arial, Helvetica, sans-serif; letter-spacing:normal;}
+h1 small {text-align:left; float:right; width:200px;  color:#fff; displaysplay:block; padding:0px 0 0 10px; font:normal 12px/1.2em Arial, Helvetica, sans-serif; letter-spacing:normal;}
 h2 { font:normal 24px Arial, Helvetica, sans-serif; padding:0; margin:10px 0; color:#595959;}
+h2 small {position: absolute; top:40px; right:auto; text-align:left; float:right; width:200px;  color:#fff; displaysplay:block; padding:0px 0 0 10px; font:normal 20px/1.2em Arial, Helvetica, sans-serif; letter-spacing:normal;}
 p { margin:8px 0; padding:0 0 8px 0; font:normal 12px/1.8em Arial, Helvetica, sans-serif;}
 p.spec { text-align:right;}
 a { color:#2cadff; text-decoration:none;}
