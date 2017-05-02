@@ -67,14 +67,11 @@ public class BlogXML {
                     commentList.add(newComment);
                 }
 
-                Blog newBlog = new Blog(blogId, blogTitle, blogDate, blogBody, commentList);
+                Blog newBlog = new Blog(blogId, blogTitle, blogDate, blogBody, commentList, commentList.size());
                 blogList.add(newBlog);
             }
             
         } catch (Exception e) {
-            List<Comment> newCommentList = new ArrayList<>();
-            Blog newBlog1 = new Blog(105, "This blog is from exception", "04/30/2017", "This is the body of the 11111th blog.", newCommentList);
-            blogList.add(newBlog1);
             e.printStackTrace();
         }
         return blogList;
@@ -94,9 +91,9 @@ public class BlogXML {
             rootBlogsElement.appendChild(blogElement);
             
             // add attribute "id" to blog tag
-            Attr blogId = doc.createAttribute("id");
-            blogId.setValue(Integer.toString(inputBlog.getId()));
-            blogElement.setAttributeNode(blogId);
+            Attr blogID = doc.createAttribute("id");
+            blogID.setValue(Integer.toString(inputBlog.getId()));
+            blogElement.setAttributeNode(blogID);
             
             // add title to blog
             Element titleElement = doc.createElement("title");

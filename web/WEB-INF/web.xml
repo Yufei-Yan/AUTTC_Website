@@ -13,8 +13,12 @@
         <servlet-class>com.auttc.controller.ImgUploadServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>addCommentServlet</servlet-name>
+        <servlet-name>AddCommentServlet</servlet-name>
         <servlet-class>com.auttc.controller.AddCommentServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BlogManageServlet</servlet-name>
+        <servlet-class>com.auttc.controller.BlogManageServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>HomeLoadServlet</servlet-name>
@@ -39,8 +43,12 @@
         <url-pattern>/imgUpload</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>addCommentServlet</servlet-name>
+        <servlet-name>AddCommentServlet</servlet-name>
         <url-pattern>/addComment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BlogManageServlet</servlet-name>
+        <url-pattern>/blogManage</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

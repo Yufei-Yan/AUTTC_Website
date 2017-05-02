@@ -74,7 +74,6 @@
             var ul = box.children[0].children[0];  
             var ulLis = ul.children; 
             ul.appendChild(ulLis[0].cloneNode(true));  
-
             var ol = box.children[1];
             for(var i=0;i<ulLis.length-1;i++) {  
                 var li = document.createElement("li");
@@ -103,28 +102,22 @@
                 console.log(key); 
                 if(key > ulLis.length - 1)
                 {
-
                     ul.style.left = 0;
                     key = 1; 
                 }
                 animate(ul,-key*ulLis[0].offsetWidth);
                 square++;  
                 square = square>olLis.length-1 ? 0 : square;
-
                 for(var i=0;i<olLis.length;i++) {
                     olLis[i].className = "";
                 }
                 olLis[square].className = "current";  
-
             }
-
             box.onmouseover = function() {
                 clearInterval(timer);
             }
-
             box.onmouseout = function() {
                 timer = setInterval(autoplay,2500); }
-
             function animate(obj,target) {
                 clearInterval(obj.timer);  
                 var speed = obj.offsetLeft < target ? 15 : -15;
@@ -137,7 +130,6 @@
                     }
                 },10);
             }
-
         }
     </script>
 
@@ -191,7 +183,7 @@ Querrey, ranked 38th in the world, was one of the many United States Open player
 Malin Pettersson, a Swedish table tennis champion, went up against several pro tennis players at the party, and she had previously played Rafael Nadal. Though she and Nadal rallied at a friendly pace, Pettersson could tell that the slightest infusion of spin from her paddle immediately dismantled his play.
 
                             <!--<div><a href="#" onclick="show1('c1','h')"> <strong>Comments (3)</strong> </a>   <span>&nbsp;&bull;&nbsp;</span>  May 27, 2010  <span>&nbsp;&bull;&nbsp;</span>  <a href="#"><strong>Edit</strong></a></div>-->
-                            <div><a href="javascript:void(0)" onclick="show1('<%out.print(responseDivID);%>','<%out.print(hDivID);%>', '<%out.print(commentsID);%>')" id="<%out.print(commentsID);%>"> <strong>Comments (3)</strong> </a>   <span>&nbsp;&bull;&nbsp;</span>  May 27, 2010  </div>
+                            <div><a href="javascript:void(0)" onclick="show1('<%out.print(responseDivID);%>','<%out.print(hDivID);%>', '<%out.print(commentsID);%>')" id="<%out.print(commentsID);%>"> <strong>Comments (${blog.commentNum})</strong> </a>   <span>&nbsp;&bull;&nbsp;</span>  May 27, 2010  </div>
                         </div>
 
                         <!--<div id="c1" style="display:none; font-weight: bold">-->
@@ -218,10 +210,10 @@ Malin Pettersson, a Swedish table tennis champion, went up against several pro t
                             <label for="website">Website</label>
                             <input id="website" name="website" class="text" />
                             </li><li>-->
-<label for="message">Your Message</label><br>
-                            <textarea id="message" name="message" rows="8" cols="50" ></textarea>
+                            <label for="message">Your Message</label><br>
+                            <textarea id="message" name="message${blog.id}" rows="8" cols="50" ></textarea>
                             </li><li>
-                            <input type="image" name="commentBlog${blog.id}" id="imageField" src="images/icon/submit.gif" class="send" />
+                            <input type="submit" name="commentBlog${blog.id}" id="imageField" />
                                 <div class="clr"></div>
                             </li></ol>
                             </form>
@@ -305,8 +297,6 @@ Malin Pettersson, a Swedish table tennis champion, went up against several pro t
                 }
                 $("#four_flash .flashBg ul.mobile").stop().animate({left:-_index5*326},1000);
                 });
-
-
         $("#four_flash .but_left img").click(function(){
                 if(_index5==0){
                         $("ul.mobile").prepend($("ul.mobile").html());

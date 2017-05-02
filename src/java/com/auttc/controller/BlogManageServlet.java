@@ -12,8 +12,7 @@ import com.auttc.business.User;
 import com.auttc.data.BlogXML;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -26,7 +25,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author cheng
  */
-public class AddCommentServlet extends HttpServlet {
+public class BlogManageServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -45,10 +44,10 @@ public class AddCommentServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet addCommentServlet</title>");            
+            out.println("<title>Servlet AddBlogServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet addCommentServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet AddBlogServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -80,48 +79,45 @@ public class AddCommentServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        System.out.println("Start");
         HttpSession session = request.getSession();
-//        String url = "homeLoad";
+//        String url = "homeload";
         
         if (null != (session.getAttribute("user"))) {
-            
-            User sessionUser = (User) session.getAttribute("user");
-            String username = sessionUser.getUsername();
-            System.out.println("username: " + username);
-            
+            String action = request.getParameter("action");
+            System.out.println("action: " + action);
             ServletContext sc = getServletContext();
             String blogFileName = sc.getRealPath("/WEB-INF/blogs/testBlog.xml");
-            System.out.println(blogFileName);
+            System.out.println("file path: " + blogFileName);
             List<Blog> blogList = BlogXML.xmlToBlogList(blogFileName);
-            int targetId = 0;
-            String commentText = "";
             
-            // get the blog where the new comment will be add
-            for (Blog blog: blogList) {
-                String buttonName = "commentBlog" + Integer.toString(blog.getId());
-                System.out.println("button " + buttonName + ": " + request.getParameter(buttonName));
-                if (request.getParameter(buttonName) != null) {
-                    
-                    targetId = blog.getId();
-                    commentText = request.getParameter("message" + Integer.toString(blog.getId()));
-                    System.out.println("comment: " + commentText);
-                    String cDate = Date.getDate();
-                    System.out.println("date: " + cDate);
-                    System.out.println("Writing comment to blog" + Integer.toString(targetId));
-                    
-                    Comment newCommentObj = new Comment(username, cDate, commentText);
-                    BlogXML.addComment(blogFileName, newCommentObj, targetId);
-                    System.out.println("Comment written into " + blogFileName + " successfully.");
-                    break;
-                }
-            }
+            // gather information of new blog
+            int id = blogList.get(blogList.size() - 1).getId() + 1;
+            String title = request.getParameter("title");
+            System.out.println(title);
+            String date = Date.getDate();
+            String body = request.getParameter("body");
+            System.out.println(body);
+            List<Comment> commentList = new ArrayList<>();
+            
+            // create blog object to be added
+            Blog newBlog = new Blog(id, title, date, body, commentList, commentList.size());
+            System.out.println("id: " + Integer.toString(newBlog.getId()));
+            System.out.println("title: " + newBlog.getTitle());
+            System.out.println("date: " + newBlog.getDate());
+            System.out.println("body: " + newBlog.getBody());
+            
+            // write the new blog into xml file
+            BlogXML.addBlog(newBlog, blogFileName);
+            
+            System.out.println("file " + blogFileName + " written!");
             
         } else {
             getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
         }
-        response.sendRedirect("homeLoad");
+        
+//        HomeLoadServlet homeLoad = new HomeLoadServlet();
+//        homeLoad.doGet(request, response);
+          response.sendRedirect("homeLoad");
 //        getServletContext().getRequestDispatcher(url).forward(request, response);
     }
 

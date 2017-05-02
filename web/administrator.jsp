@@ -58,7 +58,7 @@
          
          
         <div class="uploadblog">
-        <form id="uploadblog" action="blogUpload" method="post" enctype="multipart/form-data">
+        <form action="addBlog" method="post" id="uploadblog">
             Upload a blog<br>
 
             <div class="blogtitle">
@@ -71,6 +71,7 @@
                 <textarea id="Body" name="body" rows="20" cols="80" style="position: absolute; left:60px; top: 60px;"></textarea>
                 <button type="submit" value="submit" style="position: absolute; left:460px; top: 30px;">submit</button>
             </div>
+            <input type="hidden" name="action" value="addBlog">
         </form>
         </div>
               
@@ -93,7 +94,6 @@
                 </c:forEach>
          </table>
        </div>
-
 
     </body>
 </html>
