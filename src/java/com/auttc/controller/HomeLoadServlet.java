@@ -75,12 +75,12 @@ public class HomeLoadServlet extends HttpServlet {
         //processRequest(request, response);
         String action = request.getParameter("action");
         HttpSession session = request.getSession();
-        System.out.println("session: " + session);
+//        System.out.println("session: " + session);
         User sessionUser = (User)session.getAttribute("user");
-        System.out.println("sessionUser: " + sessionUser);
+//        System.out.println("sessionUser: " + sessionUser);
         String url = "/index.jsp";
         
-        System.out.println("aciton: " + action);
+//        System.out.println("aciton: " + action);
         
         if (null == action) {
             action = "homeLoad";
@@ -106,7 +106,7 @@ public class HomeLoadServlet extends HttpServlet {
             
             String imgPath = getServletContext().getInitParameter("imgUpload");
             String[] imgUrls = new ResourcePaths(imgPath).getImgUrls();
-            System.out.println(imgUrls[0]);
+//            System.out.println(imgUrls[0]);
 
             request.setAttribute("blogList", blogList);
             request.setAttribute("memberList", memberList);
@@ -145,11 +145,11 @@ public class HomeLoadServlet extends HttpServlet {
             url = "/index.jsp";
             getServletContext().getRequestDispatcher(url).forward(request, response);
         } else if (action.equals("userLogin")) {
-            System.out.println("user is logging in");
+//            System.out.println("user is logging in");
             String username = request.getParameter("login");
             String password = request.getParameter("password");
             
-            System.out.println(username + " " + password);
+//            System.out.println(username + " " + password);
             
             User user = new User(username, null, password, 0);
             User.UserType u = UserDB.isPasswordCorrect(user);
@@ -165,7 +165,7 @@ public class HomeLoadServlet extends HttpServlet {
                 String message = "Hello, " + user.getUsername();
                 //String message = "Hello, " + (User)session.getAttribute("user");
                 request.setAttribute("user", message);
-                System.out.println("before doGet");
+//                System.out.println("before doGet");
                 this.doGet(request, response);
             } else {
                 //username and password not mathch
@@ -175,7 +175,7 @@ public class HomeLoadServlet extends HttpServlet {
             getServletContext().getRequestDispatcher(url).forward(request, response);
             
         } else if (action.equals("userSignup")) {
-            System.out.println("user is signning up");
+//            System.out.println("user is signning up");
             String username = request.getParameter("username");
             String password = request.getParameter("password");
             String email = request.getParameter("email");
@@ -183,7 +183,7 @@ public class HomeLoadServlet extends HttpServlet {
             User user = new User(username, email, password, 0);
             
             if (UserDB.isEmailExist(user)) {
-                System.out.println("Email already resgistered!");
+//                System.out.println("Email already resgistered!");
                 url = "/login.jsp";
             } else {
                 UserDB.inserUser(user);

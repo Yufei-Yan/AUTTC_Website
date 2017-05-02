@@ -7,6 +7,7 @@ package com.auttc.controller;
 
 import com.auttc.business.Blog;
 import com.auttc.business.Comment;
+import com.auttc.business.Date;
 import com.auttc.business.User;
 import com.auttc.data.BlogXML;
 import java.io.IOException;
@@ -79,34 +80,47 @@ public class AddCommentServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        System.out.println("Start");
         HttpSession session = request.getSession();
+        String url = "/index.jsp";
+        
         if (null != (session.getAttribute("user"))) {
+            
             User sessionUser = (User) session.getAttribute("user");
             String username = sessionUser.getUsername();
-            String commentText = (String) session.getAttribute("message");
+            System.out.println("username: " + username);
             
             ServletContext sc = getServletContext();
             String blogFileName = sc.getRealPath("/WEB-INF/blogs/testBlog.xml");
             List<Blog> blogList = BlogXML.xmlToBlogList(blogFileName);
             int targetId = 0;
+            String commentText = "";
+            
             // get the blog where the new comment will be add
             for (Blog blog: blogList) {
                 String buttonName = "commentBlog" + Integer.toString(blog.getId());
-                if (null != request.getParameter(buttonName)) {
+                System.out.println("button " + buttonName + ": " + request.getParameter(buttonName));
+                if (request.getParameter(buttonName) != null) {
+                    
                     targetId = blog.getId();
+                    commentText = request.getParameter("message" + Integer.toString(blog.getId()));
+                    System.out.println("comment: " + commentText);
+                    String cDate = Date.getDate();
+                    System.out.println("date: " + cDate);
+                    System.out.println("Writing comment to blog" + Integer.toString(targetId));
+                    
+                    Comment newCommentObj = new Comment(username, cDate, commentText);
+                    BlogXML.addComment(blogFileName, newCommentObj, targetId);
+                    System.out.println("Comment written into " + blogFileName + " successfully.");
                     break;
                 }
             }
             
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("/MM/dd/yyyy");
-            LocalDate localDate = LocalDate.now();
-            String cDate = dtf.format(localDate);
-            Comment newComment = new Comment(username, cDate, commentText);
-            BlogXML.addComment(blogFileName, newComment, targetId);
-            
         } else {
-            getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
+            url = "/login.jsp";
         }
+        getServletContext().getRequestDispatcher(url).forward(request, response);
     }
 
     /**

@@ -23,7 +23,7 @@ and open the template in the editor.
                 <cdate type="">04/02/2017</cdate>
                 <cbody>Blahblahblah</cbody>
             </comment>
-        </comments>
+        <comment><username>chengyu</username><cdate>/05/01/2017</cdate><cbody>Test comment</cbody></comment><comment><username>chengyu</username><cdate>/05/01/2017</cdate><cbody>This is the second test comment.</cbody></comment></comments>
     </blog>
     <blog id="102">
         <title>Second Blog</title>

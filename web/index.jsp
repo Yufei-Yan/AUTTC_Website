@@ -250,17 +250,18 @@
                             <label for="website">Website</label>
                             <input id="website" name="website" class="text" />
                             </li><li>-->
-                            <label for="message">Your Message</label>
-                            <textarea id="message" name="message" rows="8" cols="50" border="1"></textarea>
+                            <label for="message${blog.id}">Your Message</label><br/>
+                            <textarea id="message" name="message${blog.id}" rows="8" cols="50" border="1"></textarea>
                             </li><li>
-                            <input type="image" name="commentBlog${blog.id}" id="imageField" src="images/icon/submit.gif" class="send" />
+                                <!--<input type="image" name="commentBlog${blog.id}" id="imageField" src="images/icon/submit.gif" class="send" />-->
+                                <input type="submit" name="commentBlog${blog.id}" id="imageField" value="submit" />
                                 <div class="clr"></div>
                             </li></ol>
                             </form>
                                 <!--<div id="h" style="display:none; font-weight: bold"> <a href="#" onclick="hide('c1','exmaple2','exmaple1')">  hide </a> </div>-->
                                 <div id="<%out.print(hDivID);%>" style="display:none; font-weight: bold"> <a href="#" onclick="hide('<%out.print(responseDivID);%>','<%out.print(fullBodyDivID);%>','<%out.print(readMoreDivID);%>')">  hide </a> </div>
                             </div>
-                        </div>          
+                        </div>
                     </div> 
                         <%
                             count = count + 1;
