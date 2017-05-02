@@ -75,7 +75,7 @@ public class HomeLoadServlet extends HttpServlet {
         //processRequest(request, response);
         String action = request.getParameter("action");
         HttpSession session = request.getSession();
-//        System.out.println("session: " + session);
+        System.out.println("session: " + session);
         User sessionUser = (User)session.getAttribute("user");
 //        System.out.println("sessionUser: " + sessionUser);
         String url = "/index.jsp";
@@ -136,7 +136,7 @@ public class HomeLoadServlet extends HttpServlet {
         
         String action = request.getParameter("action");
         String url = "/index.jsp";
-        
+        System.out.println("action = " + action);
         if (action.equals("login")) {
             url = "/login.jsp";
             getServletContext().getRequestDispatcher(url).forward(request, response);
@@ -145,24 +145,29 @@ public class HomeLoadServlet extends HttpServlet {
             System.out.println("before doGet");
             this.doGet(request, response);
         } else if (action.equals("userLogin")) {
-//            System.out.println("user is logging in");
+            System.out.println("user is logging in");
             String username = request.getParameter("login");
             String password = request.getParameter("password");
             
-//            System.out.println(username + " " + password);
+            System.out.println(username + " " + password);
             
             User user = new User(username, null, password, 0);
             User.UserType u = UserDB.isPasswordCorrect(user);
             
             if (User.UserType.ADMIN == u) {
                 url = "/administrator.jsp";
+                System.out.println("======================");
                 session.setAttribute("user", user);
                 String message = "Hello, administrator! " + user.getUsername();
+                System.out.println(message);
                 request.setAttribute("user", message);
             } else if (User.UserType.USER == u) {
                 url = "/index.jsp";
+                System.out.println("======================");
                 session.setAttribute("user", user);
+                
                 String message = "Hello, " + user.getUsername();
+                System.out.println(message);
                 //String message = "Hello, " + (User)session.getAttribute("user");
                 request.setAttribute("user", message);
                 System.out.println("before doGet");
