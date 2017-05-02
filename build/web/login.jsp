@@ -47,10 +47,21 @@
                 <input type="hidden" name="action" value="userLogin" /> 
                 <p><input type="text" name="login" value="" placeholder="Username"></p>
                 <p><input type="password" name="password" value="" placeholder="Password"></p>
-                <p class="submit"><input type="submit" name="commit" value="Login"></p>
+                <p class="submit"><input type="submit" name="commit" value="Login" onclick="IsValid(${userdb})"></p>
+                <span id="msg"> </span>
             </form>
             </div>
-        </div>>
+        </div>
+            
+        <script>
+            function IsValid(userdb){
+                if(!userdb)
+                    document.getElementById("msg").innerHTML="username and password must match.!";
+                else 
+                    document.getElementById("msg").innerHTML=" ";
+            }
+}
+        </script>
             
         <div class="signup_container">
             <div class="signup">
