@@ -171,19 +171,19 @@
                     <div class="article">
                     <h2><span>${blog.title}</span></h2>
 
-                        <div class="clr"></div>
+                        <div class="clr" ></div>
                             <p>Posted on ${blog.date}</p>
                             <c:set var="string1" value="${blog.body}" />
                             <c:set var="string2" value="${fn:substring(string1, 0, 200)}" />
                             <c:set var="string3" value="${fn:substring(string1, 200, fn:length(string1)-1)}" />
-                            <p>${string2} ...</p>  
+                            <p style="font-size:18px">${string2} ...</p>  
                         <!--<div id="exmaple1" style="display:block; font-weight: bold"> <a href="#" onclick="show('exmaple1','exmaple2')">  read more </a></div>-->
-                        <div id="<%out.print(readMoreDivID);%>" style="display:block; font-weight: bold"> <a href="javascript:void(0)" onclick="show('<%out.print(readMoreDivID);%>','<%out.print(fullBodyDivID);%>')">  read more </a></div>
+                        <div id="<%out.print(readMoreDivID);%>" style="display:block; font-weight: bold; font-size:12px"> <a href="javascript:void(0)" onclick="show('<%out.print(readMoreDivID);%>','<%out.print(fullBodyDivID);%>')">  read more </a></div>
                         <!--<div id="exmaple2" style="display:none;">-->
-                        <div id="<%out.print(fullBodyDivID);%>" style="display:none;">
+                        <div id="<%out.print(fullBodyDivID);%>" style="display:none; font-weight: 200; font-size: 18px">
                             ${string3}
                             <!--<div><a href="#" onclick="show1('c1','h')"> <strong>Comments (3)</strong> </a>   <span>&nbsp;&bull;&nbsp;</span>  May 27, 2010  <span>&nbsp;&bull;&nbsp;</span>  <a href="#"><strong>Edit</strong></a></div>-->
-                            <div><a href="javascript:void(0)" onclick="show1('<%out.print(responseDivID);%>','<%out.print(hDivID);%>', '<%out.print(commentsID);%>')" id="<%out.print(commentsID);%>"> <strong>Comments (${blog.commentNum})</strong> </a>   <span>&nbsp;&bull;&nbsp;</span>  May 27, 2010  </div>
+                            <div><a href="javascript:void(0)" onclick="show1('<%out.print(responseDivID);%>','<%out.print(hDivID);%>', '<%out.print(commentsID);%>')" id="<%out.print(commentsID);%>"> <strong>Comments (${blog.commentNum})</strong> </a></div>
                         </div>
 
                         <!--<div id="c1" style="display:none; font-weight: bold">-->
@@ -192,7 +192,7 @@
                                 <h2><span>${blog.commentNum}</span> Responses</h2><div class="clr"></div>
                                 <c:forEach var="comment" items="${blog.commentList}">
                                     <div class="comment">
-                                    <p><a href="javascript:void(0)">${comment.username}</a> ${comment.cdate}</p>
+                                    <p><a>${comment.username}</a> on ${comment.cdate}</p>
                                     <p>${comment.cbody}</p>
                                     </div>
                                 </c:forEach>
@@ -210,7 +210,7 @@
                             <label for="website">Website</label>
                             <input id="website" name="website" class="text" />
                             </li><li>-->
-                            <label for="message">Your Message</label><br>
+                            <label for="message" style="font-size:15px">Your Messages</label><br>
                             <textarea id="message" name="message${blog.id}" rows="8" cols="50" ></textarea>
                             </li><li>
                             <input type="submit" name="commentBlog${blog.id}" id="imageField" />
@@ -218,7 +218,7 @@
                             </li></ol>
                             </form>
                                 <!--<div id="h" style="display:none; font-weight: bold"> <a href="#" onclick="hide('c1','exmaple2','exmaple1')">  hide </a> </div>-->
-                                <div id="<%out.print(hDivID);%>" style="display:none; font-weight: bold"> <a href="javascript:void(0)" onclick="hide('<%out.print(responseDivID);%>','<%out.print(fullBodyDivID);%>','<%out.print(readMoreDivID);%>')">  hide </a> </div>
+                                <div id="<%out.print(hDivID);%>" style="display:none; font-weight: bold; font-size: 15px"> <a href="javascript:void(0)" onclick="hide('<%out.print(responseDivID);%>','<%out.print(fullBodyDivID);%>','<%out.print(readMoreDivID);%>')">  hide </a> </div>
                             </div>
                         </div>          
                     </div> 
