@@ -242,15 +242,7 @@
                             <h2><span>Leave a</span> comment</h2><div class="clr"></div>
                             <form action="addComment" method="post" id="leavereply">
                             <ol><li>
-<!--                            <label for="name">Name (required)</label>
-                            <input id="name" name="name" class="text" />
-                            </li><li>
-                            <label for="email">Email Address (required)</label>
-                            <input id="email" name="email" class="text" />
-                            </li><li>
-                            <label for="website">Website</label>
-                            <input id="website" name="website" class="text" />
-                            </li><li>-->
+                                    
                             <label for="message${blog.id}">Your Message</label><br/>
                             <textarea id="message" name="message${blog.id}" rows="8" cols="50" border="1"></textarea>
                             </li><li>

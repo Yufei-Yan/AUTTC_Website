@@ -59,4 +59,8 @@ import java.io.Serializable;
     public int getAdmin() {
         return admin;
     }
+    
+    public void setAdmin(int admin) {
+        this.admin = admin;
+    }
  }

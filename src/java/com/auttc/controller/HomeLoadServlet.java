@@ -74,13 +74,14 @@ public class HomeLoadServlet extends HttpServlet {
             throws ServletException, IOException {
         //processRequest(request, response);
         String action = request.getParameter("action");
-        HttpSession session = request.getSession();
+        //HttpSession session = request.getSession();
+        session = request.getSession();
         System.out.println("session: " + session);
         User sessionUser = (User)session.getAttribute("user");
-//        System.out.println("sessionUser: " + sessionUser);
+        System.out.println("sessionUser: " + sessionUser);
         String url = "/index.jsp";
         
-//        System.out.println("aciton: " + action);
+        System.out.println("action: " + action);
         
         if (null == action) {
             action = "homeLoad";
@@ -92,9 +93,14 @@ public class HomeLoadServlet extends HttpServlet {
             if (sessionUser == null) {
 
                 message = "";
+                request.setAttribute("admin", "No");
             } else {
                 message = "Hello, " + sessionUser.getUsername();
                 request.setAttribute("user", sessionUser.getUsername());
+                System.out.println("admin: " + sessionUser.getAdmin());
+                if (1 == sessionUser.getAdmin()) {
+                    request.setAttribute("admin", "Yes");
+                }
             }
             System.out.println("message: " + message);
             ServletContext sc = getServletContext();
@@ -107,16 +113,26 @@ public class HomeLoadServlet extends HttpServlet {
             
             String imgPath = getServletContext().getInitParameter("imgUpload");
             String[] imgUrls = new ResourcePaths(imgPath).getImgUrls();
-//            System.out.println(imgUrls[0]);
+            System.out.println(imgUrls[0]);
 
             request.setAttribute("blogList", blogList);
             request.setAttribute("memberList", memberList);
             request.setAttribute("user", message);
             request.setAttribute("gallery", imgUrls);   
+            
+            System.out.println("before send url");
+            getServletContext().getRequestDispatcher(url).forward(request, response);
+        } else if (action.equals("comment")) {
+            session = request.getSession();
+            sessionUser = (User)session.getAttribute("user");
+            
+            if (null == sessionUser) {
+                url = "/login.jsp";
+                System.out.println("in action comment");
+                getServletContext().getRequestDispatcher(url).forward(request, response);
+            }
         }
-        System.out.println("before send url");
-        getServletContext().getRequestDispatcher(url).forward(request, response);
-        
+  
     }
 
     /**
@@ -137,7 +153,11 @@ public class HomeLoadServlet extends HttpServlet {
         
         String action = request.getParameter("action");
         String url = "/index.jsp";
-        System.out.println("action = " + action);
+        
+        if (null == action) {
+            action = "adminEdit";
+        }
+        
         if (action.equals("login")) {
             url = "/login.jsp";
             getServletContext().getRequestDispatcher(url).forward(request, response);
@@ -157,10 +177,9 @@ public class HomeLoadServlet extends HttpServlet {
             
             if (User.UserType.ADMIN == u) {
                 url = "/administrator.jsp";
-                System.out.println("======================");
+                user.setAdmin(1);
                 session.setAttribute("user", user);
                 String message = "Hello, administrator! " + user.getUsername();
-
                 
                 ServletContext sc = getServletContext();
                 String blogFileName = sc.getRealPath("/WEB-INF/blogs/testBlog.xml");
@@ -170,13 +189,8 @@ public class HomeLoadServlet extends HttpServlet {
                 request.setAttribute("user", message);
             } else if (User.UserType.USER == u) {
                 url = "/index.jsp";
-                System.out.println("======================");
                 session.setAttribute("user", user);
-                
                 String message = "Hello, " + user.getUsername();
-                System.out.println(message);
-                //String message = "Hello, " + (User)session.getAttribute("user");
-                request.setAttribute("user", message);
                 System.out.println("before doGet");
                 this.doGet(request, response);
             } else {
@@ -187,7 +201,7 @@ public class HomeLoadServlet extends HttpServlet {
             getServletContext().getRequestDispatcher(url).forward(request, response);
             
         } else if (action.equals("userSignup")) {
-//            System.out.println("user is signning up");
+            System.out.println("user is signning up");
             String username = request.getParameter("username");
             String password = request.getParameter("password");
             String email = request.getParameter("email");
@@ -195,7 +209,7 @@ public class HomeLoadServlet extends HttpServlet {
             User user = new User(username, email, password, 0);
             
             if (UserDB.isEmailExist(user)) {
-//                System.out.println("Email already resgistered!");
+                System.out.println("Email already resgistered!");
                 url = "/login.jsp";
             } else {
                 UserDB.inserUser(user);
@@ -210,9 +224,20 @@ public class HomeLoadServlet extends HttpServlet {
             }
             
             getServletContext().getRequestDispatcher(url).forward(request, response);
+        } else if (action.equals("adminEdit")) {
+            url = "/administrator.jsp";
+            User sessionUser = (User)session.getAttribute("user");
+            String message = "Hello, administrator! " + sessionUser.getUsername();
+
+            ServletContext sc = getServletContext();
+            String blogFileName = sc.getRealPath("/WEB-INF/blogs/testBlog.xml");
+            List<Blog> blogList = BlogXML.xmlToBlogList(blogFileName);
+            request.setAttribute("blogList", blogList);
+            request.setAttribute("user", message);
+            
+            getServletContext().getRequestDispatcher(url).forward(request, response);
         }
-        
-        
+          
     }
 
     /**

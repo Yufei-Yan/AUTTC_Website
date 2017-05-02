@@ -46,7 +46,7 @@
          
          
         <div class="uploadblog">
-        <form id="uploadblog" action="blogUpload" method="post" enctype="multipart/form-data">
+        <form action="addBlog" method="post" id="uploadblog">
             Upload a blog<br>
 
             <div class="title">
@@ -57,8 +57,9 @@
             <div class="blog">
                 <p>Blog</p>
                 <textarea id="Body" name="body" rows="20" cols="80" ></textarea>
-                <button type="submit" value="submit" >submit</button>
             </div>
+            <input type="hidden" name="action" value="addBlog">
+            <input type="submit" value="Submit" >
         </form>
         </div>
         
