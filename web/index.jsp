@@ -74,7 +74,6 @@
             var ul = box.children[0].children[0];  
             var ulLis = ul.children; 
             ul.appendChild(ulLis[0].cloneNode(true));  
-
             var ol = box.children[1];
             for(var i=0;i<ulLis.length-1;i++) {  
                 var li = document.createElement("li");
@@ -103,28 +102,22 @@
                 console.log(key); 
                 if(key > ulLis.length - 1)
                 {
-
                     ul.style.left = 0;
                     key = 1; 
                 }
                 animate(ul,-key*ulLis[0].offsetWidth);
                 square++;  
                 square = square>olLis.length-1 ? 0 : square;
-
                 for(var i=0;i<olLis.length;i++) {
                     olLis[i].className = "";
                 }
                 olLis[square].className = "current";  
-
             }
-
             box.onmouseover = function() {
                 clearInterval(timer);
             }
-
             box.onmouseout = function() {
                 timer = setInterval(autoplay,2500); }
-
             function animate(obj,target) {
                 clearInterval(obj.timer);  
                 var speed = obj.offsetLeft < target ? 15 : -15;
@@ -137,7 +130,6 @@
                     }
                 },10);
             }
-
         }
     </script>
 
@@ -209,18 +201,16 @@ Malin Pettersson, a Swedish table tennis champion, went up against several pro t
                             <h2><span>Leave a</span> comment</h2><div class="clr"></div>
                             <form action="addComment" method="post" id="leavereply">
                             <ol><li>
-                                    
-                            <label for="message${blog.id}">Your Message</label><br/>
-                            <textarea id="message" name="message${blog.id}" rows="8" cols="50" border="1"></textarea>
+<!--                            <label for="name">Name (required)</label>
+                            <input id="name" name="name" class="text" />
                             </li><li>
-
                             <label for="email">Email Address (required)</label>
                             <input id="email" name="email" class="text" />
                             </li><li>
                             <label for="website">Website</label>
                             <input id="website" name="website" class="text" />
-                            </li><li>
-                            <label for="message">Your Message</label><br>
+                            </li><li>-->
+<label for="message">Your Message</label><br>
                             <textarea id="message" name="message" rows="8" cols="50" ></textarea>
                             </li><li>
                             <input type="image" name="commentBlog${blog.id}" id="imageField" src="images/icon/submit.gif" class="send" />
@@ -230,7 +220,7 @@ Malin Pettersson, a Swedish table tennis champion, went up against several pro t
                                 <!--<div id="h" style="display:none; font-weight: bold"> <a href="#" onclick="hide('c1','exmaple2','exmaple1')">  hide </a> </div>-->
                                 <div id="<%out.print(hDivID);%>" style="display:none; font-weight: bold"> <a href="javascript:void(0)" onclick="hide('<%out.print(responseDivID);%>','<%out.print(fullBodyDivID);%>','<%out.print(readMoreDivID);%>')">  hide </a> </div>
                             </div>
-                        </div>
+                        </div>          
                     </div> 
                         <%
                             count = count + 1;
@@ -307,8 +297,6 @@ Malin Pettersson, a Swedish table tennis champion, went up against several pro t
                 }
                 $("#four_flash .flashBg ul.mobile").stop().animate({left:-_index5*326},1000);
                 });
-
-
         $("#four_flash .but_left img").click(function(){
                 if(_index5==0){
                         $("ul.mobile").prepend($("ul.mobile").html());
