@@ -86,7 +86,7 @@ public class HomeLoadServlet extends HttpServlet {
             action = "homeLoad";
         }
         
-        if (action.equals("homeLoad") || action.equals("userLogin") || action.endsWith("logout")) {
+        if (action.equals("homeLoad") || action.equals("userLogin") || action.equals("logout") || action.equals("userSignup")) {
 
             String message;
             if (sessionUser == null) {
@@ -94,6 +94,7 @@ public class HomeLoadServlet extends HttpServlet {
                 message = "";
             } else {
                 message = "Hello, " + sessionUser.getUsername();
+                request.setAttribute("user", sessionUser.getUsername());
             }
             System.out.println("message: " + message);
             ServletContext sc = getServletContext();
@@ -111,7 +112,7 @@ public class HomeLoadServlet extends HttpServlet {
             request.setAttribute("blogList", blogList);
             request.setAttribute("memberList", memberList);
             request.setAttribute("user", message);
-            request.setAttribute("gallery", imgUrls);
+            request.setAttribute("gallery", imgUrls);   
         }
         System.out.println("before send url");
         getServletContext().getRequestDispatcher(url).forward(request, response);
@@ -159,7 +160,13 @@ public class HomeLoadServlet extends HttpServlet {
                 System.out.println("======================");
                 session.setAttribute("user", user);
                 String message = "Hello, administrator! " + user.getUsername();
-                System.out.println(message);
+
+                
+                ServletContext sc = getServletContext();
+                String blogFileName = sc.getRealPath("/WEB-INF/blogs/testBlog.xml");
+                List<Blog> blogList = BlogXML.xmlToBlogList(blogFileName);
+                request.setAttribute("blogList", blogList);
+
                 request.setAttribute("user", message);
             } else if (User.UserType.USER == u) {
                 url = "/index.jsp";
@@ -196,9 +203,10 @@ public class HomeLoadServlet extends HttpServlet {
                 session.setAttribute("user", user);
                 
                 System.out.println("new user created!");
-                url = "/index.jsp";
+                //url = "/index.jsp";
                 String message = "Hello, " + user.getUsername();
                 request.setAttribute("user", message);
+                this.doGet(request, response);
             }
             
             getServletContext().getRequestDispatcher(url).forward(request, response);

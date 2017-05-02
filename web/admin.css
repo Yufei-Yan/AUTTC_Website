@@ -52,3 +52,19 @@ a.rm, a.com { margin-left:8px; padding:9px 12px; background:url(images/style/a_b
 
 .uploadblog form p{text-align:left; float:left;  color:#212020; displaysplay:block; padding:0px 0 0 10px; font:normal 15px/1.2em Arial, Helvetica, sans-serif; letter-spacing:normal;}
 .uploadblog form input{top: 10 px; text-align:left; float:left;  color:#212020; displaysplay:block; padding:0px 0 0 10px; font:normal 12px/1.2em Arial, Helvetica, sans-serif; letter-spacing:normal;}
+
+.deleteblog{position: absolute; top:740px;left: 120px; }
+.deleteblog table {text-align:left; float:left;  color:#212020; displaysplay:block; padding:0px 0 0 10px; font:normal 20px/1.2em Arial, Helvetica, sans-serif; letter-spacing:normal;}
+
+
+ footer{
+        width: 100%;
+        height: 60px;
+        position: absolute;
+        display: block;
+        bottom: 0px;
+        overflow: hidden;
+        borderTop: 1px solid;
+        borderBottomLeftRadius: 4px;
+        borderBottomRightRadius: 4px;
+ }
