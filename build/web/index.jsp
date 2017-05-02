@@ -37,34 +37,23 @@
         </div>
         
         <h2><small>${user}<small></h2>
-        <form action="homeLoad" method="post" id="loginButton" >
+        <form action="homeLoad" method="post" class="loginButton" style="position: absolute; right:270px; top: 110px" >
             <input type="hidden" name="action" value="login" id="loginHidden"/> 
             <input type="submit" value="Login" id="submitButton"/> 
         </form>    
+        
+        <!-- Edit button for admin -->
+        <form action="homeLoad" method="post" id="editButton" style="position: absolute; right:170px; top: 110px">
+            <input type="hidden" name="aciton" value="adminEdit" />
+            <p style="display:none">${admin}</p>
+            <input type="submit" value="Edit" id="adminEdit" style="display:none"/> 
+        </form> 
+        
   <div class="clr"></div>        
   <div class="clr"></div>        
   <div class="clr"></div>        
-        <!-- 
-        gallery: 
-        ${gallery}  an array of image url
-        -->
-                <!-- Gallery -->
-    <style type="text/css">
-        *{ padding:0; margin:0; list-style:none;}
-        .all{ width: 600px; height: 370px; padding: 7px; border: 1px solid #2D2D2D; margin: 50px auto; position: relative; }
-        .screen{
-                width:600px;
-                height:370px;
-                 overflow:hidden; 
-                position:relative;
-        }
-        .screen li{ width:600px; height:370px; overflow:hidden; float:left;}
-        .screen ul{ position:absolute; left:0; top:0px; width:3000px;}
-        .all ol{ position:absolute; right:10px; bottom:10px; line-height:20px; text-align:center;}
-        .all ol li{ float: left; width: 15px; height: 15px; background: #fff;  margin-left: 5px; cursor: pointer; font-size: 10px; font-family: Verdana; line-height: 15px; border-radius: 15px; }
-        .all ol li.current{ background:yellow;}
-    </style>
-    
+
+  <!-- Gallery -->
     <script type="text/javascript">
         window.onload= function() {
             
@@ -74,6 +63,11 @@
             } else {
                 document.getElementById("submitButton").value = "Logout";
                 document.getElementById("loginHidden").value = "logout";
+            }
+            
+            //check if user is admin
+            if ('${admin}'.includes("Yes")) {
+                document.getElementById("adminEdit").style.display = "";
             }
             
             var box  = document.getElementById("all");  
@@ -162,41 +156,9 @@
         </ol>
     </div>
 
-        <!-- Gallery -->
-       <!--<div id="gallery" style="display:block; font-weight: bold">
-        <ul id="horiz_container_outer">
-		<li id="horiz_container_inner">
-			<ul id="horiz_container">
-                          <%--  <c:forEach var="item" items='${gallery}'>
-                                <li>
-                                   <img src="${item}" width="500px" height="300px" alt="Toy Story" />
-                                   <p>${item}</p>
-                                </li>
-                            </c:forEach> --%>
-			</ul>
-		</li>		
-	</ul>			
-						
-	<div id="scrollbar">
-		<a id="left_scroll" class="mouseover_left" href="#"></a>
-		<div id="track">
-		     <div id="dragBar"></div>
-		</div>
-		<a id="right_scroll" class="mouseover_right" href="#"></a></div>
-	</div>
-       
-        <!--
-        blog: 
-            for each blog: ${blog}
-            <p name="title"> ${blog.title}
-            <p name="date">${blog.date}
-            ...
-            ...
-            ...
-                <input type="submit" value="Comment" aciton="checkUser">${comment}
-        -->
         
-<div id="blog" style="display:block; font-weight: bold">
+   <!-- Blog -->
+    <div id="blog" style="display:block; font-weight: bold">
 
     <div class="blog">   
         <div class="content">
@@ -210,6 +172,7 @@
                             String readMoreDivID = "readMore" + Integer.toString(count);
                             String fullBodyDivID = "fullBody" + Integer.toString(count);
                             String responseDivID = "response" + Integer.toString(count);
+                            String commentsID = "comments" + Integer.toString(count);
                             String hDivID = "h" + Integer.toString(count);
                         %>
                     <div class="article">
@@ -219,12 +182,16 @@
                             <p>Posted on ${blog.date}</p>
                             <p>${blog.body}</p>  
                         <!--<div id="exmaple1" style="display:block; font-weight: bold"> <a href="#" onclick="show('exmaple1','exmaple2')">  read more </a></div>-->
-                        <div id="<%out.print(readMoreDivID);%>" style="display:block; font-weight: bold"> <a href="#" onclick="show('<%out.print(readMoreDivID);%>','<%out.print(fullBodyDivID);%>')">  read more </a></div>
+                        <div id="<%out.print(readMoreDivID);%>" style="display:block; font-weight: bold"> <a href="javascript:void(0)" onclick="show('<%out.print(readMoreDivID);%>','<%out.print(fullBodyDivID);%>')">  read more </a></div>
                         <!--<div id="exmaple2" style="display:none;">-->
                         <div id="<%out.print(fullBodyDivID);%>" style="display:none;">
-                            Maecenas dignissim mauris in arcu congue tincidunt. Vestibulum elit  nunc, accumsan vitae faucibus vel, scelerisque a quam. Aenean at metus id elit bibendum faucibus. Curabitur ultrices ante nec neque consectetur a aliquet libero lobortis. Ut nibh sem, pellentesque in dictum eu, convallis blandit erat. Cras vehicula tellus nec purus sagittis id scelerisque risus congue. Quisque sed semper massa. Donec id lacus mauris, vitae pretium risus. Fusce sed tempor erat. 
+                            With his fluid, rhythmic strokes, it is clear that Sam Querrey has a knack for table tennis. But when he hits a backhand with two hands, as he does on the tennis court, it becomes obvious that it is not his sport of choice.
+Querrey, ranked 38th in the world, was one of the many United States Open players who attended a pretournament party hosted by the agency Lagardère Unlimited at SPiN, a restaurant and bar on 23rd Street that bills itself as a Ping-Pong social club. Querrey, who grew up with a table in his house, matched up well with other tennis players and with nonathletes, but he could do little when facing the professional table tennis players at the party.
+“I can’t win a point off of them,” he said. “They hit it with spin, and when it hits my paddle, I can’t control where it goes. So I don’t even know what they do.”
+Malin Pettersson, a Swedish table tennis champion, went up against several pro tennis players at the party, and she had previously played Rafael Nadal. Though she and Nadal rallied at a friendly pace, Pettersson could tell that the slightest infusion of spin from her paddle immediately dismantled his play.
+
                             <!--<div><a href="#" onclick="show1('c1','h')"> <strong>Comments (3)</strong> </a>   <span>&nbsp;&bull;&nbsp;</span>  May 27, 2010  <span>&nbsp;&bull;&nbsp;</span>  <a href="#"><strong>Edit</strong></a></div>-->
-                            <div><a href="#" onclick="show1('<%out.print(responseDivID);%>','<%out.print(hDivID);%>')"> <strong>Comments (3)</strong> </a>   <span>&nbsp;&bull;&nbsp;</span>  May 27, 2010  <span>&nbsp;&bull;&nbsp;</span>  <a href="#"><strong>Edit</strong></a></div>
+                            <div><a href="javascript:void(0)" onclick="show1('<%out.print(responseDivID);%>','<%out.print(hDivID);%>', '<%out.print(commentsID);%>')" id="<%out.print(commentsID);%>"> <strong>Comments (3)</strong> </a>   <span>&nbsp;&bull;&nbsp;</span>  May 27, 2010  </div>
                         </div>
 
                         <!--<div id="c1" style="display:none; font-weight: bold">-->
@@ -233,7 +200,7 @@
                                 <h2><span>3</span> Responses</h2><div class="clr"></div>
                                 <c:forEach var="comment" items="${blog.commentList}">
                                     <div class="comment">
-                                    <p><a href="#">${comment.username}</a> ${comment.cdate}</p>
+                                    <p><a href="javascript:void(0)">${comment.username}</a> ${comment.cdate}</p>
                                     <p>${comment.cbody}</p>
                                     </div>
                                 </c:forEach>
@@ -246,13 +213,22 @@
                             <label for="message${blog.id}">Your Message</label><br/>
                             <textarea id="message" name="message${blog.id}" rows="8" cols="50" border="1"></textarea>
                             </li><li>
-                                <!--<input type="image" name="commentBlog${blog.id}" id="imageField" src="images/icon/submit.gif" class="send" />-->
-                                <input type="submit" name="commentBlog${blog.id}" id="imageField" value="submit" />
+
+                            <label for="email">Email Address (required)</label>
+                            <input id="email" name="email" class="text" />
+                            </li><li>
+                            <label for="website">Website</label>
+                            <input id="website" name="website" class="text" />
+                            </li><li>
+                            <label for="message">Your Message</label><br>
+                            <textarea id="message" name="message" rows="8" cols="50" ></textarea>
+                            </li><li>
+                            <input type="image" name="commentBlog${blog.id}" id="imageField" src="images/icon/submit.gif" class="send" />
                                 <div class="clr"></div>
                             </li></ol>
                             </form>
                                 <!--<div id="h" style="display:none; font-weight: bold"> <a href="#" onclick="hide('c1','exmaple2','exmaple1')">  hide </a> </div>-->
-                                <div id="<%out.print(hDivID);%>" style="display:none; font-weight: bold"> <a href="#" onclick="hide('<%out.print(responseDivID);%>','<%out.print(fullBodyDivID);%>','<%out.print(readMoreDivID);%>')">  hide </a> </div>
+                                <div id="<%out.print(hDivID);%>" style="display:none; font-weight: bold"> <a href="javascript:void(0)" onclick="hide('<%out.print(responseDivID);%>','<%out.print(fullBodyDivID);%>','<%out.print(readMoreDivID);%>')">  hide </a> </div>
                             </div>
                         </div>
                     </div> 
@@ -271,9 +247,13 @@
             </script>
 
             <script>
-             function show1(ele1,ele2){
-                 document.getElementById(ele1).style.display = 'block';   
-                 document.getElementById(ele2).style.display = 'block'; 
+             function show1(ele1, ele2, ele3){
+                 if ('${user}' === "") {
+                     document.getElementById(ele3).href = "./login.jsp";
+                 } else {
+                    document.getElementById(ele1).style.display = 'block';   
+                    document.getElementById(ele2).style.display = 'block'; 
+                 }
             }
             </script>
 
@@ -340,6 +320,7 @@
                 });
     </script>
   </div>
+        
   <!--About-->
    <div id="about" style="display:none; font-weight: bold">
         <div class="content">
@@ -349,29 +330,25 @@
         <p align="center" class="bodytextheading">
         <span class="style2">ABOUT US</span></p>
                         <p align="justify" class="bodytextheading">                        </p>
-                        <p align="justify">                                OUR-LIBRARY c.p. is one of the most prestigious LIBRARYs in India. Founded as a Public LIBRARY in 1972 in New Delhi, it is a private institution run by the Delhi Public LIBRARY Society.</p>
-                              <p align="justify"> OUR-LIBRARY, c.p. is affiliated to the Central Board of LIBRARY (CBB), which is the largest educational board in the country. It is recognized by the Department of Education, Govt. of NCT Delhi and the Ministry of HRD, Govt. of India. Over 5000 LIBRARYs in India, with over 80,000 students, are members of the Board. </p>
-                              <p align="justify">                                The LIBRARY is also affiliated to the Indian Public LIBRARYs' Conference (IPSC), and the National Progressive LIBRARYs' Conference (NPSC). The members of these organisations include some of the premier LIBRARYs in the country.</p>
-                              <p align="justify"> Life at DPSRKP centres on a shared commitment to academic excellence, intellectual growth, art, athletics, high standards of ethical awareness, sportsmanship, and community service. The LIBRARY's traditions and accessibility to a broad curriculum add depth to each student&rsquo;s life.<br>
-                                The LIBRARY upholds the founders' commitment to excellence in all fields, with emphasis on its motto Service Before Self.<br>
+                        <p align="justify">                                The Table Tennis Club is part of the AUTTC (Auburn University Table Tennis Club). We are devoted to providing an environment in which members can play both competitively and recreationally.</p>
+                              <p align="justify"> The club offers quality coaching to its members under the guidance of Coach Liang Liung and Coach Carlos Espinoza-Toro. Both are certified Table Tennis coaches. Coach Liang handles the training of club members while Coach Carlos handles the training of the intercollegiate team. They are assisted by Coach Alex Landsman.</p>
+                              <p align="justify">                                The club offers members 14 quality Butterfly Europa Tables that are in very good condition. In addition, a large number of balls and rackets are available for practice although we do encourage members to bring their own rackets to practice. The club also has a 'Robo Pong' robot to help with team practice sessions.</p>
+                              <p align="justify"> The AUTTC team has done very well at the divisional level over the last couple of years, coming in at 3rd place both years. Team practices are held three times a week and consist of various drills and excercises along with 'one on one' coaching with our team coach Carlos. The club has open practice sessions twice a week which we encourage members to take advantage of. A full schedule can be found here.<br>
                                 </p>
-                              <p align="justify" class="bodytextheading">LIBRARY Profile</p>
-                              <p align="justify"> OUR-LIBRARY, c.p. is a co-educational day-cum-boarding LIBRARY, with approximately 9,500 coustemer on its rolls. These children, in the Junior and Senior branches, study in the three different campuses at East of Kailash, Vasant Vihar and c.p.</p>
-                              <p align="justify"> The LIBRARY is among the most distinguished members of the Ravi Public LIBRARY, c.p.. It is a path breaker in the pursuit of excellence. Its endeavour of integrating quality with quantity is reflected in the pivotal role it has played in the setting up of DPS Vasant Kunj, DPS Faridabad and DPS Manali at the national level. It has also promoted three LIBRARYs abroad in Kuwait, Nepal and Indonesia. As their Linking LIBRARY it also co-ordinates their activities. </p>
-                              <p align="justify"> The LIBRARY has also extended its expertise further and in collaboration with the Government of Haryana, has taken up 3 LIBRARYs in the under-privileged area of Mewat, to augment and enhance their standards and make them more conducive to teaming.</p>
-                              <p align="justify"> The LIBRARY considers education to be a life-long process which should have a strong foundation. The goal of the LIBRARY is to inculcate in the coustemer a love for learning and a desire to excel at every level. The LIBRARY also aims at equipping the coustemer with the intellectual and practical skills that are necessary to meet the challenges in the future.</p>
-                              <p align="justify"> To sum up, the mission of  OUR-LIBRARY, c.p. &quot;to open doors and open minds&quot; and prepare the ground for the future of the nation.</p>
-                              <p align="justify" class="bodytextheading"> Our Culture</p>
-                              <p align="justify"> In the portals of  OUR-LIBRARY, c.p., c.p. coustemer discover their own talents, and get an opportunity to develop them to the fullest. The LIBRARY provides an invigorating and competitive atmosphere, created by excellent facilities and guidance provided by a highly qualified and dedicated faculty.</p>
-                              <p align="justify"> The values, which are ingrained help to promote confidence, direction, and critical thinking skills, leading to the development of well-adjusted, adaptable and integrated personalities. In other words,  OUR-LIBRARY, c.p. offers comprehensive and holistic education.</p>
-                              <p align="justify"> Besides being committed to academic excellence and providing education for all round development, another special characteristic of DPS R.K. Puram is the appreciation of the worth of the each student. The LIBRARY is equally committed to the under-represented and less-privileged segments of the population, such as gifted applicants whose parents could not attend LIBRARY, and children with high potential facing difficult financial circumstances.</p>
-                              <p align="justify"> A major landmark development has been the inclusion of the physically and mentally handicapped children into the mainstream of LIBRARY life. This  contributes to a strong sense of community life, so characteristic of the LIBRARY. In other words, children belonging to every strata of society are given the opportunity to study here. The LIBRARY, does not in any way, discriminate on the basis of race, colour, religion, sex, caste or creed, in the implementation of its admission policy.</p>
-                              <p align="justify"> These qualities have placed  OUR-LIBRARY, c.p. on the forefront. There has been a continuity of purpose, underlying the change and growth of the LIBRARY. Over the years,  OUR-LIBRARY, c.p. has steadily reflected a spirit of innovation in response to need, and has broadened its educational mission, by creating an academic environment that fosters close association and the exchange of ideas with some of the top LIBRARYs in the nation and the world.</p>
-                              <p align="justify"> Its membership with the IPSC  has brought it into regular interaction with LIBRARYs of national standing such as Mayo College, Ajmer; Scindia LIBRARY, Gwalior; The Doon LIBRARY, Dehradun; Bishop Cotton, Simla Hills; St. Xavier's and La-Martiniere at Calcutta; which has further inculcated a healthy spirit of competition and strong bonds of brotherhood, conducive to national integration.</p>
-                              <p align="justify"> All the academic programs and activities at  OUR-LIBRARY, c.p. work towards one purpose - to help coustemer develop lives of significance for themselves and for others, true to the traditions of the LIBRARY Motto &quot;Service Before Self&quot;.</p>
+                              <p align="justify" class="bodytextheading">AUTTC Profile</p>
+                              <p align="justify"> The club offers members 14 quality Butterfly Europa Tables that are in very good condition. In addition, a large number of balls and rackets are available for practice although we do encourage members to bring their own rackets to practice. The club also has a 'Robo Pong' robot to help with team practice sessions.</p>
+                              <p align="justify"> In addition, the club holds two large tournaments every year that are open to the general public. We encourage all those interested in playing competitively to register for these tournaments. Information regarding upcoming tournaments can be found here.</p>
+                              <p align="justify" class="bodytextheading"> Our History</p>
+                              <p align="justify"> The sport originated in Victorian England, where it was played among the upper-class as an after-dinner parlour game. It has been suggested that makeshift versions of the game were developed by British military officers in India in around 1860s or 1870s, who brought it back with them. A row of books stood up along the center of the table as a net, two more books served as rackets and were used to continuously hit a golf-ball.</p>
+                              <p align="justify"> The values, which are ingrained help to promote confidence, direction, and critical thinking skills, leading to the development of well-adjusted, adaptable and integrated personalities. In other words, c.p. offers comprehensive and holistic education.</p>
+                              <p align="justify"> Besides being committed to academic excellence and providing education for all round development, another special characteristic of DPS R.K. Puram is the appreciation of the worth of the each student. The AUTTC is equally committed to the under-represented and less-privileged segments of the population, such as gifted applicants whose parents could not attend , and children with high potential facing difficult financial circumstances.</p>
+                              <p align="justify"> A major landmark development has been the inclusion of the physically and mentally handicapped children into the mainstream of life. This  contributes to a strong sense of community life, so characteristic. In other words, children belonging to every strata of society are given the opportunity to study here. The club, does not in any way, discriminate on the basis of race, colour, religion, sex, caste or creed, in the implementation of its admission policy.</p>
+                              <p align="justify"> These qualities have placed. on the forefront. There has been a continuity of purpose, underlying the change and growth. Over the years. has steadily reflected a spirit of innovation in response to need, and has broadened its educational mission, by creating an academic environment that fosters close association and the exchange of ideas with some of the top in the nation and the world.</p>
+                              <p align="justify"> Its membership with the IPSC  has brought it into regular interaction of national standing; which has further inculcated a healthy spirit of competition and strong bonds of brotherhood, conducive to national integration.</p>
+                              <p align="justify"> All the academic programs and activities, c.p. work towards one purpose - to help coustemer develop lives of significance for themselves and for others, true to the traditions of the &quot;Service Before Self&quot;.</p>
         </div>
         </div>
-  <table width="100%"  border="0" cellspacing="7" cellpadding="0">
+<!--  <table width="100%"  border="0" cellspacing="7" cellpadding="0">
         <tr>
           <td><div align="center"><span class="bottombar"><strong>&copy; AUTTC, Auburn, AL 36830. All Rights Reserved. </strong></span></div></td>
         </tr>
@@ -379,7 +356,7 @@
           <td>
 <div align="center"> </div></td>
         </tr>
-      </table>                            
+      </table> -->                            
   </div>
   </div>
   </div>
@@ -393,6 +370,25 @@
     }
     </script>
     
+    <!-- footer -->
+        <table width="100%"  border="0" cellspacing="7" cellpadding="0">
+        <tr>
+            <td><div align="center"><span class="bottombar"><strong>&copy; Authors: Yufei Yan; Chengyu Tang; Yang Zhao; Ziyan Tian. </strong></span></div></td>
+        </tr>
+        <tr> 
+          <td>
+<div align="center"> </div></td>
+        </tr>
+      </table>  
+  <table width="100%"  border="0" cellspacing="7" cellpadding="0">
+        <tr>
+          <td><div align="center"><span class="bottombar"><strong>&copy; AUTTC, Auburn, AL 36830. All Rights Reserved. </strong></span></div></td>
+        </tr>
+        <tr> 
+          <td>
+<div align="center"> </div></td>
+        </tr>
+      </table>
 
     </body>
 </html>

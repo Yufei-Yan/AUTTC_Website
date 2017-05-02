@@ -24,21 +24,33 @@
             <div class="menu_nav">
                 <ul>
                 <li class="active"><a href="homeLoad?action=homeLoad">Home</a></li>
-                <li><a href="about.html">Blog</a></li>
-                <li><a href="blog.html">Members</a></li>
-                <li class="last"><a href="contact.html">About</a></li>
+                <li><a id="blogLink" href="blog.html" onclick="delLink(blogLink)">Blog</a></li>
+                <li><a id="memberLink" href="member.html" onclick="delLink(memberLink)">Members</a></li>
+                <li class="last"><a id="aboutLink" href="about.html" onclick="delLink(aboutLink)">About</a></li>
                 </ul>
             </div>        
             </div>
         </div>
         </div>
+        
+        <script>
+             function delLink(link) { 
+                 link.disabled = true; 
+                 link.setAttribute("disabled",true); 
+                 link.removeAttribute('href'); 
+             }
+        </script>
 
         <h2><small>${user}</small></h2>
+        
+        <form action="" method="" class="logoutButton" style="position: absolute; right:270px; top: 110px" >
+            <input type="submit" name="" value="logout" id="logout"/> 
+        </form>  
 
         <div class="uploadpicture">
         <form id="uploadpic" action="imgUpload" method="post" enctype="multipart/form-data">
             Upload a picture<br>
-            Choose a file to upload:<br>
+            <p>Choose a file to upload:</p><br>
             <input type="file" name="file" />
             <input type="submit" value="Upload" />
         </form>
@@ -49,22 +61,25 @@
         <form action="addBlog" method="post" id="uploadblog">
             Upload a blog<br>
 
-            <div class="title">
+            <div class="blogtitle">
                 <p>Title</p>
-                <input id="Title" name="title" class="text" />
+                <input id="Title" name="title" class="text" style="position: absolute; left:60px; top: 33px;"  />
             </div>
 
-            <div class="blog">
-                <p>Blog</p>
-                <textarea id="Body" name="body" rows="20" cols="80" ></textarea>
+
+            <div class="blogbody">
+                <p style="position: absolute; left:10px; top: 50px;">Blog</p>
+                <textarea id="Body" name="body" rows="20" cols="80" style="position: absolute; left:60px; top: 60px;"></textarea>
+                <button type="submit" value="submit" style="position: absolute; left:460px; top: 30px;">submit</button>
             </div>
             <input type="hidden" name="action" value="addBlog">
             <input type="submit" value="Submit" >
         </form>
         </div>
-        
+              
        <div class="deleteblog">
-         <table>
+           <p>Delete blog</p><br/>
+         <table border="1">
              <tr>
                  <td>Blog Title</td>
                  <td>Action</td>

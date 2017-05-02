@@ -48,9 +48,10 @@
                 <p><input type="text" name="login" value="" placeholder="Username"></p>
                 <p><input type="password" name="password" value="" placeholder="Password"></p>
                 <p class="submit"><input type="submit" name="commit" value="Login"></p>
+                <span id="msg">${userdb}</span>
             </form>
             </div>
-        </div>>
+        </div>
             
         <div class="signup_container">
             <div class="signup">
@@ -58,28 +59,31 @@
             <form method="post" action="homeLoad">
                 <input type="hidden" name="action" value="userSignup" />
                 <p><input type="text" name="username" value="" placeholder="Username"></p>
-                <p><input type="text" name="email" value="" placeholder="Email"></p>
+                <p><input type="email" name="email" value="" placeholder="Email"></p>
                 <p><input type="password" name="password" value="" placeholder="Password"></p>
                 <p class="submit"><input type="submit" name="commit" value="Sign up"></p>
             </form>
             </div>
         </div>
-  <!--
-        <div id="cssTabs">
-            <div id="tab1" class="uiTab">
-                <h3 class="tabHead">Header for Tab1</h3
-                <div class="tabContent">Content for Tab1</div>
-           </div>
-           <div id="tab2" class="uiTab">
-                <h3 class="tabHead">Header for Tab2</h3>
-                <div class="tabContent">Content for Tab2</div>
-           </div>										 
-           <div id="tab3" class="uiTab">
-                <h3 class="tabHead">Header for Tab3</h3>
-                <div class="tabContent">Content for Tab3</div>
-           </div>
-        </div>
-  -->
+        
+<table width="100%"  border="0" cellspacing="7" cellpadding="0">
+        <tr>
+            <td><div align="center"><span class="bottombar"><strong>&copy; Authors: Yufei Yan; Chengyu Tang; Yang Zhao; Ziyan Tian. </strong></span></div></td>
+        </tr>
+        <tr> 
+          <td>
+<div align="center"> </div></td>
+        </tr>
+      </table>  
+  <table width="100%"  border="0" cellspacing="7" cellpadding="0">
+        <tr>
+          <td><div align="center"><span class="bottombar"><strong>&copy; AUTTC, Auburn, AL 36830. All Rights Reserved. </strong></span></div></td>
+        </tr>
+        <tr> 
+          <td>
+<div align="center"> </div></td>
+        </tr>
+      </table>
 
 
     </body>

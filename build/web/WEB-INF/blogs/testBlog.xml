@@ -2,11 +2,12 @@
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
---><blogs>
+-->
+<blogs>
     <blog id="101">
-        <title>Welcome to AUTTC</title>
+        <title>With a Paddle, Tennis Stars Find They’re Up the Creek</title>
         <date>04/01/2017</date>
-        <body>This is the first blog of Auburn University Table Tennis Club!</body>
+        <body>With his fluid, rhythmic strokes, it is clear that Sam Querrey has a knack for table tennis. But when he hits a backhand with two hands, as he does on the tennis court, it becomes obvious that it is not his sport of choice.</body>
         <comments>
             <comment>
                 <username>Yufei</username>
@@ -26,16 +27,20 @@ and open the template in the editor.
         </comments>
     </blog>
     <blog id="102">
-        <title>Second Blog</title>
+        <title>The Time an 11-Year-Old Took Down Nadal</title>
         <date>04/03/2017</date>
-        <body>This is the second blog of Auburn University Table Tennis Club!</body>
+        <body>“I remember I smashed one,” she said. “He looked really surprised. I mean, he’s not bad, you know.” Later, in a conversation about other well-known people she has faced, she upgraded that assessment, saying he was “somewhat good.”
+
+There are tennis fans who might not even say that about him after the year he has had. He is seeded eighth in the Open, which begins on Monday (Estee’s 14th birthday, by coincidence). She will be watching from the stands — and remembering what ran through her mind as she prepared to face off against him.
+
+“I wouldn’t say I was nervous because I was pretty confident I was better,” she said. “He couldn’t do a two-handed backhand like he does in tennis. I mean, I do play some tennis” — she said this with a knowing inflection, as if to convey the idea that she has had personal experience with tennis rackets, not just Ping-Pong paddles — “but I’m not that good.”</body>
         <comments>
         </comments>
     </blog>
     <blog id="103">
-        <title>Third Blog</title>
+        <title>The Chalk Table</title>
         <date>04/12/2017</date>
-        <body>This is the third blog of AUTTC</body>
+        <body>The Chalk table was created by Aruliden, a New York design firm, with the sportswear company Puma, to look at home in a modern interior — so table tennis doesn’t have to be relegated to the basement. “We’ve been working with Puma on recreating iconic elements of after-hours sports,” said Rinat Aruh, a founder of Aruliden. “Everyone always does things for basketball and baseball, but there’s so much love for Ping-Pong.”</body>
         <comments>
             <comment>
                 <username>Ziyan</username>
@@ -49,4 +54,4 @@ and open the template in the editor.
             </comment>
         </comments>
     </blog>
-<blog id="104"><title>newest test blog</title><date>/05/02/2017</date><body>qwqwqwqwqw</body><comments/></blog><blog id="105"><title>asdsadsadsadsad</title><date>/05/02/2017</date><body>111111111111111111111</body><comments/></blog></blogs>
+</blogs>

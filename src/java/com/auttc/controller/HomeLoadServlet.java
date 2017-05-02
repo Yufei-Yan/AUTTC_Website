@@ -196,6 +196,8 @@ public class HomeLoadServlet extends HttpServlet {
             } else {
                 //username and password not mathch
                 url = "/login.jsp";
+                System.out.println("username password not match");
+                request.setAttribute("userdb", "username and password must match.!");
             }
 
             getServletContext().getRequestDispatcher(url).forward(request, response);

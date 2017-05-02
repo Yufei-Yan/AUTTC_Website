@@ -40,58 +40,22 @@ a.rm, a.com { margin-left:8px; padding:9px 12px; background:url(images/style/a_b
 .menu_nav ul li.active a, .menu_nav ul li a:hover { color:#fdfdfd; text-decoration:underline;}
 .menu_nav ul li.last a { border:0;}
 
-input[type=checkbox],
-input[type=radio] {
-border: 1px solid #c0c0c0;
-margin: 0 0.1em 0 0;
-padding: 0;
-font-size: 16px;
-line-height: 1em;
-width: 1.25em;
-height: 1.25em;
-background: #fff;
-background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ededed), to(#fbfbfb));
-
--webkit-appearance: none;
--webkit-box-shadow: 1px 1px 1px #fff;
--webkit-border-radius: 0.25em;
-vertical-align: text-top;
-display: inline-block;
-
+/* gallery */
+*{ padding:0; margin:0; list-style:none;}
+.all{ width: 600px; height: 370px; padding: 7px; border: 1px solid #2D2D2D; margin: 50px auto; position: relative; }
+.screen{
+        width:600px;
+        height:370px;
+         overflow:hidden; 
+        position:relative;
 }
+.screen li{ width:600px; height:370px; overflow:hidden; float:left;}
+.screen ul{ position:absolute; left:0; top:0px; width:3000px;}
+.all ol{ position:absolute; right:10px; bottom:10px; line-height:20px; text-align:center;}
+.all ol li{ float: left; width: 15px; height: 15px; background: #fff;  margin-left: 5px; cursor: pointer; font-size: 10px; font-family: Verdana; line-height: 15px; border-radius: 15px; }
+.all ol li.current{ background:yellow;}
 
-input[type=radio] {
--webkit-border-radius: 2em; /* Make radios round */
-}
-
-input[type=checkbox]:checked::after {
-content:"âœ”";
-display:block;
-text-align: center;
-font-size: 16px;
-height: 16px;
-line-height: 18px;
-}
-
-input[type=radio]:checked::after {
-content:"â—";
-display:block;
-height: 16px;
-line-height: 15px;
-font-size: 20px;
-text-align: center;
-}
-
-select {
-border: 1px solid #D0D0D0;
-background: url(images/login/select.png) no-repeat right center, -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fbfbfb), to(#ededed));
-background: -moz-linear-gradient(19% 75% 90deg,#ededed, #fbfbfb);
--webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
--moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
--webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-color: #444;
-}
-
+/* login in */
 .login_container {
   margin: 50px auto;
   width: 640px;
@@ -151,12 +115,11 @@ color: #444;
   width: 278px;
 }
 
-
-
 .login p.submit {
   text-align: right;
 }
 
+/* sign up */
 .signup_container {
   margin: 50px auto;
   width: 640px;
@@ -212,7 +175,7 @@ color: #444;
   margin-top: 0;
 }
 
-.signup input[type=text], .login input[type=password] {
+.signup input[type=text], .signup input[type=email], .login input[type=password] {
   width: 278px;
 }
 
@@ -237,7 +200,7 @@ input {
   font-size: 14px;
 }
 
-input[type=text], input[type=password] {
+input[type=text], input[type=password], input[type=email] {
   margin: 5px;
   padding: 0 10px;
   width: 200px;
@@ -253,7 +216,7 @@ input[type=text], input[type=password] {
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.12);
 }
 
-input[type=text]:focus, input[type=password]:focus {
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus {
   border-color: #7dc9e2;
   outline-color: #dceefc;
   outline-offset: 0;
@@ -289,10 +252,11 @@ input[type=submit]:active {
   box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
 }
 
-.lt-ie9 input[type=text], .lt-ie9 input[type=password] {
+.lt-ie9 input[type=text], .lt-ie9 input[type=password], .lt-ie9 input[type=email]{
   line-height: 34px;
 }
 
+/* teammates gallery */
 
 .Teammate{background:url(../images/teammategallery/dy_pic11.jpg);}
 .Teammate .students{margin:0 auto;width:1100px;height:480px;position:relative;}
