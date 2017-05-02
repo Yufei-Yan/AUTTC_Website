@@ -114,10 +114,20 @@ public class HomeLoadServlet extends HttpServlet {
             request.setAttribute("memberList", memberList);
             request.setAttribute("user", message);
             request.setAttribute("gallery", imgUrls);   
+            
+            System.out.println("before send url");
+            getServletContext().getRequestDispatcher(url).forward(request, response);
+        } else if (action.equals("comment")) {
+            session = request.getSession();
+            sessionUser = (User)session.getAttribute("user");
+            
+            if (null == sessionUser) {
+                url = "/login.jsp";
+                System.out.println("in action comment");
+                getServletContext().getRequestDispatcher(url).forward(request, response);
+            }
         }
-        System.out.println("before send url");
-        getServletContext().getRequestDispatcher(url).forward(request, response);
-        
+  
     }
 
     /**
@@ -206,9 +216,8 @@ public class HomeLoadServlet extends HttpServlet {
             }
             
             getServletContext().getRequestDispatcher(url).forward(request, response);
-        }
-        
-        
+        } 
+          
     }
 
     /**

@@ -210,6 +210,7 @@
                             String readMoreDivID = "readMore" + Integer.toString(count);
                             String fullBodyDivID = "fullBody" + Integer.toString(count);
                             String responseDivID = "response" + Integer.toString(count);
+                            String commentsID = "comments" + Integer.toString(count);
                             String hDivID = "h" + Integer.toString(count);
                         %>
                     <div class="article">
@@ -228,7 +229,7 @@ Querrey, ranked 38th in the world, was one of the many United States Open player
 Malin Pettersson, a Swedish table tennis champion, went up against several pro tennis players at the party, and she had previously played Rafael Nadal. Though she and Nadal rallied at a friendly pace, Pettersson could tell that the slightest infusion of spin from her paddle immediately dismantled his play.
 
                             <!--<div><a href="#" onclick="show1('c1','h')"> <strong>Comments (3)</strong> </a>   <span>&nbsp;&bull;&nbsp;</span>  May 27, 2010  <span>&nbsp;&bull;&nbsp;</span>  <a href="#"><strong>Edit</strong></a></div>-->
-                            <div><a href="javascript:void(0)" onclick="show1('<%out.print(responseDivID);%>','<%out.print(hDivID);%>')"> <strong>Comments (3)</strong> </a>   <span>&nbsp;&bull;&nbsp;</span>  May 27, 2010  </div>
+                            <div><a href="javascript:void(0)" onclick="show1('<%out.print(responseDivID);%>','<%out.print(hDivID);%>', '<%out.print(commentsID);%>')" id="<%out.print(commentsID);%>"> <strong>Comments (3)</strong> </a>   <span>&nbsp;&bull;&nbsp;</span>  May 27, 2010  </div>
                         </div>
 
                         <!--<div id="c1" style="display:none; font-weight: bold">-->
@@ -282,9 +283,13 @@ Malin Pettersson, a Swedish table tennis champion, went up against several pro t
             </script>
 
             <script>
-             function show1(ele1,ele2){
-                 document.getElementById(ele1).style.display = 'block';   
-                 document.getElementById(ele2).style.display = 'block'; 
+             function show1(ele1, ele2, ele3){
+                 if ('${user}' === "") {
+                     document.getElementById(ele3).href = "./login.jsp";
+                 } else {
+                    document.getElementById(ele1).style.display = 'block';   
+                    document.getElementById(ele2).style.display = 'block'; 
+                 }
             }
             </script>
 
