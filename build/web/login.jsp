@@ -62,6 +62,7 @@
                 <p><input type="email" name="email" value="" placeholder="Email"></p>
                 <p><input type="password" name="password" value="" placeholder="Password"></p>
                 <p class="submit"><input type="submit" name="commit" value="Sign up"></p>
+                <span id="msg">${signError}</span>
             </form>
             </div>
         </div>

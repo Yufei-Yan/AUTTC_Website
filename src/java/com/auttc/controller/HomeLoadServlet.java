@@ -212,6 +212,7 @@ public class HomeLoadServlet extends HttpServlet {
             
             if (UserDB.isEmailExist(user)) {
                 System.out.println("Email already resgistered!");
+                request.setAttribute("signError", "Email already resgistered!");
                 url = "/login.jsp";
             } else {
                 UserDB.inserUser(user);
