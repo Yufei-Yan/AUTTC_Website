@@ -35,11 +35,7 @@
         <description>Location to store uploaded file</description>
         <param-name>imgUpload</param-name>
         <param-value>
-<<<<<<< HEAD
            /home/yufeiyan/NetBeansProjects/AUTTC_Website/web/images/gallery/
-=======
-            /Users/tianziyan/Desktop/Final/AUTTC_Website/web/images/gallery/
->>>>>>> ad984b17fe8c8335460d91f6a7ee430c4bec736f
         </param-value>
     </context-param>
     <servlet-mapping>
