@@ -30,12 +30,13 @@
                 <li><a onclick="hid2('all','members','blog','about')">About</a></li>
 
                 </ul>
+                
             </div>        
             </div>
         </div>
         </div>
         
-        <h2>${user}</h2>
+        <h2><small>${user}<small></h2>
         <form action="homeLoad" method="post" id="loginButton" >
             <input type="hidden" name="action" value="login" id="loginHidden"/> 
             <input type="submit" value="Login" id="submitButton"/> 
@@ -102,7 +103,7 @@
             var timer = null;
             var key = 0;
             var square = 0; 
-            timer = setInterval(autoplay,3000);  
+            timer = setInterval(autoplay,2500);  
             function autoplay() {
                 key++;   
                 console.log(key); 
@@ -128,7 +129,7 @@
             }
 
             box.onmouseout = function() {
-                timer = setInterval(autoplay,3000); }
+                timer = setInterval(autoplay,2500); }
 
             function animate(obj,target) {
                 clearInterval(obj.timer);  
@@ -251,7 +252,7 @@
                             <input id="website" name="website" class="text" />
                             </li><li>
                             <label for="message">Your Message</label>
-                            <textarea id="message" name="message" rows="8" cols="50" border="1"></textarea>
+                            <textarea id="message" name="message" rows="8" cols="50" ></textarea>
                             </li><li>
                             <input type="image" name="imageField" id="imageField" src="images/icon/submit.gif" class="send" />
                                 <div class="clr"></div>

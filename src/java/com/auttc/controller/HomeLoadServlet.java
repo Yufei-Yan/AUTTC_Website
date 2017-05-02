@@ -33,7 +33,7 @@ import javax.servlet.ServletContext;
  * @author yufeiyan
  */
 public class HomeLoadServlet extends HttpServlet {
-
+    public HttpSession session;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -74,7 +74,8 @@ public class HomeLoadServlet extends HttpServlet {
             throws ServletException, IOException {
         //processRequest(request, response);
         String action = request.getParameter("action");
-        HttpSession session = request.getSession();
+        //HttpSession session = request.getSession();
+        session = request.getSession();
         System.out.println("session: " + session);
         User sessionUser = (User)session.getAttribute("user");
         System.out.println("sessionUser: " + sessionUser);
@@ -86,7 +87,7 @@ public class HomeLoadServlet extends HttpServlet {
             action = "homeLoad";
         }
         
-        if (action.equals("homeLoad") || action.equals("userLogin")) {
+        if (action.equals("homeLoad") || action.equals("userLogin") || action.endsWith("logout")) {
 
             String message;
             if (sessionUser == null) {
@@ -95,7 +96,7 @@ public class HomeLoadServlet extends HttpServlet {
             } else {
                 message = "Hello, " + sessionUser.getUsername();
             }
-            
+            System.out.println("message: " + message);
             ServletContext sc = getServletContext();
         
             String blogFileName = sc.getRealPath("/WEB-INF/blogs/testBlog.xml");
@@ -113,7 +114,7 @@ public class HomeLoadServlet extends HttpServlet {
             request.setAttribute("user", message);
             request.setAttribute("gallery", imgUrls);
         }
-        
+        System.out.println("before send url");
         getServletContext().getRequestDispatcher(url).forward(request, response);
         
     }
@@ -132,7 +133,7 @@ public class HomeLoadServlet extends HttpServlet {
         //processRequest(request, response);
               
         //need to check session later
-        HttpSession session = request.getSession();
+        //HttpSession session = request.getSession();
         
         String action = request.getParameter("action");
         String url = "/index.jsp";
@@ -142,8 +143,8 @@ public class HomeLoadServlet extends HttpServlet {
             getServletContext().getRequestDispatcher(url).forward(request, response);
         } else if (action.equals("logout")) {
             session.invalidate();
-            url = "/index.jsp";
-            getServletContext().getRequestDispatcher(url).forward(request, response);
+            System.out.println("before doGet");
+            this.doGet(request, response);
         } else if (action.equals("userLogin")) {
             System.out.println("user is logging in");
             String username = request.getParameter("login");
@@ -164,7 +165,7 @@ public class HomeLoadServlet extends HttpServlet {
                 session.setAttribute("user", user);
                 String message = "Hello, " + user.getUsername();
                 //String message = "Hello, " + (User)session.getAttribute("user");
-                request.setAttribute("user", message);
+                //request.setAttribute("user", message);
                 System.out.println("before doGet");
                 this.doGet(request, response);
             } else {
