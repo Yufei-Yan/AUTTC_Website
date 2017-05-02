@@ -170,13 +170,13 @@
                     <div class="article">
                     <h2><span>${blog.title}</span></h2>
 
-                        <div class="clr"></div>
+                        <div class="clr" ></div>
                             <p>Posted on ${blog.date}</p>
-                            <p>${blog.body}</p>  
+                            <p style="font-size:18px">${blog.body}</p>  
                         <!--<div id="exmaple1" style="display:block; font-weight: bold"> <a href="#" onclick="show('exmaple1','exmaple2')">  read more </a></div>-->
-                        <div id="<%out.print(readMoreDivID);%>" style="display:block; font-weight: bold"> <a href="javascript:void(0)" onclick="show('<%out.print(readMoreDivID);%>','<%out.print(fullBodyDivID);%>')">  read more </a></div>
+                        <div id="<%out.print(readMoreDivID);%>" style="display:block; font-weight: bold; font-size:12px"> <a href="javascript:void(0)" onclick="show('<%out.print(readMoreDivID);%>','<%out.print(fullBodyDivID);%>')">  read more </a></div>
                         <!--<div id="exmaple2" style="display:none;">-->
-                        <div id="<%out.print(fullBodyDivID);%>" style="display:none;">
+                        <div id="<%out.print(fullBodyDivID);%>" style="display:none; font-weight: 200; font-size: 18px">
                             With his fluid, rhythmic strokes, it is clear that Sam Querrey has a knack for table tennis. But when he hits a backhand with two hands, as he does on the tennis court, it becomes obvious that it is not his sport of choice.
 Querrey, ranked 38th in the world, was one of the many United States Open players who attended a pretournament party hosted by the agency Lagardère Unlimited at SPiN, a restaurant and bar on 23rd Street that bills itself as a Ping-Pong social club. Querrey, who grew up with a table in his house, matched up well with other tennis players and with nonathletes, but he could do little when facing the professional table tennis players at the party.
 “I can’t win a point off of them,” he said. “They hit it with spin, and when it hits my paddle, I can’t control where it goes. So I don’t even know what they do.”
@@ -218,7 +218,7 @@ Malin Pettersson, a Swedish table tennis champion, went up against several pro t
                             </li></ol>
                             </form>
                                 <!--<div id="h" style="display:none; font-weight: bold"> <a href="#" onclick="hide('c1','exmaple2','exmaple1')">  hide </a> </div>-->
-                                <div id="<%out.print(hDivID);%>" style="display:none; font-weight: bold"> <a href="javascript:void(0)" onclick="hide('<%out.print(responseDivID);%>','<%out.print(fullBodyDivID);%>','<%out.print(readMoreDivID);%>')">  hide </a> </div>
+                                <div id="<%out.print(hDivID);%>" style="display:none; font-weight: bold; font-size: 15px"> <a href="javascript:void(0)" onclick="hide('<%out.print(responseDivID);%>','<%out.print(fullBodyDivID);%>','<%out.print(readMoreDivID);%>')">  hide </a> </div>
                             </div>
                         </div>          
                     </div> 
