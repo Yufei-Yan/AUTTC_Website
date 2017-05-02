@@ -41,20 +41,21 @@ a.rm, a.com { margin-left:8px; padding:9px 12px; background:url(images/style/a_b
 .menu_nav ul li.active a, .menu_nav ul li a:hover { color:#fdfdfd; text-decoration:underline;}
 .menu_nav ul li.last a { border:0;}
 
-.uploadpicture{position: absolute; top:200px; left: 300px}
+.uploadpicture{position: absolute; top:200px; left: 450px}
 .uploadpicture form {text-align:left; float:left;  color:#212020; displaysplay:block; padding:0px 0 0 10px; font:normal 20px/1.2em Arial, Helvetica, sans-serif; letter-spacing:normal;}
 
 .uploadpicture form p{text-align:left; float:left;  color:#212020; displaysplay:block; padding:0px 0 0 10px; font:normal 15px/1.2em Arial, Helvetica, sans-serif; letter-spacing:normal;}
 .uploadpicture form input{text-align:left; float:left;  color:#212020; displaysplay:block; padding:0px 0 0 10px; font:normal 12px/1.2em Arial, Helvetica, sans-serif; letter-spacing:normal;}
 
-.uploadblog{position: absolute; top:340px;left: 300px; }
+.uploadblog{position: absolute; top:340px;left: 450px; }
 .uploadblog form {text-align:left; float:left;  color:#212020; displaysplay:block; padding:0px 0 0 10px; font:normal 20px/1.2em Arial, Helvetica, sans-serif; letter-spacing:normal;}
 
 .uploadblog form p{text-align:left; float:left;  color:#212020; displaysplay:block; padding:0px 0 0 10px; font:normal 15px/1.2em Arial, Helvetica, sans-serif; letter-spacing:normal;}
 .uploadblog form input{top: 10 px; text-align:left; float:left;  color:#212020; displaysplay:block; padding:0px 0 0 10px; font:normal 12px/1.2em Arial, Helvetica, sans-serif; letter-spacing:normal;}
 
-.deleteblog{position: absolute; top:740px;left: 300px; }
-.deleteblog table {text-align:left; float:left;  color:#212020; displaysplay:block; padding:0px 0 0 10px; font:normal 20px/1.2em Arial, Helvetica, sans-serif; letter-spacing:normal;}
+.deleteblog{position: absolute; top:740px;left: 450px; }
+.deleteblog p{text-align:left; float:left;  color:#212020; displaysplay:block; padding:0px 0 0 10px; font:normal 20px/1.2em Arial, Helvetica, sans-serif; letter-spacing:normal;}
+.deleteblog table {position: relative;left: 50px; text-align:left; float:left;  color:#212020; displaysplay:block; padding:0px 0 0 10px; font:normal 15px/1.2em Arial, Helvetica, sans-serif; letter-spacing:normal;}
 
 input[id=logout] {
   font-family: 'Lucida Grande', Tahoma, Verdana, sans-serif;
@@ -89,15 +90,4 @@ input[id=logout]:active {
 }
 
 
- footer{
-        width: 100%;
-        height: 60px;
-        position: absolute;
-        display: block;
-        bottom: 0px;
-        overflow: hidden;
-        borderTop: 1px solid;
-        borderBottomLeftRadius: 4px;
-        borderBottomRightRadius: 4px;
- }
  

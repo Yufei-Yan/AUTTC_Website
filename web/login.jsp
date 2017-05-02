@@ -58,7 +58,7 @@
             <form method="post" action="homeLoad">
                 <input type="hidden" name="action" value="userSignup" />
                 <p><input type="text" name="username" value="" placeholder="Username"></p>
-                <p><input type="text" name="email" value="" placeholder="Email"></p>
+                <p><input type="email" name="email" value="" placeholder="Email"></p>
                 <p><input type="password" name="password" value="" placeholder="Password"></p>
                 <p class="submit"><input type="submit" name="commit" value="Sign up"></p>
             </form>

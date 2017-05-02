@@ -50,7 +50,7 @@
         <div class="uploadpicture">
         <form id="uploadpic" action="imgUpload" method="post" enctype="multipart/form-data">
             Upload a picture<br>
-            Choose a file to upload:<br>
+            <p>Choose a file to upload:</p><br>
             <input type="file" name="file" />
             <input type="submit" value="Upload" />
         </form>
@@ -61,21 +61,22 @@
         <form id="uploadblog" action="blogUpload" method="post" enctype="multipart/form-data">
             Upload a blog<br>
 
-            <div class="title">
+            <div class="blogtitle">
                 <p>Title</p>
-                <input id="Title" name="title" class="text" />
+                <input id="Title" name="title" class="text" style="position: absolute; left:60px; top: 33px;"  />
             </div>
 
-            <div class="blog">
-                <p>Blog</p>
-                <textarea id="Body" name="body" rows="20" cols="80" ></textarea>
-                <button type="submit" value="submit" >submit</button>
+            <div class="blogbody">
+                <p style="position: absolute; left:10px; top: 50px;">Blog</p>
+                <textarea id="Body" name="body" rows="20" cols="80" style="position: absolute; left:60px; top: 60px;"></textarea>
+                <button type="submit" value="submit" style="position: absolute; left:460px; top: 30px;">submit</button>
             </div>
         </form>
         </div>
               
        <div class="deleteblog">
-         <table>
+           <p>Delete blog</p><br/>
+         <table border="1">
              <tr>
                  <td>Blog Title</td>
                  <td>Action</td>
@@ -92,6 +93,7 @@
                 </c:forEach>
          </table>
        </div>
+
 
     </body>
 </html>
