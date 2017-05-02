@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri= "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -60,9 +61,25 @@
             </div>
         </form>
         </div>
+        
+       <div class="deleteblog">
+         <table>
+             <tr>
+                 <td>Blog Title</td>
+                 <td>Action</td>
+             </tr>
+                <c:forEach var="blog" items='${blogList}'>
+                    <tr>
+                        <td>${blog.title}</td>
+                        <td>  
+                            <form id="uploadpic" action="imgUpload" method="post" enctype="multipart/form-data">
+                                <input type="submit" value="delete" />
+                            </form>
+                        </td>
+                    </tr>
+                </c:forEach>
+         </table>
+       </div>
 
-        
-        
- 
     </body>
 </html>
