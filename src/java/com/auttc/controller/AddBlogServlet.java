@@ -100,7 +100,7 @@ public class AddBlogServlet extends HttpServlet {
             List<Comment> commentList = new ArrayList<>();
             
             // create blog object to be added
-            Blog newBlog = new Blog(id, title, date, body, commentList);
+            Blog newBlog = new Blog(id, title, date, body, commentList, commentList.size());
             System.out.println("id: " + Integer.toString(newBlog.getId()));
             System.out.println("title: " + newBlog.getTitle());
             System.out.println("date: " + newBlog.getDate());
