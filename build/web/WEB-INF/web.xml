@@ -17,8 +17,8 @@
         <servlet-class>com.auttc.controller.AddCommentServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AddBlogServlet</servlet-name>
-        <servlet-class>com.auttc.controller.AddBlogServlet</servlet-class>
+        <servlet-name>BlogManageServlet</servlet-name>
+        <servlet-class>com.auttc.controller.BlogManageServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>HomeLoadServlet</servlet-name>
@@ -35,7 +35,7 @@
         <description>Location to store uploaded file</description>
         <param-name>imgUpload</param-name>
         <param-value>
-            C:\Users\cheng\Documents\GitHub\AUTTC_Website\web\images\gallery
+            /home/yufeiyan/NetBeansProjects/AUTTC_Website/web/images/gallery/
         </param-value>
     </context-param>
     <servlet-mapping>
@@ -47,8 +47,8 @@
         <url-pattern>/addComment</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AddBlogServlet</servlet-name>
-        <url-pattern>/addBlog</url-pattern>
+        <servlet-name>BlogManageServlet</servlet-name>
+        <url-pattern>/blogManage</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

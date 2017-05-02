@@ -25,7 +25,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author cheng
  */
-public class AddBlogServlet extends HttpServlet {
+public class BlogManageServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
