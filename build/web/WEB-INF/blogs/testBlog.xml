@@ -23,7 +23,7 @@ and open the template in the editor.
                 <cdate type="">04/02/2017</cdate>
                 <cbody>Blahblahblah</cbody>
             </comment>
-        </comments>
+        <comment><username>chengyu</username><cdate>/05/02/2017</cdate><cbody>11111111111111111</cbody></comment></comments>
     </blog>
     <blog id="102">
         <title>The Time an 11-Year-Old Took Down Nadal</title>

@@ -92,7 +92,7 @@ public class AddCommentServlet extends HttpServlet {
             System.out.println("username: " + username);
             
             ServletContext sc = getServletContext();
-            String blogFileName = sc.getRealPath("/web/WEB-INF/blogs/testBlog.xml");
+            String blogFileName = sc.getRealPath("/WEB-INF/blogs/testBlog.xml");
             System.out.println(blogFileName);
             List<Blog> blogList = BlogXML.xmlToBlogList(blogFileName);
             int targetId = 0;
