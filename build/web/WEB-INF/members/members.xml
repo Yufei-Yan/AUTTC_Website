@@ -16,15 +16,15 @@ and open the template in the editor.
     <member>
         <url>images/teammategallery/senke_xy01.jpg</url>
         <name>second player</name>
-        <gender>01/02/2016</gender>
-        <joindate>Male</joindate>
+        <gender>Male</gender>
+        <joindate>01/02/2016</joindate>
         <intro>This is the second plays</intro>
     </member>
     <member>
         <url>images/teammategallery/senke_xy02.jpg</url>
         <name>third player</name>
-        <gender>03/25/2017</gender>
-        <joindate>Female</joindate>
+        <gender>Female</gender>
+        <joindate>03/25/2017</joindate>
         <intro>This is the third player</intro>
     </member>
     <member>
@@ -44,8 +44,8 @@ and open the template in the editor.
     <member>
         <url>images/teammategallery/senke_xy05.jpg</url>
         <name>sixth player</name>
-        <gender>03/25/2017</gender>
-        <joindate>Female</joindate>
+        <gender>Female</gender>
+        <joindate>03/25/2017</joindate>
         <intro>This is the sixth player</intro>
     </member>
     
