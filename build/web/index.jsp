@@ -6,6 +6,7 @@
 
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri= "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -172,16 +173,15 @@
 
                         <div class="clr"></div>
                             <p>Posted on ${blog.date}</p>
-                            <p>${blog.body}</p>  
+                            <c:set var="string1" value="${blog.body}" />
+                            <c:set var="string2" value="${fn:substring(string1, 0, 200)}" />
+                            <c:set var="string3" value="${fn:substring(string1, 200, fn:length(string1)-1)}" />
+                            <p>${string2} ...</p>  
                         <!--<div id="exmaple1" style="display:block; font-weight: bold"> <a href="#" onclick="show('exmaple1','exmaple2')">  read more </a></div>-->
                         <div id="<%out.print(readMoreDivID);%>" style="display:block; font-weight: bold"> <a href="javascript:void(0)" onclick="show('<%out.print(readMoreDivID);%>','<%out.print(fullBodyDivID);%>')">  read more </a></div>
                         <!--<div id="exmaple2" style="display:none;">-->
                         <div id="<%out.print(fullBodyDivID);%>" style="display:none;">
-                            With his fluid, rhythmic strokes, it is clear that Sam Querrey has a knack for table tennis. But when he hits a backhand with two hands, as he does on the tennis court, it becomes obvious that it is not his sport of choice.
-Querrey, ranked 38th in the world, was one of the many United States Open players who attended a pretournament party hosted by the agency Lagardère Unlimited at SPiN, a restaurant and bar on 23rd Street that bills itself as a Ping-Pong social club. Querrey, who grew up with a table in his house, matched up well with other tennis players and with nonathletes, but he could do little when facing the professional table tennis players at the party.
-“I can’t win a point off of them,” he said. “They hit it with spin, and when it hits my paddle, I can’t control where it goes. So I don’t even know what they do.”
-Malin Pettersson, a Swedish table tennis champion, went up against several pro tennis players at the party, and she had previously played Rafael Nadal. Though she and Nadal rallied at a friendly pace, Pettersson could tell that the slightest infusion of spin from her paddle immediately dismantled his play.
-
+                            ${string3}
                             <!--<div><a href="#" onclick="show1('c1','h')"> <strong>Comments (3)</strong> </a>   <span>&nbsp;&bull;&nbsp;</span>  May 27, 2010  <span>&nbsp;&bull;&nbsp;</span>  <a href="#"><strong>Edit</strong></a></div>-->
                             <div><a href="javascript:void(0)" onclick="show1('<%out.print(responseDivID);%>','<%out.print(hDivID);%>', '<%out.print(commentsID);%>')" id="<%out.print(commentsID);%>"> <strong>Comments (${blog.commentNum})</strong> </a>   <span>&nbsp;&bull;&nbsp;</span>  May 27, 2010  </div>
                         </div>
