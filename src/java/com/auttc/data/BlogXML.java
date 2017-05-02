@@ -67,7 +67,7 @@ public class BlogXML {
                     commentList.add(newComment);
                 }
 
-                Blog newBlog = new Blog(blogId, blogTitle, blogDate, blogBody, commentList);
+                Blog newBlog = new Blog(blogId, blogTitle, blogDate, blogBody, commentList, commentList.size());
                 blogList.add(newBlog);
             }
             

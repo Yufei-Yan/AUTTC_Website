@@ -18,15 +18,17 @@ public class Blog implements Serializable {
     private String date;
     private String body;
     private List<Comment> commentList;
+    private int commentNum;
     
     public Blog() {
         this.id = 0;
         this.title = "";
         this.date = "";
         this.body = "";
+        this.commentNum = 0;
     }
     
-    public Blog(int id, String title, String date, String body, List<Comment> commentList) {
+    public Blog(int id, String title, String date, String body, List<Comment> commentList, int commentNum) {
         this.id = id;
         this.title = title;
         this.date = date;
@@ -73,4 +75,9 @@ public class Blog implements Serializable {
     public void setCommentList(List<Comment> commentList) {
         this.commentList = commentList;
     }
+    
+    public int getCommentNum() {
+        return commentList.size();
+    }
+    
 }

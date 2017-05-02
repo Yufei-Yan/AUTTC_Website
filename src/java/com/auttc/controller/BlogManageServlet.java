@@ -44,10 +44,10 @@ public class BlogManageServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AddBlogServlet</title>");            
+            out.println("<title>Servlet BlogManageServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AddBlogServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet BlogManageServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -90,8 +90,7 @@ public class BlogManageServlet extends HttpServlet {
         List<Blog> blogList = BlogXML.xmlToBlogList(blogFileName);
 //        String url = "homeload";
         
-        if (null != sessionUser) {
-            
+        if (null != sessionUser) {          
             if (action.equals("addBlog")) {
                 // gather information of new blog
                 int id = blogList.get(blogList.size() - 1).getId() + 1;
@@ -103,7 +102,7 @@ public class BlogManageServlet extends HttpServlet {
                 List<Comment> commentList = new ArrayList<>();
 
                 // create blog object to be added
-                Blog newBlog = new Blog(id, title, date, body, commentList);
+                Blog newBlog = new Blog(id, title, date, body, commentList, commentList.size());
                 System.out.println("id: " + Integer.toString(newBlog.getId()));
                 System.out.println("title: " + newBlog.getTitle());
                 System.out.println("date: " + newBlog.getDate());

@@ -2,8 +2,30 @@
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
---><blogs>
-    
+-->
+<blogs>
+    <blog id="101">
+        <title>With a Paddle, Tennis Stars Find They’re Up the Creek</title>
+        <date>04/01/2017</date>
+        <body>With his fluid, rhythmic strokes, it is clear that Sam Querrey has a knack for table tennis. But when he hits a backhand with two hands, as he does on the tennis court, it becomes obvious that it is not his sport of choice.</body>
+        <comments>
+            <comment>
+                <username>Yufei</username>
+                <cdate type="">04/01/2017</cdate>
+                <cbody>Interesting</cbody>
+            </comment>
+            <comment>
+                <username>Chengyu</username>
+                <cdate type="">04/01/2017</cdate>
+                <cbody>Hello</cbody>
+            </comment>
+            <comment>
+                <username>Admin</username>
+                <cdate type="">04/02/2017</cdate>
+                <cbody>Blahblahblah</cbody>
+            </comment>
+        </comments>
+    </blog>
     <blog id="102">
         <title>The Time an 11-Year-Old Took Down Nadal</title>
         <date>04/03/2017</date>

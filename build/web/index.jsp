@@ -183,13 +183,13 @@ Querrey, ranked 38th in the world, was one of the many United States Open player
 Malin Pettersson, a Swedish table tennis champion, went up against several pro tennis players at the party, and she had previously played Rafael Nadal. Though she and Nadal rallied at a friendly pace, Pettersson could tell that the slightest infusion of spin from her paddle immediately dismantled his play.
 
                             <!--<div><a href="#" onclick="show1('c1','h')"> <strong>Comments (3)</strong> </a>   <span>&nbsp;&bull;&nbsp;</span>  May 27, 2010  <span>&nbsp;&bull;&nbsp;</span>  <a href="#"><strong>Edit</strong></a></div>-->
-                            <div><a href="javascript:void(0)" onclick="show1('<%out.print(responseDivID);%>','<%out.print(hDivID);%>', '<%out.print(commentsID);%>')" id="<%out.print(commentsID);%>"> <strong>Comments(1)</strong> </a>   <span>&nbsp;&bull;&nbsp;</span>  May 27, 2010  </div>
+                            <div><a href="javascript:void(0)" onclick="show1('<%out.print(responseDivID);%>','<%out.print(hDivID);%>', '<%out.print(commentsID);%>')" id="<%out.print(commentsID);%>"> <strong>Comments (${blog.commentNum})</strong> </a>   <span>&nbsp;&bull;&nbsp;</span>  May 27, 2010  </div>
                         </div>
 
                         <!--<div id="c1" style="display:none; font-weight: bold">-->
                         <div id="<%out.print(responseDivID);%>" style="display:none; font-weight: bold">
                             <div>
-                                <h2><span>3</span> Responses</h2><div class="clr"></div>
+                                <h2><span>${blog.commentNum}</span> Responses</h2><div class="clr"></div>
                                 <c:forEach var="comment" items="${blog.commentList}">
                                     <div class="comment">
                                     <p><a href="javascript:void(0)">${comment.username}</a> ${comment.cdate}</p>
