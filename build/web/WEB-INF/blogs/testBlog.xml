@@ -2,8 +2,7 @@
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
--->
-<blogs>
+--><blogs>
     <blog id="101">
         <title>With a Paddle, Tennis Stars Find They’re Up the Creek</title>
         <date>04/01/2017</date>
@@ -54,4 +53,4 @@ There are tennis fans who might not even say that about him after the year he ha
             </comment>
         </comments>
     </blog>
-</blogs>
+<blog id="104"><title>fadsfadsf</title><date>/05/02/2017</date><body>1321321</body><comments/></blog></blogs>

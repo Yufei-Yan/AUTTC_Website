@@ -73,7 +73,6 @@
                 <button type="submit" value="submit" style="position: absolute; left:460px; top: 30px;">submit</button>
             </div>
             <input type="hidden" name="action" value="addBlog">
-            <input type="submit" value="Submit" >
         </form>
         </div>
               
