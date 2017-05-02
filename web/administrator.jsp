@@ -58,7 +58,7 @@
          
          
         <div class="uploadblog">
-        <form action="addBlog" method="post" id="uploadblog">
+        <form action="blogManage" method="post" id="uploadblog">
             Upload a blog<br>
 
             <div class="blogtitle">
@@ -86,8 +86,10 @@
                     <tr>
                         <td>${blog.title}</td>
                         <td>  
-                            <form id="uploadpic" action="imgUpload" method="post" enctype="multipart/form-data">
-                                <input type="submit" value="delete" />
+                            <form id="uploadpic" action="blogManage" method="post">
+                                <input type="hidden" name="action" value="deleteBlog" />
+                                <!--<input type="hidden" name="blogId" value="aaaaa" />-->
+                                <input type="submit" value="Delete" name="del${blog.id}"/>
                             </form>
                         </td>
                     </tr>

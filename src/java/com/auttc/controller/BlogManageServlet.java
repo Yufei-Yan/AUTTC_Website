@@ -80,38 +80,55 @@ public class BlogManageServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
+        User sessionUser = (User) session.getAttribute("user");
+        String action = request.getParameter("action");
+        System.out.println("===========action: " + action);
+        
+        ServletContext sc = getServletContext();
+        String blogFileName = sc.getRealPath("/WEB-INF/blogs/testBlog.xml");
+        System.out.println("file path: " + blogFileName);
+        List<Blog> blogList = BlogXML.xmlToBlogList(blogFileName);
 //        String url = "homeload";
         
-        if (null != (session.getAttribute("user"))) {
-            String action = request.getParameter("action");
-            System.out.println("action: " + action);
-            ServletContext sc = getServletContext();
-            String blogFileName = sc.getRealPath("/WEB-INF/blogs/testBlog.xml");
-            System.out.println("file path: " + blogFileName);
-            List<Blog> blogList = BlogXML.xmlToBlogList(blogFileName);
+        if (null != sessionUser) {
             
-            // gather information of new blog
-            int id = blogList.get(blogList.size() - 1).getId() + 1;
-            String title = request.getParameter("title");
-            System.out.println(title);
-            String date = Date.getDate();
-            String body = request.getParameter("body");
-            System.out.println(body);
-            List<Comment> commentList = new ArrayList<>();
-            
-            // create blog object to be added
-            Blog newBlog = new Blog(id, title, date, body, commentList);
-            System.out.println("id: " + Integer.toString(newBlog.getId()));
-            System.out.println("title: " + newBlog.getTitle());
-            System.out.println("date: " + newBlog.getDate());
-            System.out.println("body: " + newBlog.getBody());
-            
-            // write the new blog into xml file
-            BlogXML.addBlog(newBlog, blogFileName);
-            
-            System.out.println("file " + blogFileName + " written!");
+            if (action.equals("addBlog")) {
+                // gather information of new blog
+                int id = blogList.get(blogList.size() - 1).getId() + 1;
+                String title = request.getParameter("title");
+                System.out.println(title);
+                String date = Date.getDate();
+                String body = request.getParameter("body");
+                System.out.println(body);
+                List<Comment> commentList = new ArrayList<>();
+
+                // create blog object to be added
+                Blog newBlog = new Blog(id, title, date, body, commentList);
+                System.out.println("id: " + Integer.toString(newBlog.getId()));
+                System.out.println("title: " + newBlog.getTitle());
+                System.out.println("date: " + newBlog.getDate());
+                System.out.println("body: " + newBlog.getBody());
+
+                // write the new blog into xml file
+                BlogXML.addBlog(newBlog, blogFileName);
+
+                System.out.println("file " + blogFileName + " written!");
+            } else if (action.equals("deleteBlog")) {
+                System.out.println("Start locating blog to be deleted");
+                for (Blog blog: blogList) {
+                    System.out.println("Start locating blog to be deleted");
+                    String buttonName = "del" + Integer.toString(blog.getId());
+                    if (request.getParameter(buttonName) != null) {
+                        System.out.println("deleting " + blog.getTitle());
+                        
+                        BlogXML.removeBlog(blog.getId(), blogFileName);
+                    }
+                }
+               
+            }
             
         } else {
+            
             getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
         }
         
