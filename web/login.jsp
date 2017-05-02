@@ -23,15 +23,22 @@
             <div class="menu_nav">
                 <ul>
                 <li class="active"><a href="homeLoad?action=homeLoad">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li class="last"><a href="contact.html">Contact Us</a></li>
+                <li><a id="blogLink" href="blog.html" onclick="delLink(blogLink)">Blog</a></li>
+                <li><a id="memberLink" href="member.html" onclick="delLink(memberLink)">Members</a></li>
+                <li class="last"><a id="aboutLink" href="about.html" onclick="delLink(aboutLink)">About</a></li>
                 </ul>
-
             </div>        
             </div>
         </div>
         </div>
+        
+        <script>
+             function delLink(link) { 
+                 link.disabled = true; 
+                 link.setAttribute("disabled",true); 
+                 link.removeAttribute('href'); 
+             }
+        </script>
         
         <div class="login_container">
             <div class="login">

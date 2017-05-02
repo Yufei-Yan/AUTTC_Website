@@ -40,7 +40,7 @@
         <form action="homeLoad" method="post" id="loginButton" >
             <input type="hidden" name="action" value="login" id="loginHidden"/> 
             <input type="submit" value="Login" id="submitButton"/> 
-        </form>
+        </form>    
   <div class="clr"></div>        
   <div class="clr"></div>        
   <div class="clr"></div>        
