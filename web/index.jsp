@@ -43,8 +43,10 @@
         </form>    
         
         <!-- Edit button for admin -->
-        <form action="" method="" id="editButton" style="position: absolute; right:170px; top: 110px">
-            <input type="submit" value="Edit" id="editeButton"/> 
+        <form action="homeLoad" method="post" id="editButton" style="position: absolute; right:170px; top: 110px">
+            <input type="hidden" name="aciton" value="adminEdit" />
+            <p style="display:none">${admin}</p>
+            <input type="submit" value="Edit" id="adminEdit" style="display:none"/> 
         </form> 
         
   <div class="clr"></div>        
@@ -61,6 +63,11 @@
             } else {
                 document.getElementById("submitButton").value = "Logout";
                 document.getElementById("loginHidden").value = "logout";
+            }
+            
+            //check if user is admin
+            if ('${admin}'.includes("Yes")) {
+                document.getElementById("adminEdit").style.display = "";
             }
             
             var box  = document.getElementById("all");  

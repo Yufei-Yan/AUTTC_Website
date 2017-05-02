@@ -93,9 +93,14 @@ public class HomeLoadServlet extends HttpServlet {
             if (sessionUser == null) {
 
                 message = "";
+                request.setAttribute("admin", "No");
             } else {
                 message = "Hello, " + sessionUser.getUsername();
                 request.setAttribute("user", sessionUser.getUsername());
+                System.out.println("admin: " + sessionUser.getAdmin());
+                if (1 == sessionUser.getAdmin()) {
+                    request.setAttribute("admin", "Yes");
+                }
             }
             System.out.println("message: " + message);
             ServletContext sc = getServletContext();
@@ -149,6 +154,10 @@ public class HomeLoadServlet extends HttpServlet {
         String action = request.getParameter("action");
         String url = "/index.jsp";
         
+        if (null == action) {
+            action = "adminEdit";
+        }
+        
         if (action.equals("login")) {
             url = "/login.jsp";
             getServletContext().getRequestDispatcher(url).forward(request, response);
@@ -168,6 +177,7 @@ public class HomeLoadServlet extends HttpServlet {
             
             if (User.UserType.ADMIN == u) {
                 url = "/administrator.jsp";
+                user.setAdmin(1);
                 session.setAttribute("user", user);
                 String message = "Hello, administrator! " + user.getUsername();
                 
@@ -181,8 +191,6 @@ public class HomeLoadServlet extends HttpServlet {
                 url = "/index.jsp";
                 session.setAttribute("user", user);
                 String message = "Hello, " + user.getUsername();
-                //String message = "Hello, " + (User)session.getAttribute("user");
-                //request.setAttribute("user", message);
                 System.out.println("before doGet");
                 this.doGet(request, response);
             } else {
@@ -216,7 +224,19 @@ public class HomeLoadServlet extends HttpServlet {
             }
             
             getServletContext().getRequestDispatcher(url).forward(request, response);
-        } 
+        } else if (action.equals("adminEdit")) {
+            url = "/administrator.jsp";
+            User sessionUser = (User)session.getAttribute("user");
+            String message = "Hello, administrator! " + sessionUser.getUsername();
+
+            ServletContext sc = getServletContext();
+            String blogFileName = sc.getRealPath("/WEB-INF/blogs/testBlog.xml");
+            List<Blog> blogList = BlogXML.xmlToBlogList(blogFileName);
+            request.setAttribute("blogList", blogList);
+            request.setAttribute("user", message);
+            
+            getServletContext().getRequestDispatcher(url).forward(request, response);
+        }
           
     }
 
