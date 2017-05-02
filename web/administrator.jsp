@@ -58,7 +58,7 @@
          
          
         <div class="uploadblog">
-        <form action="addBlog" method="post" id="uploadblog">
+        <form action="blogManage" method="post" id="uploadblog">
             Upload a blog<br>
 
             <div class="blogtitle">
