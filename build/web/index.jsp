@@ -189,7 +189,7 @@ Malin Pettersson, a Swedish table tennis champion, went up against several pro t
                         <!--<div id="c1" style="display:none; font-weight: bold">-->
                         <div id="<%out.print(responseDivID);%>" style="display:none; font-weight: bold">
                             <div>
-                                <h2><span>3</span> Responses</h2><div class="clr"></div>
+                                <h2><span>${blog.commentNum}</span> Responses</h2><div class="clr"></div>
                                 <c:forEach var="comment" items="${blog.commentList}">
                                     <div class="comment">
                                     <p><a href="javascript:void(0)">${comment.username}</a> ${comment.cdate}</p>
