@@ -43,8 +43,9 @@
 
         <h2><small>${user}</small></h2>
         
-        <form action="" method="" class="logoutButton" style="position: absolute; right:270px; top: 110px" >
-            <input type="submit" name="" value="logout" id="logout"/> 
+        <form action="homeLoad" method="post" class="logoutButton" style="position: absolute; right:270px; top: 110px" >
+            <input type="hidden" name="action" value="logout" />
+            <input type="submit" value="logout" id="logout"/> 
         </form>  
 
         <div class="uploadpicture">
@@ -86,8 +87,10 @@
                     <tr>
                         <td>${blog.title}</td>
                         <td>  
-                            <form id="uploadpic" action="imgUpload" method="post" enctype="multipart/form-data">
-                                <input type="submit" value="delete" />
+                            <form id="uploadpic" action="blogManage" method="post">
+                                <input type="hidden" name="action" value="deleteBlog" />
+                                <!--<input type="hidden" name="blogId" value="aaaaa" />-->
+                                <input type="submit" value="Delete" name="del${blog.id}"/>
                             </form>
                         </td>
                     </tr>
