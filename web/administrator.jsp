@@ -79,8 +79,8 @@
            <p>Delete blog</p><br/>
          <table border="1">
              <tr>
-                 <td>Blog Title</td>
-                 <td>Action</td>
+                 <th>Blog Title</th>
+                 <th>Action</th>
              </tr>
                 <c:forEach var="blog" items='${blogList}'>
                     <tr>
