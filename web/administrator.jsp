@@ -66,14 +66,12 @@
                 <input id="Title" name="title" class="text" style="position: absolute; left:60px; top: 33px;"  />
             </div>
 
-
             <div class="blogbody">
                 <p style="position: absolute; left:10px; top: 50px;">Blog</p>
                 <textarea id="Body" name="body" rows="20" cols="80" style="position: absolute; left:60px; top: 60px;"></textarea>
                 <button type="submit" value="submit" style="position: absolute; left:460px; top: 30px;">submit</button>
             </div>
             <input type="hidden" name="action" value="addBlog">
-            <input type="submit" value="Submit" >
         </form>
         </div>
               

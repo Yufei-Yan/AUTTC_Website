@@ -210,10 +210,10 @@ Malin Pettersson, a Swedish table tennis champion, went up against several pro t
                             <label for="website">Website</label>
                             <input id="website" name="website" class="text" />
                             </li><li>-->
-<label for="message">Your Message</label><br>
-                            <textarea id="message" name="message" rows="8" cols="50" ></textarea>
+                            <label for="message">Your Message</label><br>
+                            <textarea id="message" name="message${blog.id}" rows="8" cols="50" ></textarea>
                             </li><li>
-                            <input type="image" name="commentBlog${blog.id}" id="imageField" src="images/icon/submit.gif" class="send" />
+                            <input type="submit" name="commentBlog${blog.id}" id="imageField" />
                                 <div class="clr"></div>
                             </li></ol>
                             </form>
