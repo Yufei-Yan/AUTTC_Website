@@ -31,7 +31,7 @@
         <description>Location to store uploaded file</description>
         <param-name>imgUpload</param-name>
         <param-value>
-            C:\Users\cheng\Documents\GitHub\AUTTC_Website\web\images\gallery
+            C:\Users\Xuyu\Desktop\COMP 6000\Project\AUTTC_Website\web\images\gallery
         </param-value>
     </context-param>
     <servlet-mapping>

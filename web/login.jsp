@@ -23,9 +23,6 @@
             <div class="menu_nav">
                 <ul>
                 <li class="active"><a href="homeLoad?action=homeLoad">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li class="last"><a href="contact.html">Contact Us</a></li>
                 </ul>
 
             </div>        
@@ -57,22 +54,25 @@
             </form>
             </div>
         </div>
-  <!--
-        <div id="cssTabs">
-            <div id="tab1" class="uiTab">
-                <h3 class="tabHead">Header for Tab1</h3
-                <div class="tabContent">Content for Tab1</div>
-           </div>
-           <div id="tab2" class="uiTab">
-                <h3 class="tabHead">Header for Tab2</h3>
-                <div class="tabContent">Content for Tab2</div>
-           </div>										 
-           <div id="tab3" class="uiTab">
-                <h3 class="tabHead">Header for Tab3</h3>
-                <div class="tabContent">Content for Tab3</div>
-           </div>
-        </div>
-  -->
+        
+<table width="100%"  border="0" cellspacing="7" cellpadding="0">
+        <tr>
+            <td><div align="center"><span class="bottombar"><strong>&copy; Authors: Yufei Yan; Chengyu Tang; Yang Zhao; Ziyan Tian. </strong></span></div></td>
+        </tr>
+        <tr> 
+          <td>
+<div align="center"> </div></td>
+        </tr>
+      </table>  
+  <table width="100%"  border="0" cellspacing="7" cellpadding="0">
+        <tr>
+          <td><div align="center"><span class="bottombar"><strong>&copy; AUTTC, Auburn, AL 36830. All Rights Reserved. </strong></span></div></td>
+        </tr>
+        <tr> 
+          <td>
+<div align="center"> </div></td>
+        </tr>
+      </table>
 
 
     </body>
