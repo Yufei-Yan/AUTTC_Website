@@ -37,34 +37,21 @@
         </div>
         
         <h2><small>${user}<small></h2>
-        <form action="homeLoad" method="post" id="loginButton" >
+        <form action="homeLoad" method="post" class="loginButton" style="position: absolute; right:270px; top: 110px" >
             <input type="hidden" name="action" value="login" id="loginHidden"/> 
             <input type="submit" value="Login" id="submitButton"/> 
         </form>    
+        
+        <!-- Edit button for admin -->
+        <form action="" method="" id="editButton" style="position: absolute; right:170px; top: 110px">
+            <input type="submit" value="Edit" id="editeButton"/> 
+        </form> 
+        
   <div class="clr"></div>        
   <div class="clr"></div>        
   <div class="clr"></div>        
-        <!-- 
-        gallery: 
-        ${gallery}  an array of image url
-        -->
-                <!-- Gallery -->
-    <style type="text/css">
-        *{ padding:0; margin:0; list-style:none;}
-        .all{ width: 600px; height: 370px; padding: 7px; border: 1px solid #2D2D2D; margin: 50px auto; position: relative; }
-        .screen{
-                width:600px;
-                height:370px;
-                 overflow:hidden; 
-                position:relative;
-        }
-        .screen li{ width:600px; height:370px; overflow:hidden; float:left;}
-        .screen ul{ position:absolute; left:0; top:0px; width:3000px;}
-        .all ol{ position:absolute; right:10px; bottom:10px; line-height:20px; text-align:center;}
-        .all ol li{ float: left; width: 15px; height: 15px; background: #fff;  margin-left: 5px; cursor: pointer; font-size: 10px; font-family: Verdana; line-height: 15px; border-radius: 15px; }
-        .all ol li.current{ background:yellow;}
-    </style>
-    
+
+  <!-- Gallery -->
     <script type="text/javascript">
         window.onload= function() {
             
@@ -162,41 +149,9 @@
         </ol>
     </div>
 
-        <!-- Gallery -->
-       <!--<div id="gallery" style="display:block; font-weight: bold">
-        <ul id="horiz_container_outer">
-		<li id="horiz_container_inner">
-			<ul id="horiz_container">
-                          <%--  <c:forEach var="item" items='${gallery}'>
-                                <li>
-                                   <img src="${item}" width="500px" height="300px" alt="Toy Story" />
-                                   <p>${item}</p>
-                                </li>
-                            </c:forEach> --%>
-			</ul>
-		</li>		
-	</ul>			
-						
-	<div id="scrollbar">
-		<a id="left_scroll" class="mouseover_left" href="#"></a>
-		<div id="track">
-		     <div id="dragBar"></div>
-		</div>
-		<a id="right_scroll" class="mouseover_right" href="#"></a></div>
-	</div>
-       
-        <!--
-        blog: 
-            for each blog: ${blog}
-            <p name="title"> ${blog.title}
-            <p name="date">${blog.date}
-            ...
-            ...
-            ...
-                <input type="submit" value="Comment" aciton="checkUser">${comment}
-        -->
         
-<div id="blog" style="display:block; font-weight: bold">
+   <!-- Blog -->
+    <div id="blog" style="display:block; font-weight: bold">
 
     <div class="blog">   
         <div class="content">
@@ -356,6 +311,7 @@ Malin Pettersson, a Swedish table tennis champion, went up against several pro t
                 });
     </script>
   </div>
+        
   <!--About-->
    <div id="about" style="display:none; font-weight: bold">
         <div class="content">
@@ -404,6 +360,8 @@ Malin Pettersson, a Swedish table tennis champion, went up against several pro t
          document.getElementById(ele4).style.display = "block";
     }
     </script>
+    
+    <!-- footer -->
         <table width="100%"  border="0" cellspacing="7" cellpadding="0">
         <tr>
             <td><div align="center"><span class="bottombar"><strong>&copy; Authors: Yufei Yan; Chengyu Tang; Yang Zhao; Ziyan Tian. </strong></span></div></td>
