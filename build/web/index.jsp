@@ -271,10 +271,9 @@
                          <c:forEach items="${memberList}" var="member">
                             <li>
                                 <img src="${member.url}" /> 
-                                <dd>name: ${member.name}</dd>
-                                <p>gender: ${member.gender}</p>
-                                <p>joindate: ${member.joinDate}</p>
-                                <p>intro: ${member.intro}</p>                   
+                                <dd>${member.name}</dd>
+                                <p>Join Date: ${member.joinDate}</p>
+                                <p>Bio: ${member.intro}</p>                   
                             </li>
                         </c:forEach>
                   

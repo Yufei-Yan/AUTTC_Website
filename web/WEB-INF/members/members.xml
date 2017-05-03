@@ -8,45 +8,45 @@ and open the template in the editor.
 <members>
     <member>
         <url>images/teammategallery/senke_xy00.jpg</url>
-        <name>first player</name>
-        <gender>Female</gender>
-        <joindate>01/01/2017</joindate>
-        <intro>This is the first player</intro>
+        <name>zhitao Gong</name>
+        <gender>Male</gender>
+        <joindate>05/23/2013</joindate>
+        <intro>President of AUTTC</intro>
     </member>
     <member>
         <url>images/teammategallery/senke_xy01.jpg</url>
-        <name>second player</name>
+        <name>He Wu</name>
         <gender>Male</gender>
-        <joindate>01/02/2016</joindate>
-        <intro>This is the second plays</intro>
+        <joindate>03/02/2017</joindate>
+        <intro>The newest member</intro>
     </member>
     <member>
         <url>images/teammategallery/senke_xy02.jpg</url>
-        <name>third player</name>
-        <gender>Female</gender>
-        <joindate>03/25/2017</joindate>
-        <intro>This is the third player</intro>
+        <name>Yuanhao Li</name>
+        <gender>Male</gender>
+        <joindate>06/25/2016</joindate>
+        <intro>He is a undergrate student major in Civil</intro>
     </member>
     <member>
         <url>images/teammategallery/senke_xy03.jpg</url>
-        <name>fourth player</name>
+        <name>Yufei Yan</name>
         <gender>Male</gender>
-        <joindate>11/01/2016</joindate>
-        <intro>This is the fourth player</intro>
+        <joindate>03/01/2016</joindate>
+        <intro>CS major. One of the authors this website</intro>
     </member>
     <member>
         <url>images/teammategallery/senke_xy04.jpg</url>
-        <name>fifth player</name>
-        <gender>06/01/2016</gender>
-        <joindate>Female</joindate>
-        <intro>This is the fifth plays</intro>
+        <name>Wentao Du</name>
+        <gender>09/01/2015</gender>
+        <joindate>Male</joindate>
+        <intro>Secretary</intro>
     </member>
     <member>
         <url>images/teammategallery/senke_xy05.jpg</url>
-        <name>sixth player</name>
-        <gender>Female</gender>
-        <joindate>03/25/2017</joindate>
-        <intro>This is the sixth player</intro>
+        <name>Chao Liao</name>
+        <gender>Male</gender>
+        <joindate>03/25/2015</joindate>
+        <intro>The best player</intro>
     </member>
     
 </members>

@@ -128,7 +128,7 @@ public class ImgUploadServlet extends HttpServlet {
             request.setAttribute("user", message);
             getServletContext().getRequestDispatcher("/administrator.jsp").forward(request, response);
         } else {
-            getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
+            response.sendRedirect("homeLoad");
         }
         
     }
